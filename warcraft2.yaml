@@ -2676,7 +2676,7 @@ WC2_ORC_CANNON_TOWER:
 		Scale: 0.8
 
 WC2_ORC_BARRACKS:
-	Inherits@wc2_human_barracks: wc2_human_barracks  
+	Inherits@WC2_HUMAN_BARRACKS: WC2_HUMAN_BARRACKS
 	ProvidesPrerequisite:
 	ProvidesPrerequisite@buildingname:
 	Buildable:
@@ -2966,7 +2966,7 @@ WC2_ORC_OGRE_MOUND:
   	ProductionBar@CLASSICPRODUCTIONQUEUES:
 		ProductionType: RAkennelupg.orc2      
 	Buildable:
-		Prerequisites: WC2_ORC_stronghold
+		Prerequisites: WC2_ORC_STRONGHOLD
 		Queue: Building.orc2, RABuilding.orc2
 		Description: Unlocks production of Ogres.\nThis place smells bad!
 	SpawnActorsOnSell:
