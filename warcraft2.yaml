@@ -3086,7 +3086,7 @@ WC2_ORC_SKELETON:
 		Name: Skeleton
 	Buildable:
 		BuildPaletteOrder: 10
-		Prerequisites: wc2_orc_barracks
+		Prerequisites: wc2_orc_temple_of_the_damned
 		Queue: Infantry.orc2, RAInfantry.orc2
 		Description: Undead melee infantry. Spooky!
 	Armament:
@@ -3099,7 +3099,7 @@ WC2_ORC_TROLL_AXETHROWER:
     Tooltip:
 		Name: Troll Axethrower
 	Buildable:
-		Prerequisites: wc2_orc_barracks
+		Prerequisites: wc2_orc_troll_lumber_mill
 		Queue: Infantry.orc2, RAInfantry.orc2
 		Description: Basic Ranged Infantry.\nNot as durable as Grunt.\nCan attack air.
 	Armament:
@@ -3127,7 +3127,7 @@ WC2_ORC_OGRE:
 		AddToArmyValue: true
 	Buildable:
 		BuildPaletteOrder: 30
-		Prerequisites: wc2_orc_barracks
+		Prerequisites: wc2_orc_ogre_mound
 		Queue: Infantry.orc2, RAInfantry.orc2
 		Description: Improved melee infantry. Dumb and dangerous!
         BuildDuration: 80
@@ -3167,7 +3167,7 @@ WC2_ORC_CATAPULT:
 		AddToArmyValue: true
 	Buildable:
 		BuildPaletteOrder: 40
-		Prerequisites: wc2_orc_barracks
+		Prerequisites: wc2_orc_blacksmith
 		Queue: Infantry.orc2, RAInfantry.orc2
 		Description: Powerful long range siege unit.
         BuildDuration: 80
@@ -3260,7 +3260,7 @@ WC2_ORC_TRANSPORT:
 	Inherits@WC2_HUMAN_TRANSPORT: WC2_HUMAN_TRANSPORT
 	Buildable:
 		BuildPaletteOrder: 20
-		Prerequisites:
+		Prerequisites: wc2_orc_foundry
 		Queue: Naval.orc2, RANaval.orc2 
 		Description: Transport ship.
 	Tooltip:
@@ -3274,7 +3274,7 @@ WC2_ORC_OGRE_JUGGERNAUGHT:
 	Inherits@WC2_HUMAN_BATTLESHIP: WC2_HUMAN_BATTLESHIP
 	Buildable:
 		BuildPaletteOrder: 20
-		Prerequisites:
+		Prerequisites: wc2_orc_foundry, wc2_orc_stronghold
 		Queue: Naval.orc2, RANaval.orc2 
 		Description: Heavy artillery ship.
 	Tooltip:
@@ -3288,7 +3288,7 @@ WC2_ORC_GIANT_TURTLE:
 	Inherits@WC2_HUMAN_GNOMISH_SUBMARINE: WC2_HUMAN_GNOMISH_SUBMARINE
 	Buildable:
 		BuildPaletteOrder: 20
-		Prerequisites:
+		Prerequisites: wc2_orc_foundry, wc2_orc_goblin_alchemist
 		Queue: Naval.orc2, RANaval.orc2
 		Description: Turtle go grrr.
 	Tooltip:
@@ -3311,7 +3311,7 @@ WC2_ORC_GOBLIN_ZEPPELIN:
 		AddToArmyValue: true
 	Buildable:
 		BuildPaletteOrder: 20
-		Prerequisites: ~techlevel.medium
+		Prerequisites: 
 		Queue: Aircraft.orc2, RAAircraft.orc2, Aircraft.X_Aircrafts
 		Description: Flying scout unit.
 	Power:
@@ -3325,7 +3325,7 @@ WC2_ORC_DRAGON:
 		Name: Dragon
 	Buildable:
 		BuildPaletteOrder: 20
-		Prerequisites: ~techlevel.medium
+		Prerequisites: wc2_orc_fortress
 		Queue: Aircraft.orc2, RAAircraft.orc2, Aircraft.X_Aircrafts
 		Description: Flying Attacker.\n Strong vs Aircraft
 	Armament@VISIBLE:
