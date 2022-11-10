@@ -2874,29 +2874,68 @@ WC2_ORC_TROLL_LUMBER_MILL:
 		Scale: 0.8
 
 WC2_ORC_BLACKSMITH:
-	Inherits@wc_h_blacksmith: WC2_HUMAN_BLACKSMITH
+	Inherits: ^BaseBuilding
+	Inherits@BURNABLE: ^WC1Building
+	Inherits@shape: ^2x2Shape 
+    Inherits@CPQWP: ^CPQCondition
+	Selectable:
+		Bounds: 64,64
+	HitShape:
+		TargetableOffsets: 630,299,0
+	Valued:
+		Cost: 1200
 	Tooltip:
 		Name: Blacksmith
+	ProvidesPrerequisite:
     Production@NORMAL:
-		Produces: blacksmithupg.orc2 
+		Produces: blacksmithupg.orc2
+        RequiresCondition: !classicproductionqueues 
     Production@CLASSICPRODUCTIONQUEUES:
-		Produces: RAblacksmithupg.orc2      
+		Produces: RAblacksmithupg.orc2
+        RequiresCondition: classicproductionqueues      
 	ProductionQueue:
 		Type: blacksmithupg.orc2
+		DisplayOrder: 2
+		Group: Addon
+		LowPowerModifier: 300
+		ReadyAudio: UnitReady
+		BlockedAudio: NoBuild
+		LimitedAudio: BuildingInProgress
+		QueuedAudio: Training
+		OnHoldAudio: OnHold
+		CancelledAudio: Cancelled
 	ProductionBar@NORMAL:
-		ProductionType: blacksmithupg.orc2            
+		ProductionType: RAblacksmithupg.orc2      
+        RequiresCondition: !classicproductionqueues        
 	ProductionBar@CLASSICPRODUCTIONQUEUES:
-		ProductionType: RAblacksmithupg.orc2   
+		ProductionType: RAblacksmithupg.orc2       
+        RequiresCondition: classicproductionqueues          
 	Buildable:
-		Prerequisites: WC2_ORC_BARRACKS
+		BuildPaletteOrder: 14
+		Prerequisites: wc2_orc_barracks
 		Queue: Building.orc2, RABuilding.orc2
+		BuildDuration: 400
+        BuildDurationModifier: 100
 		Description: Enables Catapults and upgrading Scout Towers to Cannon Towers.\nEnables upgrades to units.
+	Building:
+		Footprint: xx xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 75000
+	RevealsShroud:
+		Range: 4c0
+	Power:
+		Amount: 0
 	SpawnActorsOnSell:
 		ActorTypes: wc2_orc_grunt
+	ScalePowerWithHealth:
     Voiced:
-		VoiceSet: wc2orcblacksmithvoice    
+		VoiceSet: orcblacksmithvoice    
+    ProvidesPrerequisite@blacksmith:
+        Prerequisite: wc_blacksmith
 	RenderSprites:
-		Scale: 0.8
+		Scale: 0.8		
 
 WC2_ORC_GOBLIN_ALCHEMIST:
 	Inherits@WC2_HUMAN_GNOMISH_INVENTOR: WC2_HUMAN_GNOMISH_INVENTOR
