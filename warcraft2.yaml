@@ -696,7 +696,7 @@ WC2_HUMAN_CANNON_TOWER:
 	RenderSprites:
 		Scale: 0.8
         
-wc2_human_barracks:
+WC2_HUMAN_BARRACKS:
 	Inherits: ^BaseBuilding
 	Inherits@BURNABLE: ^WC1Building
     Inherits@wcprod: ^WCUnitProduction     
@@ -1607,7 +1607,7 @@ wc_h2_mcv:
 		Queue: Building.human2, RABuilding.human2
 		BuildDuration: 750
         BuildDurationModifier: 100
-		Description: Tramsforms into another Town Hall
+		Description: Transforms into another Town Hall.
 	Tooltip:
 		Name: Mobile Construction Vehicle (Human)
 	Selectable:
@@ -1642,6 +1642,7 @@ wc_o2_mcv:
     Inherits: wc_h2_mcv
   	Buildable:
 		BuildPaletteOrder: 10
+		Description: Transforms into another Great Hall.
 		Queue: Building.orc2, RABuilding.orc2
 		BuildDuration: 750
         BuildDurationModifier: 100
@@ -2553,7 +2554,7 @@ WC2_ORC_WATCH_TOWER:
 	HitShape:
 		TargetableOffsets: 630,299,0
 	Buildable:
-		Prerequisites: WC2_ORC_BARRACKS
+		Prerequisites: wc2_orc_barracks
 		Queue: Defence.orc2, RADefence.orc2
 		BuildDuration: 750
 		BuildDurationModifier: 50
@@ -2676,7 +2677,7 @@ WC2_ORC_CANNON_TOWER:
 		Scale: 0.8
 
 WC2_ORC_BARRACKS:
-	Inherits@WC2_HUMAN_BARRACKS: WC2_HUMAN_BARRACKS
+	Inherits@wc_h_barracks: WC2_HUMAN_BARRACKS
 	ProvidesPrerequisite:
 	ProvidesPrerequisite@buildingname:
 	Buildable:
@@ -2873,7 +2874,7 @@ WC2_ORC_TROLL_LUMBER_MILL:
 		Scale: 0.8
 
 WC2_ORC_BLACKSMITH:
-	Inherits@WC2_HUMAN_BLACKSMITH: WC2_HUMAN_BLACKSMITH
+	Inherits@wc_h_blacksmith: WC2_HUMAN_BLACKSMITH
 	Tooltip:
 		Name: Blacksmith
     Production@NORMAL:
@@ -3109,7 +3110,7 @@ WC2_ORC_TROLL_AXETHROWER:
     Voiced:
 		VoiceSet: wc2voiceorctrollaxethrower 
 	RenderSprites:
-		Scale: 1.6
+		Scale: .6
 
 WC2_ORC_OGRE:
 	Inherits: ^Soldier
