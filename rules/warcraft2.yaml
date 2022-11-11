@@ -715,7 +715,7 @@ WC2_HUMAN_BARRACKS:
 	Buildable:
 		BuildPaletteOrder: 12
 		Queue: Building.human2, RABuilding.human2
-		Description: Warriors of the Alliance live and train here.\nProduces most Human units.
+		Description: Warriors of the Alliance live and train here.\nProduces many Human units.
         BuildDuration: 200
         BuildDurationModifier: 100
         Prerequisites: wc2_human_farm
@@ -1603,11 +1603,12 @@ wc_h2_mcv:
 	Valued:
 		Cost: 1500
 	Buildable:
-		BuildPaletteOrder: 10
-		Queue: Building.human2, RABuilding.human2
-		BuildDuration: 750
-        BuildDurationModifier: 100
-		Description: Transforms into another Town Hall.
+	BuildPaletteOrder: 10
+	Queue: Building.human2, RABuilding.human2
+	BuildDuration: 750
+      BuildDurationModifier: 100
+			Icon: townhall_icon
+	Description: Transforms into another Town Hall.
 	Tooltip:
 		Name: Mobile Construction Vehicle (Human)
 	Selectable:
@@ -2677,13 +2678,13 @@ WC2_ORC_CANNON_TOWER:
 		Scale: 0.8
 
 WC2_ORC_BARRACKS:
-	Inherits@wc_h_barracks: WC2_HUMAN_BARRACKS
+	Inherits@wc_h_barracks: wc2_human_barracks
 	ProvidesPrerequisite:
-	ProvidesPrerequisite@buildingname:
+		Prerequisite: asdf
 	Buildable:
 		Queue: Building.orc2, RABuilding.orc2
-		Description: Warriors of the Horde live and train here.\nProduces most Orcish units.
-        Prerequisites: wc2_orc_pigfarm
+		Prerequisites: wc2_orc_pigfarm
+		Description: Warriors of the Horde live and train here.\nProduces many Orcish units.
 	Production@NORMAL:
 		Produces: Infantry.orc2
    	Production@CLASSICPRODUCTIONQUEUES:
@@ -2965,7 +2966,7 @@ WC2_ORC_GOBLIN_ALCHEMIST:
 		Scale: 0.8
 
 WC2_ORC_TEMPLE_OF_THE_DAMNED:
-	Inherits@WC2_HUMAN_MAGE_TOWER: WC2_HUMAN_MAGE_TOWER
+	Inherits@WC2_HUMAN_MAGE_TOWER: wc2_human_mage_tower
 	Tooltip:
 		Name: Temple of the Damned
 	Production@NORMAL:
@@ -3006,7 +3007,7 @@ WC2_ORC_OGRE_MOUND:
   	ProductionBar@CLASSICPRODUCTIONQUEUES:
 		ProductionType: RAkennelupg.orc2      
 	Buildable:
-		Prerequisites: WC2_ORC_STRONGHOLD
+		Prerequisites: wc2_orc_stronghold
 		Queue: Building.orc2, RABuilding.orc2
 		Description: Unlocks production of Ogres.\nThis place smells bad!
 	SpawnActorsOnSell:
@@ -3021,7 +3022,7 @@ WC2_ORC_ALTAR_OF_STORMS:
 	Tooltip:
 		Name: Altar of Storms    
 	Buildable:
-		Prerequisites: WC2_ORC_fortress
+		Prerequisites: wc2_orc_fortress
 		Queue: Building.orc2, RABuilding.orc2
 		Description: Teaches Ogres how to read and cast dark magicks.\nUnlocks Ogre Magi upgrade for Ogres.
 	SpawnActorsOnSell:
@@ -3034,9 +3035,11 @@ WC2_ORC_ALTAR_OF_STORMS:
 WC2_ORC_STRONGHOLD:
 	Inherits@WC2_HUMAN_KEEP: WC2_HUMAN_KEEP
 	Tooltip:
-		Name: Stronghold   
+		Name: Stronghold
+	ProvidesPrerequisite:
+		Prerequisite: asdf
 	Buildable:
-		Prerequisites: WC2_ORC_BARRACKS
+		Prerequisites: asdf
 		Queue: Building.orc2, RABuilding.orc2
 		Description: Allows for Tier 2.
 	SpawnActorsOnSell:
@@ -3051,7 +3054,7 @@ WC2_ORC_FORTRESS:
 	Tooltip:
 		Name: Fortress   
 	Buildable:
-		Prerequisites: WC2_ORC_stronghold, wc2_orc_ogre_mound
+		Prerequisites: wc2_orc_stronghold, wc2_orc_ogre_mound
 		Queue: Building.orc2, RABuilding.orc2
 		Description: Allows for Tier 3.
 	SpawnActorsOnSell:
@@ -3062,7 +3065,7 @@ WC2_ORC_FORTRESS:
 		Scale: 0.8
         
 WC2_ORC_DRAGON_ROOST:
-	Inherits@WC2_HUMAN_GRYPHON_AVIARY: WC2_HUMAN_GRYPHON_AVIARY  
+	Inherits@WC2_HUMAN_GRYPHON_AVIARY: WC2_HUMAN_GRYPHON_AVIARY
 	Tooltip:
 		Name: Dragon Roost
 	Buildable:
@@ -3218,14 +3221,14 @@ WC2_ORC_CATAPULT:
 		VoiceSet: wc2orccatapult        
 
 WC2_ORC_GOBLINSAPPERS:
-	Inherits@WC2_HUMAN_DEMOLITIONSQUAD:WC2_HUMAN_DEMOLITIONSQUAD
+	Inherits@WC2_HUMAN_DEMOLITIONSQUAD: WC2_HUMAN_DEMOLITIONSQUAD
 	Valued:
 		Cost: 1100
 	Tooltip:
 		Name: Goblin Sappers
 	Buildable:
 		BuildPaletteOrder: 10
-		Prerequisites: wc2_human_barracks
+		Prerequisites: wc2_orc_goblin_alchemist
 		Queue: Aircraft.orc2, Aircraft.orc2
 		Description: Explosive infantry. Can attack normally.
         BuildDuration: 80
