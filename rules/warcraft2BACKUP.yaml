@@ -846,7 +846,7 @@ WC2_HUMAN_ELVEN_LUMBER_MILL:
 	CustomSellValue:
 		Value: 500
 	FreeActor:
-		Actor: WC2_HUMAN_PEASANT
+		Actor: wc2_human_peasant
 		SpawnOffset: 1,2
 		Facing: 64
 	WithResourceLevelOverlay:
@@ -949,7 +949,7 @@ WC2_HUMAN_CHURCH:
 	ProvidesPrerequisite:
 	Buildable:
 		BuildPaletteOrder: 15
-		Prerequisites: wc2_human_stables ##once keep/castle are fixed, prereq will be wc2_human_castle
+		Prerequisites: wc2_human_castle
 		Queue: Building.human2, RABuilding.human2
 		BuildDuration: 300
         BuildDurationModifier: 100
@@ -1021,7 +1021,7 @@ WC2_HUMAN_GNOMISH_INVENTOR:
   	ProductionBar@CLASSICPRODUCTIONQUEUES:
 		ProductionType: RAVehicle.human2     
    	Buildable:
-		Prerequisites: wc2_human_barracks ##once keep/castle are fixed, prereq will be wc2_human_keep
+		Prerequisites: wc2_human_keep
 		Queue: Building.human2, RABuilding.human2  
         Description: Here Dwarves and Gnomes invent marvels.\nTrains Demo Squads and Gnomish Flying Machines.
 	SpawnActorsOnSell:
@@ -1070,7 +1070,7 @@ WC2_HUMAN_STABLES:
 	ProvidesPrerequisite:
 	Buildable:
 		BuildPaletteOrder: 16
-		Prerequisites: wc2_human_barracks, wc2_human_blacksmith ##once keep/castle are fixed, prereq will be wc2_human_keep
+		Prerequisites: wc2_human_keep
 		Queue: Building.human2, RABuilding.human2
 		BuildDuration: 400
         BuildDurationModifier: 100
@@ -1110,11 +1110,11 @@ WC2_HUMAN_MAGE_TOWER:
 	ProvidesPrerequisite:
 	Buildable:
 		BuildPaletteOrder: 17
-		Prerequisites: wc2_human_church ##once keep/castle are fixed, prereq will be wc2_human_castle
+		Prerequisites: wc2_human_castle
 		Queue: Building.human2, RABuilding.human2
 		BuildDuration: 400
         BuildDurationModifier: 100
-		Description: Teaches men in arcane magicks.\nTrains Mages.\nProvides Radar.\nUnlocks Blizzard superweapon.
+		Description: Trains men in the arcane.\nUnlocks Mage at the Barracks.\nProvides Radar.
 	Building:
 		Footprint: xx xx ==
 		Dimensions: 2,3
@@ -1174,7 +1174,7 @@ WC2_HUMAN_KEEP:
 	Buildable:
 		Prerequisites: wc2_human_barracks
 		Queue: Building.human2, RABuilding.human2
-		Description: DOES NOTHING AT THE MOMENT\nAllows for Tier 2.
+		Description: Allows for Tier 2.
 	SpawnActorsOnSell:
 		ActorTypes: wc2_human_footman
     Voiced:
@@ -1187,9 +1187,9 @@ WC2_HUMAN_CASTLE:
 	Tooltip:
 		Name: Castle 
 	Buildable:
-		Prerequisites: wc2_human_keep, wc2_human_stables
+		Prerequisites: wc2_human_blacksmith, wc2_human_stables
 		Queue: Building.human2, RABuilding.human2
-		Description: DOES NOTHING AT THE MOMENT\nAllows for Tier 3.
+		Description: Allows for Tier 3.
 	SpawnActorsOnSell:
 		ActorTypes: wc2_human_knight
     Voiced:
@@ -1202,7 +1202,7 @@ WC2_HUMAN_GRYPHON_AVIARY:
 	Tooltip:
 		Name: Gryphon Aviary
 	Buildable:
-		Prerequisites: wc2_human_stables ##once keep/castle are fixed, prereq will be wc2_human_castle
+		Prerequisites: wc2_human_castle
 		Queue: Building.human2, RABuilding.human2
 		Description: A great Gryphon lives here.\nTrains formidable Gryphon Riders.
 	Production@NORMAL:
@@ -1604,7 +1604,7 @@ wc_h2_mcv:
 		BuildPaletteOrder: 10
 		Queue: Building.human2, RABuilding.human2
 		BuildDuration: 750
-        BuildDurationModifier: 100
+    	BuildDurationModifier: 100
 		Description: Transforms into a Town Hall.
 		Icon: townhall_icon
 	Tooltip:
@@ -1620,8 +1620,8 @@ wc_h2_mcv:
 		Type: None
 	RevealsShroud:
 		Range: 7c0
-    -Crushable:
-    WithInfantryBody:
+  	-Crushable:
+  	WithInfantryBody:
 		-DefaultAttackSequence: shoot
 		-IdleSequences: idle1,idle2,idle3,idle4
 	Transforms:
@@ -1633,27 +1633,28 @@ wc_h2_mcv:
 	SelectionDecorations:
 	Voiced:
 		VoiceSet: wc2voicehumanpeasant
-    RenderSprites:  
-        Image: wc2_human_peasant
-        Scale: 1.3
+  	RenderSprites:  
+    	Image: wc2_human_peasant
+    	Scale: 1.3
         
 wc_o2_mcv:
-    Inherits: wc_h2_mcv
+  	Inherits: wc_h2_mcv
   	Buildable:
 		BuildPaletteOrder: 10
 		Description: Transforms into a Great Hall.
 		Queue: Building.orc2, RABuilding.orc2
 		BuildDuration: 750
-        BuildDurationModifier: 100
-        Icon: greathall_icon  
+    	BuildDurationModifier: 100
+    	Icon: greathall_icon  
    	Transforms:
 		IntoActor: wc2_orc_greathall    
   	Tooltip:
 		Name: Mobile Construction Vehicle (Orc)  
 	Voiced:
 		VoiceSet: wc2voiceorcpeongrunt       
-    RenderSprites:  
-        Image: wc2_orc_peon
+  	RenderSprites:  
+  		Image: wc2_orc_peon
+			Scale: 1.3
         
 WC2_HUMAN_FOOTMAN:
 	Inherits: ^Soldier
@@ -1673,7 +1674,7 @@ WC2_HUMAN_FOOTMAN:
 		BuildPaletteOrder: 10
 		Prerequisites: wc2_human_barracks
 		Queue: Infantry.human2, RAInfantry.human2
-		Description: Basic melee infantry. Slow but can take some damage.
+		Description: Basic Melee Infantry. Slow but can take some damage.
         BuildDuration: 80
         BuildDurationModifier: 100
 	Mobile:
@@ -1722,7 +1723,7 @@ WC2_HUMAN_ELVEN_ARCHER:
 		BuildPaletteOrder: 20
 		Prerequisites: wc2_human_elven_lumber_mill
 		Queue: Infantry.human2, RAInfantry.human2
-		Description: Basic ranged infantry. Not as durable as Footman.\nCan attack air.
+		Description: Basic Ranged Infantry. Not as durable as Footman.\nCan attack air
         BuildDuration: 120
         BuildDurationModifier: 100
    	Armor:
@@ -1773,7 +1774,7 @@ WC2_HUMAN_KNIGHT:
 		BuildPaletteOrder: 30
 		Prerequisites: wc2_human_stables
 		Queue: Infantry.human2, RAInfantry.human2
-		Description: Mounted infantry. Fast and durable.
+		Description: Mounted Infantry. Fast and durable.
         BuildDuration: 300
         BuildDurationModifier: 100
    	Armor:
@@ -1870,9 +1871,9 @@ WC2_HUMAN_DEMOLITIONSQUAD:
 		AddToArmyValue: true
 	Buildable:
 		BuildPaletteOrder: 10
-		Prerequisites: wc2_human_gnomish_inventor
+		Prerequisites: 
 		Queue: Aircraft.human2, Aircraft.human2
-		Description: Explosive suicide infantry. Can attack normally.
+		Description: Explosive infantry. Can attack normally.
         BuildDuration: 80
         BuildDurationModifier: 100
 	Mobile:
@@ -1918,9 +1919,8 @@ WC2_HUMAN_MAGE:
 		AddToArmyValue: true
 	Buildable:
 		BuildPaletteOrder: 10
-		Prerequisites: wc2_human_mage_tower
 		Queue: Aircraft.human2, RAAircraft.human2
-		Description: Wise, old, grumpy spell caster.\nCan attack air.\nDetector.
+		Description: Spell Caster.\nCan attack air.\nDetector.
         BuildDuration: 340
         BuildDurationModifier: 100
 	Mobile:
@@ -2284,7 +2284,7 @@ WC2_HUMAN_BATTLESHIP:
 	Inherits@EMP: ^TurretEMP
 	Buildable:
 		BuildPaletteOrder: 20
-		Prerequisites: wc2_human_foundry, wc2_human_blacksmith ##once keep/castle are fixed, prereq will be wc2_human_keep, wc2_human_foundry
+		Prerequisites: wc2_human_foundry, wc2_human_keep
 		Queue: Naval.human2, RANaval.human2
 		Description: Heavy artillery ship.
 	Valued:
@@ -2402,9 +2402,9 @@ WC2_HUMAN_GNOMISH_FLYING_MACHINE:
 		AddToArmyValue: true
 	Buildable:
 		BuildPaletteOrder: 20
-		Prerequisites: wc2_human_gnomish_inventor
+		Prerequisites: 
 		Queue: Aircraft.human2, RAAircraft.human2, Aircraft.X_Aircrafts
-		Description: Flying scout unit. He's got a flying machine!\nDetector.
+		Description: Flying scout unit.
 	Aircraft:
 		InitialFacing: 224
 		TurnSpeed: 7
@@ -2443,9 +2443,9 @@ WC2_HUMAN_GRYPHON_RIDER:
 		AddToArmyValue: true
 	Buildable:
 		BuildPaletteOrder: 20
-		Prerequisites: wc2_human_gryphon_aviary
+		Prerequisites: 
 		Queue: Aircraft.human2, RAAircraft.human2, Aircraft.X_Aircrafts
-		Description: Flying attacker unit.\nMagical hammer can hit multiple targets in a line.\nStrong vs air units.
+		Description: Flying attacker unit.\nStrong vs air units.
 	Aircraft:
 		InitialFacing: 224
 		TurnSpeed: 7
@@ -2679,11 +2679,11 @@ WC2_ORC_CANNON_TOWER:
 WC2_ORC_BARRACKS:
 	Inherits@wc_h_barracks: WC2_HUMAN_BARRACKS
 	ProvidesPrerequisite:
-	ProvidesPrerequisite@buildingname:
+		Prerequisite: asdf
 	Buildable:
 		Queue: Building.orc2, RABuilding.orc2
+		Prerequisites: wc2_orc_pigfarm
 		Description: Warriors of the Horde live and train here.\nProduces many Orcish units.
-        Prerequisites: wc2_orc_pigfarm
 	Production@NORMAL:
 		Produces: Infantry.orc2
    	Production@CLASSICPRODUCTIONQUEUES:
@@ -2874,9 +2874,7 @@ WC2_ORC_TROLL_LUMBER_MILL:
 		Scale: 0.8
 
 WC2_ORC_BLACKSMITH:
-	Inherits@wc_h_blacksmith: WC2_HUMAN_BLACKSMITH
-	Tooltip:
-		Name: Blacksmith
+	Inherits@wc_h_blacksmith: wc_h_blacksmith
     Production@NORMAL:
 		Produces: blacksmithupg.orc2 
     Production@CLASSICPRODUCTIONQUEUES:
@@ -2890,13 +2888,13 @@ WC2_ORC_BLACKSMITH:
 	Buildable:
 		Prerequisites: wc2_orc_barracks
 		Queue: Building.orc2, RABuilding.orc2
-		Description: Enables Catapults and upgrading Scout Towers to Cannon Towers.\nEnables upgrades to units.
+		Description: Enables Ballista and upgrading Scout Towers to Cannon Towers.\nEnables upgrades to units.
 	SpawnActorsOnSell:
 		ActorTypes: wc2_orc_grunt
     Voiced:
 		VoiceSet: wc2orcblacksmithvoice    
 	RenderSprites:
-		Scale: 0.8
+		Scale: 0.8	
 
 WC2_ORC_GOBLIN_ALCHEMIST:
 	Inherits@WC2_HUMAN_GNOMISH_INVENTOR: WC2_HUMAN_GNOMISH_INVENTOR
@@ -2915,7 +2913,7 @@ WC2_ORC_GOBLIN_ALCHEMIST:
   	ProductionBar@CLASSICPRODUCTIONQUEUES:
 		ProductionType: RAVehicle.orc2      
    	Buildable:
-		Prerequisites: wc2_orc_barracks ## once stronghold/fortress are fixed, prereq will be wc2_orc_stronghold
+		Prerequisites: wc2_orc_barracks
 		Queue: Building.orc2, RABuilding.orc2    
         Description: Ingenious goblins dabble in alchemy and invention.\nTrains Sappers & Zeppelins.
 	SpawnActorsOnSell:
@@ -2942,9 +2940,9 @@ WC2_ORC_TEMPLE_OF_THE_DAMNED:
   	ProductionBar@CLASSICPRODUCTIONQUEUES:
 		ProductionType: RAVehicle.orc2      
    	Buildable:
-		Prerequisites: wc2_orc_altar_of_storms ## once stronghold/fortress are fixed, prereq will be wc2_orc_fortress
+		Prerequisites: wc2_orc_altar_of_storms
 		Queue: Building.orc2, RABuilding.orc2    
-        Description: Terrible rituals are performed here.\nTrains Death Knights and raise Skeletons.\nProvides Radar.\nUnlocks Death & Decay superweapon.
+        Description: Terrible rituals are performed here.\nUnlocks Death Knight at the Barracks.\nProvides Radar.
 	SpawnActorsOnSell:
 		ActorTypes: wc2_orc_grunt
     Voiced:
@@ -2967,7 +2965,7 @@ WC2_ORC_OGRE_MOUND:
   	ProductionBar@CLASSICPRODUCTIONQUEUES:
 		ProductionType: RAkennelupg.orc2      
 	Buildable:
-		Prerequisites: wc2_orc_barracks, wc2_orc_blacksmith ## once stronghold/fortress are fixed, prereq will be wc2_orc_stronghold
+		Prerequisites: wc2_orc_barracks
 		Queue: Building.orc2, RABuilding.orc2
 		Description: Unlocks production of Ogres.\nThis place smells bad!
 	SpawnActorsOnSell:
@@ -2982,7 +2980,7 @@ WC2_ORC_ALTAR_OF_STORMS:
 	Tooltip:
 		Name: Altar of Storms    
 	Buildable:
-		Prerequisites: wc2_orc_ogre_mound ## once stronghold/fortress are fixed, prereq will be wc2_orc_fortress
+		Prerequisites: wc2_orc_ogre_mound
 		Queue: Building.orc2, RABuilding.orc2
 		Description: Teaches Ogres how to read and cast dark magicks.\nUnlocks Ogre Magi upgrade for Ogres.
 	SpawnActorsOnSell:
@@ -2995,11 +2993,13 @@ WC2_ORC_ALTAR_OF_STORMS:
 WC2_ORC_STRONGHOLD:
 	Inherits@WC2_HUMAN_KEEP: WC2_HUMAN_KEEP
 	Tooltip:
-		Name: Stronghold   
+		Name: Stronghold
+	ProvidesPrerequisite:
+		Prerequisite:
 	Buildable:
 		Prerequisites: wc2_orc_barracks
 		Queue: Building.orc2, RABuilding.orc2
-		Description: DOES NOTHING AT THE MOMENT\nAllows for Tier 2.
+		Description: Allows for Tier 2.
 	SpawnActorsOnSell:
 		ActorTypes: wc2_orc_grunt
     Voiced:
@@ -3014,20 +3014,20 @@ WC2_ORC_FORTRESS:
 	Buildable:
 		Prerequisites: wc2_orc_stronghold, wc2_orc_ogre_mound
 		Queue: Building.orc2, RABuilding.orc2
-		Description: DOES NOTHING AT THE MOMENT\nAllows for Tier 3.
+		Description: Allows for Tier 3.
 	SpawnActorsOnSell:
-		ActorTypes: wc2_orc_ogre
+		ActorTypes: wc2_orc_grunt
     Voiced:
 		VoiceSet: orckennelvoice
 	RenderSprites:
 		Scale: 0.8
         
 WC2_ORC_DRAGON_ROOST:
-	Inherits@WC2_HUMAN_GRYPHON_AVIARY: WC2_HUMAN_GRYPHON_AVIARY  
+	Inherits@WC2_HUMAN_GRYPHON_AVIARY: WC2_HUMAN_GRYPHON_AVIARY
 	Tooltip:
 		Name: Dragon Roost
 	Buildable:
-		Prerequisites: wc2_orc_ogre_mound ## once stronghold/fortress are fixed, prereq will be wc2_orc_fortress
+		Prerequisites: wc2_orc_ogre_mound
 		Queue: Building.orc2, RABuilding.orc2
 		Description: A captured dragon is forced to lay eggs for the Horde.\nTrains mighty Dragons.
 	Production@NORMAL:
@@ -3075,7 +3075,7 @@ WC2_ORC_GRUNT:
 		BuildPaletteOrder: 10
 		Prerequisites: wc2_orc_barracks
 		Queue: Infantry.orc2, RAInfantry.orc2
-		Description: Basic melee infantry. Slow but can take some damage. Lok'tar!
+		Description: Basic Melee Infantry. Slow but can take some damage.
 	Armament:
 		Weapon: footmanSlice
     Voiced:
@@ -3102,7 +3102,7 @@ WC2_ORC_TROLL_AXETHROWER:
 	Buildable:
 		Prerequisites: wc2_orc_troll_lumber_mill
 		Queue: Infantry.orc2, RAInfantry.orc2
-		Description: Basic ranged infantry.\nNot as durable as Grunt.\nCan attack air.
+		Description: Basic Ranged Infantry.\nNot as durable as Grunt.\nCan attack air.
 	Armament:
 		Weapon: wc2axeFire
  	Armament@aa:
@@ -3130,7 +3130,7 @@ WC2_ORC_OGRE:
 		BuildPaletteOrder: 30
 		Prerequisites: wc2_orc_ogre_mound
 		Queue: Infantry.orc2, RAInfantry.orc2
-		Description: Improved melee infantry.\nStinky, dumb and dangerous!
+		Description: Improved melee infantry. Dumb and dangerous!
         BuildDuration: 80
         BuildDurationModifier: 100
 	Mobile:
@@ -3188,7 +3188,7 @@ WC2_ORC_GOBLINSAPPERS:
 		BuildPaletteOrder: 10
 		Prerequisites: wc2_orc_goblin_alchemist
 		Queue: Aircraft.orc2, Aircraft.orc2
-		Description: Explosive suicide infantry. Can attack normally.
+		Description: Explosive infantry. Can attack normally.
         BuildDuration: 80
         BuildDurationModifier: 100
 	Armament:
@@ -3205,9 +3205,9 @@ WC2_ORC_DEATHKNIGHT:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Buildable:
-		Prerequisites: wc2_orc_temple_of_the_damned
+		Prerequisites: orc_temple_of_the_damned
 		Queue: Vehicle.orc2, RAVehicle.orc2
-		Description: Powerful undead spell caster.\nCan attack Air.\nDetector
+		Description: Spell Caster.\nCan attack Air.\nDetector
     Armament:
         Weapon: summon1_spider
 	Armament@1:
@@ -3275,7 +3275,7 @@ WC2_ORC_OGRE_JUGGERNAUGHT:
 	Inherits@WC2_HUMAN_BATTLESHIP: WC2_HUMAN_BATTLESHIP
 	Buildable:
 		BuildPaletteOrder: 20
-		Prerequisites: wc2_orc_foundry, wc2_orc_blacksmith ##once stronghold/fortress are fixed, prereq will be wc2_orc_stronghold, wc2_orc_foundry
+		Prerequisites: wc2_orc_foundry
 		Queue: Naval.orc2, RANaval.orc2 
 		Description: Heavy artillery ship.
 	Tooltip:
@@ -3291,7 +3291,7 @@ WC2_ORC_GIANT_TURTLE:
 		BuildPaletteOrder: 20
 		Prerequisites: wc2_orc_foundry, wc2_orc_goblin_alchemist
 		Queue: Naval.orc2, RANaval.orc2
-		Description: Turtle go grrr.\nStealthed attack submarine.
+		Description: Turtle go grrr.
 	Tooltip:
 		Name: Giant Turtle
 	Voiced:
@@ -3312,9 +3312,9 @@ WC2_ORC_GOBLIN_ZEPPELIN:
 		AddToArmyValue: true
 	Buildable:
 		BuildPaletteOrder: 20
-		Prerequisites: wc2_orc_goblin_alchemist
+		Prerequisites: 
 		Queue: Aircraft.orc2, RAAircraft.orc2, Aircraft.X_Aircrafts
-		Description: Flying scout unit. He can see your house!\nDetector.
+		Description: Flying scout unit.
 	Power:
 		Amount: -30
 	Voiced:
@@ -3328,7 +3328,7 @@ WC2_ORC_DRAGON:
 		BuildPaletteOrder: 20
 		Prerequisites: wc2_orc_dragon_roost
 		Queue: Aircraft.orc2, RAAircraft.orc2, Aircraft.X_Aircrafts
-		Description: Flying ranged attacker.\nFire breath can hit multiple targets in a line.\nStrong vs Aircraft
+		Description: Flying Attacker.\n Strong vs Aircraft
 	Armament@VISIBLE:
 		Weapon: wc2dragonFireVisible
 	Power:
@@ -3489,9 +3489,43 @@ wc2_goldmine:
 	RenderSprites:
 		Scale: 0.8
 
-####################################################################################################
-##	HUMAN UPGRADES
-####################################################################################################
+#######################################################
+#                    HUMAN UPGRADES                        #
+#######################################################    
+
+wc2_h_str_arrow:
+	Inherits: ^upgrade.template
+	Tooltip:
+		Name: Arrow Strength
+	Buildable:
+		BuildPaletteOrder: 1
+		Queue: lumberupg.human2, RAlumberupg.human2
+        BuildDuration: 1500
+        BuildDurationModifier: 100       
+		Description: Increases Arrow Damage dealt by Archers and Guard Towers by 40%
+        Prerequisites: ~!wc2_h_str_arrow
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: cameos_wc2_extra
+	ProvidesPrerequisite:
+
+wc2_human_arrow_upg2:
+	Inherits: ^upgrade.template
+	Tooltip:
+		Name: Arrow Strength
+	Buildable:
+		BuildPaletteOrder: 1
+		Queue: lumberupg.human2, RAlumberupg.human2
+        BuildDuration: 1500
+        BuildDurationModifier: 100       
+		Description: Increases Arrow Damage by Archers and Guard Towers by further 40%
+        Prerequisites: ~!wc2_h_str_arrow2, ~!wc2_h_str_arrow
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: cameos_wc2_extra
+	ProvidesPrerequisite:
 
 wc2_h_str_sword:
 	Inherits: ^upgrade.template
@@ -3509,5 +3543,20 @@ wc2_h_str_sword:
 	RenderSprites:
 		Image: cameos_wc2_extra
 	ProvidesPrerequisite:
-		Prerequisite: wc2_h_str_sword
-	  
+
+wc2_h_str_sword2:
+	Inherits: ^upgrade.template
+	Tooltip:
+		Name: Sword Strength II
+	Buildable:
+		BuildPaletteOrder: 1
+		Queue: blacksmithupg.human2, RAblacksmithupg.human2
+        BuildDuration: 1500
+        BuildDurationModifier: 100       
+		Description: Increases Sword Damage by further 30%
+        Prerequisites: ~!wc2_h_str_sword2, ~wc2_h_str_sword
+	Valued:
+		Cost: 1000
+	RenderSprites:
+		Image: cameos_wc2_extra
+	ProvidesPrerequisite:

@@ -1,3 +1,4 @@
+#Leftover
 wc2_mech_critter:
     Inherits: ^WCInfantry
     stand: wc2_mech_critter
@@ -17,3 +18,1657 @@ wc2_mech_critter:
         Length: 5
         Tick: 80
     icon: wc2_mech_critter_icon
+#Begin Warcraft 2
+
+^WC2DamagedFire:
+	burn1: wc2_fire_small
+        Start: 0
+		Length: 6
+		ZOffset: 512
+		Offset: 0, -9
+        AddExtension: True
+	burn2: wc2_fire_large
+        Start: 0
+		Length: 10
+		ZOffset: 512
+		Offset: 0, -9
+        AddExtension: True
+^WCInfantry:
+	WithDeathAnimation:
+        UseDeathTypeSuffix: false
+        CrushedSequence: die
+        CrushedSequencePalette: player
+        CrushedPaletteIsPlayerPalette: true
+
+####################################################################################################
+#		PROJECTILES
+####################################################################################################
+
+wc2_human_ballistabolt:
+    idle: 
+        Start: 0
+        Facings: -8
+
+wc2_catapult_stone_projectile:
+	idle:
+		Start: 0
+		Length: 3
+		Facings: -8
+
+arrow:
+    idle: 
+        Start: 0
+        Facings: -8
+
+wc2_fireball:
+    idle: 
+        Start: 0
+        Facings: -8
+
+wc2_fire_daemon:
+    idle: 
+        Start: 0
+		Length: 3
+
+wc2_orc_trollaxethrower_axe:
+    idle: 
+        Start: 0
+		Length: 3
+
+wc2_torpedo_submarine_turtle_projectile:
+    idle: 
+        Start: 0
+        Facings: -8
+
+wc2_hbattle_bship_jugger_projectile:
+    idle: 
+        Start: 0
+		Length: 3
+
+wc2_phoon_tornado_dk_spel:
+    idle: 
+        Start: 0
+		Length: 3
+		
+wc2_gryphon_hammer_projectile:
+    idle: 
+        Start: 0
+		Length: 3
+
+wc2_heal_paladin_spell:
+    idle: 
+        Start: 0
+		Length: 6
+		Tick: 100
+
+wc2_exorcism:
+    idle: 
+        Start: 0
+		Length: 6
+		Tick: 100
+
+wc2_sparkle_holyvision_paladin_spell:
+    idle: 
+        Start: 0
+		Length: 6
+		Tick: 100
+
+wc2_rune_ogremagi_spell:
+    idle: 
+        Start: 0
+		Length: 4
+		Tick: 100
+
+wc2_rot_deathdecay_dk_spell:
+    idle: 
+        Start: 0
+		Length: 8
+		Tick: 100
+
+wc2_human_mage_blizzard:
+    idle: 
+        Start: 0
+		Length: 4
+		Tick: 100
+
+wc2_cannon_projectile_medium:
+	idle: 
+		Start: 0
+		Length: 1
+		Tick: 100
+
+wc2_cannon_explosion:
+    idle: 
+        Start: 0
+		Length: *
+		Tick: 100
+
+wc2_cannonfire:
+    idle: 
+        Start: 0
+		Length: *
+		Tick: 100
+
+cathit:
+    idle: 
+        Start: 0
+		Length: 6
+		Tick: 100
+
+
+
+####################################################################################################
+#		BUILDING human2
+####################################################################################################
+wc2_human_townhall:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 1
+		AddExtension: False
+
+wc2_human_farm:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 0
+		AddExtension: False
+
+wc2_human_barracks:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 2
+		AddExtension: False
+
+wc2_human_elven_lumber_mill:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	resources: proctwr
+		Length: 6
+		Offset: -30,-17
+		AddExtension: True
+	damaged-resources: proctwr
+		Start: 6
+		Length: 6
+		Offset: -30,-17
+		AddExtension: True
+	icon: wc2_cameos_human_buildings.png
+		Start: 3
+		AddExtension: False
+
+wc2_human_blacksmith:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 4
+		AddExtension: False
+
+wc2_human_stables:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 13
+		AddExtension: False
+
+wc2_human_church:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 14
+		AddExtension: False
+
+wc2_human_gnomish_inventor:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 15
+		AddExtension: False
+
+wc2_human_mage_tower:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 16
+		AddExtension: False
+
+wc2_human_gryphon_aviary:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 17
+		AddExtension: False
+
+wc2_human_keep:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 1
+	damaged-idle: 
+		Start: 1
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 2
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 12
+		AddExtension: False
+
+wc2_human_castle:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 1
+	damaged-idle: 
+		Start: 1
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 2
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 18
+		AddExtension: False
+
+wc2_human_shipyard:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 8
+		AddExtension: False
+
+wc2_human_foundry:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 9
+		AddExtension: False
+
+wc2_human_oil_refinery:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 10
+		AddExtension: False
+
+wc2_human_oil_platform:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Length: 8
+		Frames: 3,3,3,3,4,4,4,4
+		Tick: 1000
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 11
+		AddExtension: False
+
+wc2_human_scout_tower:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 5
+		AddExtension: False
+	upgrade_guard_icon: wc2_cameos_human_buildings.png
+		Start: 6
+		AddExtension: False
+	wc2_human_guard_tower: wc2_human_guard_tower
+        Start: 3
+	wc2_human_cannon_tower: wc2_human_cannon_tower
+        Start: 3
+
+wc2_human_guard_tower:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 6
+		AddExtension: False
+	upgrade_guard_icon: wc2_cameos_human_buildings.png
+		Start: 6
+		AddExtension: False
+
+wc2_human_cannon_tower:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_human_buildings.png
+		Start: 7
+		AddExtension: False
+	upgrade_cannon_icon: wc2_cameos_human_buildings.png
+		Start: 7 
+		AddExtension: False
+
+####################################################################################################
+#		UNITS human2
+####################################################################################################
+
+wc2_human_peasant:
+	Inherits: ^WCInfantry
+	stand:
+		Start: 0	
+		Facings: -8
+	idle: 
+		Start: 0		
+        Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	harvest:
+		Start: 40
+		Length: 5
+		Facings: -8
+		Tick: 100
+    dock: 
+		Start: 0	
+		Facings: -8
+	dock-loop:
+		Start: 0	
+		Facings: -8     
+	die:
+		Start: 80
+		Length: 3
+		Tick: 80
+	die-crushed: 
+		Start: 80
+		Length: 3
+		Tick: 80
+	icon: wc2_cameos_human_units.png
+        Start: 0
+        AddExtension: false
+    townhall_icon: wc2_cameos_human_buildings.png
+        Start: 1  
+		AddExtension: false
+		
+wc2_human_peasantgold:
+	Inherits: wc2_human_peasant
+	Defaults: wc2_human_peasant
+	idle: wc2_human_peasantgold
+		Start: 8
+		Length: 4
+		Facings: -8
+	
+wc2_human_footman:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 40
+		Length: 4
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 72
+		Length: 3
+		Tick: 80
+	die-crushed:
+		Start: 72
+		Length: 3
+		Tick: 80
+	icon: wc2_cameos_human_units.png
+        Start: 1
+		AddExtension: False
+
+wc2_human_elven_archer:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 40
+		Length: 2
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 56
+		Length: 3
+		Tick: 80
+	die-crushed:
+		Start: 56
+		Length: 3
+		Tick: 80
+	icon: wc2_cameos_human_units.png
+        Start: 2
+		AddExtension: False
+
+wc2_human_knight:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 40
+		Length: 4
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 72
+		Length: 5
+		Tick: 80
+	die-crushed:
+		Start: 72
+		Length: 5
+		Tick: 80
+	icon: wc2_cameos_human_units.png
+        Start: 4
+		AddExtension: False
+
+wc2_human_demolitionsquad:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 40
+		Length: 3
+		Facings: -8
+		Tick: 100
+	die: 
+		Start:64
+		Length: 5
+		Tick: 80
+	die-crushed:
+		Start:64
+		Length: 5
+		Tick: 80
+	icon: wc2_cameos_human_units.png
+        Start: 7
+		AddExtension: False
+
+wc2_human_mage:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 40
+		Length: 4
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 72
+		Length: 7
+		Tick: 80
+	die-crushed:
+		Start: 72
+		Length: 7
+		Tick: 80
+	icon: wc2_cameos_human_units.png
+        Start: 8
+		AddExtension: False
+
+wc2_human_ballista:
+	Inherits: ^WCInfantry
+	stand: 
+		Frames: 0,2,4,6,8,10,12,14
+		Length: 1
+		Facings: -8
+	run: 
+		Start: 0
+		Length: 2
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 16
+		Length: 2
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 8
+		Length: 1
+		Tick: 80
+	die-crushed:
+		Start: 8
+		Length: 1
+		Tick: 80
+	icon: wc2_cameos_human_units.png
+        Start: 6
+		AddExtension: False
+
+####################################################################################################
+#		NAVAL human2
+####################################################################################################
+
+wc2_human_oil_tanker:
+	idle:
+		Start: 0
+		Facings: -8
+	die:
+		Start: 16
+		Length: 2
+	icon: wc2_cameos_human_units.png
+        Start: 11
+		AddExtension: False
+		
+wc2_human_transport:
+	idle:
+		Start: 0
+		Facings: -8
+	die:
+		Start: 7
+		Length: 2
+	icon: wc2_cameos_human_units.png
+        Start: 12
+		AddExtension: False
+
+wc2_human_elven_destroyer:
+	idle:
+		Start: 0
+		Facings: -8
+	turret: mgun
+		Facings: 32
+	muzzle: wc2_cannonfire
+		Length: 4
+	die:
+		Start: 8
+		Length: 2
+	icon: wc2_cameos_human_units.png
+        Start: 13
+		AddExtension: False
+
+wc2_human_battleship:
+	idle:
+		Start: 0
+		Facings: -8
+	turret: mgun
+		Facings: 32
+	muzzle: wc2_cannonfire
+		Length: 4
+	die:
+		Start: 8
+		Length: 2
+	icon: wc2_cameos_human_units.png
+        Start: 14
+		AddExtension: False
+
+wc2_human_gnomish_submarine:
+	idle:
+		Start: 0
+		Facings: -8
+	shoot:
+		Start: 8
+		Length: 2
+		Facings: -8
+		Tick: 300
+	turret: mgun
+		Facings: 32
+	muzzle: gunfire2
+		Length: 5
+	die:
+		Start: 8
+		Length: 2
+	icon: wc2_cameos_human_units.png
+        Start: 15
+		AddExtension: False
+
+####################################################################################################
+#		AIR human2
+####################################################################################################
+
+wc2_human_gnomish_flying_machine:
+	idle:
+		Start: 0
+		Length: 2
+		Facings: -8
+		Tick: 180
+	dead: 
+		Start: 16
+		Length: 2
+		Tick: 80
+	icon: wc2_cameos_human_units.png
+        Start: 9
+		AddExtension: False
+
+wc2_human_gryphon_rider:
+	idle:
+		Start: 0
+		Length: 4
+		Facings: -8
+		Tick: 180
+	shoot:
+		Start: 32
+		Length: 3
+		Facings: -8
+		Tick: 300
+	dead: 
+		Start: 56
+		Length: 5
+		Tick: 80
+	icon: wc2_cameos_human_units.png
+        Start: 10
+		AddExtension: False
+
+####################################################################################################
+#		BUILDINGS orc2
+####################################################################################################
+
+wc2_orc_greathall:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 1
+		AddExtension: False
+
+wc2_orc_pigfarm:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 0
+		AddExtension: False
+
+wc2_orc_barracks:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 2
+		AddExtension: False
+
+wc2_orc_troll_lumber_mill:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	resources: proctwr
+		Length: 6
+		Offset: -30,-17
+		AddExtension: True
+	damaged-resources: proctwr
+		Start: 6
+		Length: 6
+		Offset: -30,-17
+		AddExtension: True
+	icon: wc2_cameos_orc_buildings.png
+		Start: 3
+		AddExtension: False
+
+wc2_orc_ogre_mound:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 13
+		AddExtension: False
+
+wc2_orc_altar_of_storms:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 14
+		AddExtension: False
+
+wc2_orc_goblin_alchemist:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 15
+		AddExtension: False
+
+wc2_orc_stronghold:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 1
+	damaged-idle: 
+		Start: 1
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 2
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 12
+		AddExtension: False
+
+wc2_orc_fortress:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 1
+	damaged-idle: 
+		Start: 1
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 2
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 18
+		AddExtension: False
+
+wc2_orc_blacksmith:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 4
+		AddExtension: False
+
+wc2_orc_shipyard:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 8
+		AddExtension: False
+
+wc2_orc_foundry:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 9
+		AddExtension: False
+
+wc2_orc_oil_refinery:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 10
+		AddExtension: False
+
+wc2_orc_oil_platform:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Length: 8
+		Frames: 3,3,3,3,4,4,4,4
+		Tick: 1000
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 11
+		AddExtension: False
+
+wc2_orc_temple_of_the_damned:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 16
+		AddExtension: False
+
+wc2_orc_dragon_roost:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 17
+		AddExtension: False
+
+wc2_orc_watch_tower:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 5
+		AddExtension: False
+    upgrade_guard_icon: wc2_cameos_orc_buildings.png
+		Start: 6
+		AddExtension: False
+	wc2_orc_guard_tower: wc2_orc_guard_tower
+        Start: 3
+	wc2_orc_cannon_tower: wc2_orc_cannon_tower
+        Start: 3
+
+wc2_orc_guard_tower:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 6
+		AddExtension: False
+    upgrade_guard_icon: wc2_cameos_orc_buildings.png
+		Start: 6
+		AddExtension: False
+
+wc2_orc_cannon_tower:
+	Inherits: ^WC2DamagedFire
+	idle: 
+		Start: 3
+	damaged-idle: 
+		Start: 3
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	make: 
+		Start: 0
+		Length: 4
+		Tick: 500
+	icon: wc2_cameos_orc_buildings.png
+		Start: 7
+		AddExtension: False
+    upgrade_cannon_icon: wc2_cameos_orc_buildings.png
+		Start: 7 
+		AddExtension: False
+
+
+
+
+
+
+####################################################################################################
+#		UNITS orc2
+####################################################################################################
+
+wc2_orc_peon:
+	Inherits: ^WCInfantry
+	stand:
+		Start: 0	
+		Facings: -8
+	idle: 
+		Start: 0		
+        Facings: -8
+	run: 
+		Start: 8
+		Length: 5
+		Facings: -8
+		Tick: 100
+	harvest:
+		Start: 40
+		Length: 5
+		Facings: -8
+		Tick: 100
+    dock: 
+		Start: 0	
+		Facings: -8
+	dock-loop:
+		Start: 0	
+		Facings: -8     
+	die:
+		Start: 80
+		Length: 3
+		Tick: 80
+	die-crushed: 
+		Start: 80
+		Length: 3
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 0
+        AddExtension: false
+    greathall_icon: wc2_cameos_orc_buildings.png
+        Start: 1  
+		AddExtension: false
+		
+wc2_orc_peon_full:
+	Inherits: wc2_orc_peon
+	Defaults: wc2_orc_peon
+	idle: wc2_orc_peon_full
+		Start: 8
+		Length: 4
+		Facings: -8
+
+wc2_orc_grunt:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 5
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 48
+		Length: 5
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 88
+		Length: 2
+		Tick: 80
+	die-crushed:
+		Start: 88
+		Length: 2
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 1
+		AddExtension: False
+
+wc2_orc_skeleton:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 40
+		Length: 4
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 72
+		Length: 5
+		Tick: 80
+	die-crushed:
+		Start: 72
+		Length: 5
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 17
+		AddExtension: False
+
+wc2_orc_troll_axethrower:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 5
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 48
+		Length: 5
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 88
+		Length: 2
+		Tick: 80
+	die-crushed:
+		Start: 88
+		Length: 2
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 2
+		AddExtension: False
+
+wc2_orc_ogre:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 40
+		Length: 4
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 72
+		Length: 5
+		Tick: 80
+	die-crushed:
+		Start: 72
+		Length: 5
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 4
+		AddExtension: False
+
+wc2_orc_catapult:
+	Inherits: ^WCInfantry
+	stand: 
+		Frames: 0,2,4,6,8,10,12,14
+		Length: 1
+		Facings: -8
+	run: 
+		Start: 0
+		Length: 2
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 16
+		Length: 2
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 8
+		Length: 1
+		Tick: 80
+	die-crushed:
+		Start: 8
+		Length: 1
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 6
+		AddExtension: False
+
+wc2_orc_goblinsappers:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 40
+		Length: 4
+		Facings: -8
+		Tick: 100
+	die: 
+		Start:72
+		Length: 6
+		Tick: 80
+	die-crushed:
+		Start:72
+		Length: 6
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 7
+		AddExtension: False
+
+aoe1_bowman:
+	Inherits: ^WCInfantry
+	stand: 
+		Frames: 81,91,101,111,121,131,141,151
+		Facings: -8
+	run: 
+		Start: 80
+		Length: 10
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 0
+		Length: 10
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 0
+		Length: 2
+		Tick: 80
+	die-crushed:
+		Start: 0
+		Length: 2
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 2
+		AddExtension: False
+
+wc2_orc_deathknight:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 40
+		Length: 4
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 72
+		Length: 4
+		Tick: 80
+	die-crushed:
+		Start: 72
+		Length: 4
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 8
+		AddExtension: False
+
+####################################################################################################
+#		NAVAL orc2
+####################################################################################################
+
+wc2_orc_oil_tanker:
+	idle:
+		Start: 0
+		Facings: -8
+	die:
+		Start: 16
+		Length: 2
+	icon: wc2_cameos_orc_units.png
+        Start: 11
+		AddExtension: False
+		
+wc2_orc_transport:
+	idle:
+		Start: 0
+		Facings: -8
+	die:
+		Start: 7
+		Length: 2
+	icon: wc2_cameos_orc_units.png
+        Start: 12
+		AddExtension: False
+
+wc2_orc_trolldestroyer:
+	idle:
+		Start: 0
+		Facings: -8
+	turret: mgun
+		Facings: 32
+	muzzle: gunfire2
+		Length: 5
+	die:
+		Start: 8
+		Length: 2
+	icon: wc2_cameos_orc_units.png
+        Start: 13
+		AddExtension: False
+
+wc2_orc_ogre_juggernaught:
+	idle:
+		Start: 0
+		Facings: -8
+	turret: mgun
+		Facings: 32
+	muzzle: wc2_cannonfire
+		Length: 4
+	die:
+		Start: 8
+		Length: 2
+	icon: wc2_cameos_orc_units.png
+        Start: 14
+		AddExtension: False
+
+wc2_orc_giant_turtle:
+	idle:
+		Start: 0
+		Facings: -8
+	shoot:
+		Start: 8
+		Length: 2
+		Facings: -8
+		Tick: 300
+	turret: mgun
+		Facings: 32
+	muzzle: gunfire2
+		Length: 5
+	die:
+		Start: 8
+		Length: 2
+	icon: wc2_cameos_orc_units.png
+        Start: 15
+		AddExtension: False
+
+####################################################################################################
+#		AIR orc2
+####################################################################################################
+
+wc2_orc_goblin_zeppelin:
+	idle:
+		Start: 0
+		Length: 1
+		Facings: -8
+		Tick: 180
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 9
+		AddExtension: False
+
+wc2_orc_dragon:
+	idle:
+		Start: 5
+		Length: 4
+		Facings: -8
+		Tick: 180
+	shoot:
+		Start: 37
+		Length: 1
+		Facings: -8
+		Tick: 300
+	dead: wc2_building_collapse
+		Start: 0
+		Length: 16
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 10
+		AddExtension: False
+		
+wc2_orc_eye_of_kilrogg:
+	idle:
+		Start: 0
+		Length: 1
+		Facings: -8
+		Tick: 180
+	die:
+		Start: 1
+		Length: 1
+		Tick: 100
+	icon: wc2_cameos_orc_units.png
+        Start: 16
+		AddExtension: False
+
+wc2_daemon_neutral:
+	idle:
+		Start: 0
+		Length: 5
+		Facings: -8
+		Tick: 180
+	shoot:
+		Start: 40
+		Length: 5
+		Facings: -8
+		Tick: 300
+	die:
+		Start: 80
+		Length: 5
+		Tick: 100
+	icon: wc2_cameos_orc_units.png
+        Start: 10
+		AddExtension: False
+
+
+####################################################################################################
+#       NEUTRAL WC2
+####################################################################################################   
+
+wc2_goldmine:
+	Inherits: ^WC2DamagedFire
+    idle:
+        Start: 0
+    damaged-idle:
+        Start: 1
+    make: wc_buildings
+		Frames: 0,1
+		Length: 2
+		Tick: 450  
+	icon: cameos_wc2_extra.png
+		Start: 63
+		AddExtension: False
+    dead: wc_explosion
+		Start: 0
+		Length: 13
+		Tick: 80    
+####################################################################################################
+#		UPGRADES
+####################################################################################################
+
+wc2_h_str_sword:
+    icon: cameos_wc2_extra.png
+        Start: 25
+        AddExtension: False
