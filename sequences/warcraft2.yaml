@@ -658,6 +658,33 @@ wc2_human_knight:
         Start: 4
 		AddExtension: False
 
+wc2_human_paladin:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 40
+		Length: 4
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 72
+		Length: 5
+		Tick: 80
+	die-crushed:
+		Start: 72
+		Length: 5
+		Tick: 80
+	icon: wc2_cameos_human_units.png
+        Start: 4
+		AddExtension: False
+
 wc2_human_demolitionsquad:
 	Inherits: ^WCInfantry
 	stand: 
@@ -1387,6 +1414,33 @@ wc2_orc_ogre:
         Start: 4
 		AddExtension: False
 
+wc2_orc_ogremagi:
+	Inherits: ^WCInfantry
+	stand: 
+		Start: 0	
+		Facings: -8
+	run: 
+		Start: 8
+		Length: 4
+		Facings: -8
+		Tick: 100
+	shoot:
+		Start: 40
+		Length: 4
+		Facings: -8
+		Tick: 100
+	die: 
+		Start: 72
+		Length: 5
+		Tick: 80
+	die-crushed:
+		Start: 72
+		Length: 5
+		Tick: 80
+	icon: wc2_cameos_orc_units.png
+        Start: 4
+		AddExtension: False
+
 wc2_orc_catapult:
 	Inherits: ^WCInfantry
 	stand: 
@@ -1665,10 +1719,139 @@ wc2_goldmine:
 		Length: 13
 		Tick: 80    
 ####################################################################################################
-#		UPGRADES
+#		HUMAN UPGRADES
 ####################################################################################################
 
 wc2_h_str_sword:
     icon: cameos_wc2_extra.png
+        Start: 24
+        AddExtension: False
+
+wc2_h_str_sword2:
+    icon: cameos_wc2_extra.png
         Start: 25
+        AddExtension: False
+
+wc2_h_str_shield:
+    icon: cameos_wc2_extra.png
+        Start: 58
+        AddExtension: False
+
+wc2_h_str_shield2:
+    icon: cameos_wc2_extra.png
+        Start: 59
+        AddExtension: False
+
+wc2_h_str_arrow:
+    icon: cameos_wc2_extra.png
+        Start: 30
+        AddExtension: False
+
+wc2_h_str_arrow2:
+    icon: cameos_wc2_extra.png
+        Start: 31
+        AddExtension: False
+
+wc2_h_str_ballista:
+    icon: cameos_wc2_extra.png
+        Start: 43
+        AddExtension: False
+
+wc2_h_str_ballista2:
+    icon: cameos_wc2_extra.png
+        Start: 44
+        AddExtension: False
+
+wc2_h_str_cannon:
+    icon: cameos_wc2_extra.png
+        Start: 48
+        AddExtension: False
+
+wc2_h_str_cannon2:
+    icon: cameos_wc2_extra.png
+        Start: 49
+        AddExtension: False
+
+wc2_h_str_navyshield:
+    icon: cameos_wc2_extra.png
+        Start: 55
+        AddExtension: False
+
+wc2_h_str_navyshield2:
+    icon: cameos_wc2_extra.png
+        Start: 56
+        AddExtension: False
+
+wc2_h_paladinupg:
+    icon: wc2_cameos_human_units.png
+        Start: 5
+        AddExtension: False
+
+####################################################################################################
+#		ORC UPGRADES
+####################################################################################################
+
+wc2_o_str_axe:
+    icon: cameos_wc2_extra.png
+        Start: 27
+        AddExtension: False
+
+wc2_o_str_axe2:
+    icon: cameos_wc2_extra.png
+        Start: 28
+        AddExtension: False
+
+wc2_o_str_shield:
+    icon: cameos_wc2_extra.png
+        Start: 61
+        AddExtension: False
+
+wc2_o_str_shield2:
+    icon: cameos_wc2_extra.png
+        Start: 62
+        AddExtension: False
+
+wc2_o_str_throwaxe:
+    icon: cameos_wc2_extra.png
+        Start: 33
+        AddExtension: False
+
+wc2_o_str_throwaxe2:
+    icon: cameos_wc2_extra.png
+        Start: 34
+        AddExtension: False
+
+wc2_o_str_catapult:
+    icon: cameos_wc2_extra.png
+        Start: 41
+        AddExtension: False
+
+wc2_o_str_catapult2:
+    icon: cameos_wc2_extra.png
+        Start: 42
+        AddExtension: False
+
+wc2_o_str_cannon:
+    icon: cameos_wc2_extra.png
+        Start: 51
+        AddExtension: False
+
+wc2_o_str_cannon2:
+    icon: cameos_wc2_extra.png
+        Start: 52
+        AddExtension: False
+
+wc2_o_str_navyshield:
+    icon: cameos_wc2_extra.png
+        Start: 53
+        AddExtension: False
+
+wc2_o_str_navyshield2:
+    icon: cameos_wc2_extra.png
+        Start: 54
+        AddExtension: False
+
+wc2_o_ogremagiupg:
+    icon: wc2_cameos_orc_units.png
+        Start: 5
         AddExtension: False
