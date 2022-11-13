@@ -463,10 +463,10 @@ Player:
         Prerequisites: wc2_h_str_arrow2 || wc2_o_str_throwaxe2
     FirepowerMultiplier@upgrade:
         Modifier: 140
-        Condition: arrow_upg
+        RequiresCondition: arrow_upg
     FirepowerMultiplier@upgrade2:
         Modifier: 140
-        Condition: arrow_upg2	
+        RequiresCondition: arrow_upg2	
 
 ^wc2_h_str_ballista:        
     GrantConditionOnPrerequisite@upgrade:
@@ -477,10 +477,10 @@ Player:
         Prerequisites: wc2_h_str_ballista2 || wc2_o_str_catapult2
     FirepowerMultiplier@upgrade:
         Modifier: 140
-        Condition: ballista_upg
+        RequiresCondition: ballista_upg
     FirepowerMultiplier@upgrade2:
         Modifier: 140
-        Condition: ballista_upg2	
+        RequiresCondition: ballista_upg2	
 
 ^wc2_h_str_cannon:        
     GrantConditionOnPrerequisite@upgrade:
@@ -491,10 +491,10 @@ Player:
         Prerequisites: wc2_h_str_cannon2 || wc2_o_str_cannon2
     FirepowerMultiplier@upgrade:
         Modifier: 140
-        Condition: cannon_upg
+        RequiresCondition: cannon_upg
     FirepowerMultiplier@upgrade2:
         Modifier: 140
-        Condition: cannon_upg2	
+        RequiresCondition: cannon_upg2	
 
 ^wc2_h_str_navyshield:        
     GrantConditionOnPrerequisite@upgrade:
@@ -505,21 +505,99 @@ Player:
         Prerequisites: wc2_h_str_navyshield2 || wc2_o_str_navyshield2
     DamageMultiplier@upgrade:
         Modifier: 75
-        Condition: navyshield_upg
+        RequiresCondition: navyshield_upg
     DamageMultiplier@upgrade2:
         Modifier: 75
-        Condition: navyshield_upg2
+        RequiresCondition: navyshield_upg2
 
 ^wc2_h_paladinupg:	
     GrantConditionOnPrerequisite@upgrade:
         Condition: paladin_upg
         Prerequisites: wc2_h_paladinupg
     DamageMultiplier@upgrade:
-        Modifier: 90
-        Condition: paladin_upg
+        Modifier: 80
+        RequiresCondition: paladin_upg
 		FirepowerMultiplier@upgrade:
         Modifier: 120
-        Condition: paladin_upg
+        RequiresCondition: paladin_upg
+
+^wc2_h_rangerupg:
+    GrantConditionOnPrerequisite@upgrade:
+        Condition: ranger_upg
+        Prerequisites: wc2_h_rangerupg
+		Health@upgrade:
+        Modifier: 120
+        RequiresCondition: ranger_upg
+
+^wc2_h_ranger_longbow:
+    GrantConditionOnPrerequisite@upgrade:
+        Condition: rangerlb_upg
+        Prerequisites: wc2_h_ranger_longbow
+		RangeMultiplier@upgrade:
+        Modifier: 120
+        RequiresCondition: rangerlb_upg
+
+^wc2_h_ranger_scouting:
+    GrantConditionOnPrerequisite@upgrade:
+        Condition: rangersc_upg
+        Prerequisites: wc2_h_ranger_scouting
+		RevealsShroudMultiplier@upgrade:
+        Modifier: 125
+        RequiresCondition: rangersc_upg
+
+^wc2_h_ranger_marksman:
+    GrantConditionOnPrerequisite@upgrade:
+        Condition: rangermm_upg
+        Prerequisites: wc2_h_ranger_marksman
+		FirepowerMultiplier@upgrade:
+        Modifier: 115
+        RequiresCondition: rangermm_upg
+
+^wc2_o_ogremagiupg:	
+    GrantConditionOnPrerequisite@upgrade:
+        Condition: ogremagi_upg
+        Prerequisites: wc2_o_ogremagiupg
+    DamageMultiplier@upgrade:
+        Modifier: 90
+        RequiresCondition: ogremagi_upg
+		FirepowerMultiplier@upgrade:
+        Modifier: 130
+        RequiresCondition: ogremagi_upg
+
+^wc2_o_berserkerupg:
+    GrantConditionOnPrerequisite@upgrade:
+        Condition: berserker_upg
+        Prerequisites: wc2_o_berserker
+		Health@upgrade:
+        Modifier: 135
+        RequiresCondition: berserker_upg
+
+^wc2_o_berserker_lighteraxes:
+    GrantConditionOnPrerequisite@upgrade:
+        Condition: berserkerla_upg
+        Prerequisites: wc2_o_berserker_lighteraxes
+		RangeMultiplier@upgrade:
+        Modifier: 120
+        RequiresCondition: berserkerla_upg
+
+^wc2_o_berserker_scouting:
+    GrantConditionOnPrerequisite@upgrade:
+        Condition: berserkersc_upg
+        Prerequisites: wc2_o_berserker_scouting
+		RevealsShroudMultiplier@upgrade:
+        Modifier: 125
+        RequiresCondition: berserkersc_upg
+			
+^wc2_o_berserker_regen:
+		GrantConditionOnPrerequisite@upgrade:
+				Condition: berserkerregen_upg
+				Prerequisites: wc2_o_berserker_regen
+		SelfHealing@upgrade:
+				PercentageStep: 5
+				Delay: 50
+				HealIfBelow: 100
+				DamageCooldown: 125
+				RequiresCondition: berserkerregen_upg
 
 ####################################################################################################
 #		BUILDING human2
@@ -1909,7 +1987,7 @@ WC2_HUMAN_KNIGHT:
 		Scale: 0.6
 
 WC2_HUMAN_BALLISTA:
-	Inherits: ^Soldier
+	Inherits: ^Vehicle
 	Inherits@WC1Infantry: ^WC1Infantry
 	Inherits@EXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMoveMelee
@@ -1917,7 +1995,7 @@ WC2_HUMAN_BALLISTA:
     Inherits@upgrade_swords: ^wc2_h_str_ballista
     Inherits@upgrade_shields: ^wc2_h_str_shield
 	Valued:
-		Cost: 150
+		Cost: 900
 	Tooltip:
 		Name: Ballista
 	UpdatesPlayerStatistics:
@@ -1927,25 +2005,25 @@ WC2_HUMAN_BALLISTA:
 		Prerequisites: wc2_human_blacksmith
 		Queue: Infantry.human2, RAInfantry.human2
 		Description: Powerful long range siege unit.
-        BuildDuration: 80
+        BuildDuration: 400
         BuildDurationModifier: 100
+		AttackFrontal:
+    RevealsShroud:
+		Range: 5c0 
 	Mobile:
-		Speed: 56
+		Speed: 35
 	Health:
-		HP: 14400
-    DamageMultiplier@armor:
-        Modifier: 60       
-   	Armor:
-		Type: None     
+		HP: 25000    
+	Armor:
+		Type: Medium
 	#Food
 	Power:
-		Amount: -5
+		Amount: -30
 	AutoTarget:
-		ScanRadius: 6
+		ScanRadius: 4
         InitialStance: AttackAnything
 	Armament:
 		Weapon: wc2ballistaFire
-		FireDelay: 7
 	WithDeathAnimation:
 		UseDeathTypeSuffix: false
 	WithInfantryBody:
@@ -3321,7 +3399,7 @@ WC2_ORC_CATAPULT:
 		Prerequisites: wc2_orc_blacksmith
 		Queue: Infantry.orc2, RAInfantry.orc2
 		Description: Powerful long range siege unit.
-        BuildDuration: 80
+        BuildDuration: 400
         BuildDurationModifier: 100
 	Armament:
 		Weapon: wc2catapultFire
@@ -3653,7 +3731,7 @@ wc2_h_str_sword:
 		Queue: blacksmithupg.human2, RAblacksmithupg.human2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases melee damage by 30%
+		Description: Increases melee damage by 30%.
         Prerequisites: ~!wc2_h_str_sword
 	Valued:
 		Cost: 1000
@@ -3672,7 +3750,7 @@ wc2_h_str_sword2:
 		Queue: blacksmithupg.human2, RAblacksmithupg.human2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases melee damage by further 30%
+		Description: Increases melee damage by further 30%.
         Prerequisites: ~!wc2_h_str_sword2, ~wc2_h_str_sword
 	Valued:
 		Cost: 1000
@@ -3691,7 +3769,7 @@ wc2_h_str_shield:
 		Queue: blacksmithupg.human2, RAblacksmithupg.human2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases armor of all land units by 25%
+		Description: Increases damage resistance of all land units by 25%.
         Prerequisites: ~!wc2_h_str_shield
 	Valued:
 		Cost: 1000
@@ -3709,7 +3787,7 @@ wc2_h_str_shield2:
 		Queue: blacksmithupg.human2, RAblacksmithupg.human2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases armor of all land units by further 25%
+		Description: Increases damage resistance of all land units by further 25%.
         Prerequisites: ~!wc2_h_str_shield2, ~wc2_h_str_shield
 	Valued:
 		Cost: 1000
@@ -3727,7 +3805,7 @@ wc2_h_str_arrow:
 		Queue: lumberupg.human2, RAlumberupg.human2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases arrow damage dealt by Archers and Guard Towers by 40%
+		Description: Increases arrow damage dealt by Archers and Guard Towers by 40%.
         Prerequisites: ~!wc2_h_str_arrow
 	Valued:
 		Cost: 1000
@@ -3745,12 +3823,84 @@ wc2_h_str_arrow2:
 		Queue: lumberupg.human2, RAlumberupg.human2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases arrow damage by Archers and Guard Towers by further 40%
+		Description: Increases arrow damage by Archers and Guard Towers by further 40%.
         Prerequisites: ~!wc2_h_str_arrow2, ~wc2_h_str_arrow
 	Valued:
 		Cost: 1000
 	RenderSprites:
 		Image: wc2_h_str_arrow2
+	ProvidesPrerequisite:
+
+wc2_h_rangerupg:
+	Inherits: ^upgrade.template
+	Tooltip:
+		Name: Ranger
+	Buildable:
+		BuildPaletteOrder: 1
+		BuildLimit: 1
+		Queue: lumberupg.human2, RAlumberupg.human2
+        BuildDuration: 1500
+        BuildDurationModifier: 100       
+		Description: Intense training is given to Elven Archers.\nIncreases health and unlocks upgrades for the Ranger.
+        Prerequisites: ~!wc2_h_rangerupg ## when keep/castle are fixed, will require Castle
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: wc2_h_rangerupg
+	ProvidesPrerequisite:
+
+wc2_h_ranger_longbow:
+	Inherits: ^upgrade.template
+	Tooltip:
+		Name: Longbow
+	Buildable:
+		BuildPaletteOrder: 1
+		BuildLimit: 1
+		Queue: lumberupg.human2, RAlumberupg.human2
+        BuildDuration: 1500
+        BuildDurationModifier: 100       
+		Description: Increases range of Rangers by 20%.
+        Prerequisites: ~!wc2_h_ranger_longbow, ~wc2_h_rangerupg
+	Valued:
+		Cost: 2000
+	RenderSprites:
+		Image: wc2_h_ranger_longbow
+	ProvidesPrerequisite:
+
+wc2_h_ranger_scouting:
+	Inherits: ^upgrade.template
+	Tooltip:
+		Name: Ranger Scouting
+	Buildable:
+		BuildPaletteOrder: 1
+		BuildLimit: 1
+		Queue: lumberupg.human2, RAlumberupg.human2
+        BuildDuration: 1500
+        BuildDurationModifier: 100       
+		Description: Increases vision range of Rangers by 25%.
+        Prerequisites: ~!wc2_h_ranger_scouting, ~wc2_h_rangerupg
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: wc2_h_ranger_scouting
+	ProvidesPrerequisite:
+
+wc2_h_ranger_marksman:
+	Inherits: ^upgrade.template
+	Tooltip:
+		Name: Ranger Scouting
+	Buildable:
+		BuildPaletteOrder: 1
+		BuildLimit: 1
+		Queue: lumberupg.human2, RAlumberupg.human2
+        BuildDuration: 1500
+        BuildDurationModifier: 100       
+		Description: Increases arrow damage of Rangers by 15%.
+        Prerequisites: ~!wc2_h_ranger_marksman, ~wc2_h_rangerupg
+	Valued:
+		Cost: 2250
+	RenderSprites:
+		Image: wc2_h_ranger_marksman
 	ProvidesPrerequisite:
 
 wc2_h_str_ballista:
@@ -3835,7 +3985,7 @@ wc2_h_str_navyshield:
 		Queue: blacksmithupg.human2, RAblacksmithupg.human2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases armor of all Naval Vessels by 25%
+		Description: Increases damage resistance of all Naval Vessels by 25%
         Prerequisites: ~!wc2_h_str_navyshield
 	Valued:
 		Cost: 1000
@@ -3853,7 +4003,7 @@ wc2_h_str_navyshield2:
 		Queue: blacksmithupg.human2, RAblacksmithupg.human2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases armor of all Naval Vessels by further 25%
+		Description: Increases damage resistance of all Naval Vessels by further 25%
         Prerequisites: ~!wc2_h_str_navyshield2, ~wc2_h_str_navyshield
 	Valued:
 		Cost: 1000
@@ -3871,7 +4021,7 @@ wc2_h_paladinupg:
 		Queue: churchupg.human2, RAchurchupg.human2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Perform holy rituals to turn your noble Knights into righteous Paladins!\nPaladins are more powerful and can cast Heal.
+		Description: Perform holy rituals to turn your noble Knights into righteous Paladins!\nPaladins are more powerful and can cast Heal.\nIncreases damage resistance by 20%.\nIncreases melee damage by 10%.
         Prerequisites: ~!wc2_h_paladinupg
 	Valued:
 		Cost: 1000
@@ -3931,7 +4081,7 @@ wc2_o_str_shield:
 		Queue: blacksmithupg.orc2, RAblacksmithupg.orc2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases armor of all land units by 25%
+		Description: Increases damage resistance of all land units by 25%.
         Prerequisites: ~!wc2_o_str_shield
 	Valued:
 		Cost: 1000
@@ -3949,7 +4099,7 @@ wc2_o_str_shield2:
 		Queue: blacksmithupg.orc2, RAblacksmithupg.orc2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases armor of all land units by further 25%
+		Description: Increases damage resistance of all land units by further 25%.
         Prerequisites: ~!wc2_o_str_shield2, ~wc2_o_str_shield
 	Valued:
 		Cost: 1000
@@ -3967,7 +4117,7 @@ wc2_o_str_throwaxe:
 		Queue: lumberupg.orc2, RAlumberupg.orc2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases arrow damage dealt by Axethrowers and Guard Towers by 40%
+		Description: Increases arrow damage dealt by Axethrowers and Guard Towers by 40%.
         Prerequisites: ~!wc2_o_str_throwaxe
 	Valued:
 		Cost: 1000
@@ -3991,6 +4141,78 @@ wc2_o_str_throwaxe2:
 		Cost: 1000
 	RenderSprites:
 		Image: wc2_o_str_throwaxe2
+	ProvidesPrerequisite:
+
+wc2_o_berserkerupg:
+	Inherits: ^upgrade.template
+	Tooltip:
+		Name: Berserker
+	Buildable:
+		BuildPaletteOrder: 1
+		BuildLimit: 1
+		Queue: lumberupg.orc2, RAlumberupg.orc2
+        BuildDuration: 1500
+        BuildDurationModifier: 100       
+		Description: Troll Axethrowers are driven into a mad frenzy.\nIncreases health and unlocks upgrades for the Berserker.
+        Prerequisites: ~!wc2_o_berserkerupg
+	Valued:
+		Cost: 2500
+	RenderSprites:
+		Image: wc2_o_berserkerupg
+	ProvidesPrerequisite:
+
+wc2_o_berserker_lighteraxes:
+	Inherits: ^upgrade.template
+	Tooltip:
+		Name: Berserker
+	Buildable:
+		BuildPaletteOrder: 1
+		BuildLimit: 1
+		Queue: lumberupg.orc2, RAlumberupg.orc2
+        BuildDuration: 1500
+        BuildDurationModifier: 100       
+		Description: Increases throwing range of Berserker axes by 20%.
+        Prerequisites: ~!wc2_o_berserker_lighteraxes, ~wc2_o_berserkerupg
+	Valued:
+		Cost: 2000
+	RenderSprites:
+		Image: wc2_o_berserker_lighteraxes
+	ProvidesPrerequisite:
+
+wc2_o_berserker_scouting:
+	Inherits: ^upgrade.template
+	Tooltip:
+		Name: Berserker
+	Buildable:
+		BuildPaletteOrder: 1
+		BuildLimit: 1
+		Queue: lumberupg.orc2, RAlumberupg.orc2
+        BuildDuration: 1500
+        BuildDurationModifier: 100       
+		Description: Increases vision range of Berserkers by 25%.
+        Prerequisites: ~!wc2_o_berserker_scouting, ~wc2_o_berserkerupg
+	Valued:
+		Cost: 1500
+	RenderSprites:
+		Image: wc2_o_berserker_scouting
+	ProvidesPrerequisite:
+
+wc2_o_berserker_regen:
+	Inherits: ^upgrade.template
+	Tooltip:
+		Name: Berserker
+	Buildable:
+		BuildPaletteOrder: 1
+		BuildLimit: 1
+		Queue: lumberupg.orc2, RAlumberupg.orc2
+        BuildDuration: 1500
+        BuildDurationModifier: 100       
+		Description: Berserkers heal over time.
+        Prerequisites: ~!wc2_o_berserker_regen, ~wc2_o_berserkerupg
+	Valued:
+		Cost: 2250
+	RenderSprites:
+		Image: wc2_o_berserker_regen
 	ProvidesPrerequisite:
 
 wc2_o_str_catapult:
@@ -4075,7 +4297,7 @@ wc2_o_str_navyshield:
 		Queue: blacksmithupg.orc2, RAblacksmithupg.orc2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases armor of all Naval Vessels by 25%
+		Description: Increases damage resistance of all Naval Vessels by 25%.
         Prerequisites: ~!wc2_o_str_navyshield
 	Valued:
 		Cost: 1000
@@ -4093,7 +4315,7 @@ wc2_o_str_navyshield2:
 		Queue: blacksmithupg.orc2, RAblacksmithupg.orc2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Increases armor of all Naval Vessels by further 25%
+		Description: Increases damage resistance of all Naval Vessels by further 25%.
         Prerequisites: ~!wc2_o_str_navyshield2, ~wc2_o_str_navyshield
 	Valued:
 		Cost: 1000
@@ -4111,7 +4333,7 @@ wc2_o_ogremagiupg:
 		Queue: altarupg.orc2, RAaltarupg.orc2
         BuildDuration: 1500
         BuildDurationModifier: 100    
-		Description: Perform mysterious rituals to transform your Ogres into Ogre-Magi!\nOgre-Magi are more powerful and can cast Bloodlust.\nBloodlust makes your units hit harder for a short time.
+		Description: Perform mysterious rituals to transform your Ogres into Ogre-Magi!\nOgre-Magi are more powerful and can cast Bloodlust.\nBloodlust makes your units hit harder for a short time.\nIncreases damage resistance by 10%.\nIncreases melee damage by 20%.
         Prerequisites: ~!wc2_o_ogremagiupg
 	Valued:
 		Cost: 1000

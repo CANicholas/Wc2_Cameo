@@ -1787,6 +1787,26 @@ wc2_h_paladinupg:
         Start: 5
         AddExtension: False
 
+wc2_h_rangerupg:
+    icon: wc2_cameos_human_units.png
+        Start: 3
+        AddExtension: False
+
+wc2_h_ranger_longbow:
+    icon: cameos_wc2_extra.png
+        Start: 35
+        AddExtension: False
+
+wc2_h_ranger_scouting:
+    icon: cameos_wc2_extra.png
+        Start: 36
+        AddExtension: False
+
+wc2_h_ranger_marksman:
+    icon: cameos_wc2_extra.png
+        Start: 37
+        AddExtension: False
+
 ####################################################################################################
 #		ORC UPGRADES
 ####################################################################################################
@@ -1854,4 +1874,24 @@ wc2_o_str_navyshield2:
 wc2_o_ogremagiupg:
     icon: wc2_cameos_orc_units.png
         Start: 5
+        AddExtension: False
+
+wc2_o_berserkerupg:
+    icon: wc2_cameos_orc_units.png
+        Start: 3
+        AddExtension: False
+
+wc2_o_berserker_lighteraxes:
+    icon: cameos_wc2_extra.png
+        Start: 38
+        AddExtension: False
+
+wc2_o_berserker_scouting:
+    icon: cameos_wc2_extra.png
+        Start: 39
+        AddExtension: False
+
+wc2_o_berserker_regeneration:
+    icon: cameos_wc2_extra.png
+        Start: 40
         AddExtension: False

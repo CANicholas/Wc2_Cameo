@@ -1,0 +1,289 @@
+####################################################################################################
+#		WEAPONS human2
+####################################################################################################
+
+wc2footmanslice:
+	ReloadDelay: 30
+	Range: 1c512
+	Report: wc2_sword1.aud,wc2_sword2.aud,wc2_sword3.aud
+	Projectile: InstantHit
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 2025
+		Versus:
+			None: 150
+			Wood: 60
+			Light: 100
+            Medium: 75
+			Heavy: 60
+            Concrete: 30
+		DamageTypes: DefaultDeathwc2
+
+wc2arrowFire:
+	ReloadDelay: 40
+	Range: 5c0
+	Report: wc2_bowfire.aud
+    ValidTargets: Ground
+	Projectile: Bullet
+		Speed: 0c650
+        Image: arrow
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 1000
+        ValidTargets: Ground
+		Versus:
+			None: 300
+			Wood: 65
+			Light: 120
+            Medium: 40
+			Heavy: 20
+            Concrete: 40
+      	DamageTypes: Prone50Percent, TriggerProne, DefaultDeath         
+	Warhead@2Eff: CreateEffect
+		ImpactSounds: wc2_bowhit.aud
+
+wc2arrowFireAA:
+	Inherits: wc2arrowFire
+	ValidTargets: Air
+	Warhead@1Dam:
+		ValidTargets: Air
+
+wc2knightslice:
+	Inherits: wc2footmanslice
+	Warhead@1Dam:
+		Damage: 4025
+
+wc2ballistaFire:
+	ReloadDelay: 200
+	Range: 9c512
+		MinRange: 0c512
+	Report: wc2_catapult.aud
+	ValidTargets: Ground
+	Projectile: Bullet
+		LaunchAngle: 56
+		Speed: 208
+			Inaccuracy: 0c256
+			Image: wc2_human_ballistabolt
+	Warhead@1Dam: SpreadDamage
+		Spread: 0c644
+		Damage: 24000
+		ValidTargets: Ground
+		Versus:
+			None: 100
+			Wood: 50
+			Light: 100
+			Medium: 100
+			Heavy: 100
+			Concrete: 35
+		DamageTypes: Prone50Percent, TriggerProne, SmallExplosionDeath         
+	Warhead@2Eff: CreateEffect
+		Explosions: wc2_catapult_impact
+		ImpactSounds: explode.aud
+
+wc2gryphonFireVisible:
+	ReloadDelay: 60
+	Range: 5c0
+	FirstBurstTargetOffset: 3072,0,0
+	ValidTargets: Ground
+	Projectile: Bullet
+		Speed: 0c341
+        Image: wc2_gryphon_hammer_projectile
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 100
+        ValidTargets: Ground
+		Versus:
+			None: 300
+			Wood: 65
+			Light: 120
+            Medium: 40
+			Heavy: 20
+            Concrete: 40
+      	DamageTypes: Prone50Percent, TriggerProne, DefaultDeath   
+
+wc2gryphonFireExplosion:
+	Inherits: wc2gryphonFireVisible
+	ReloadDelay: 58
+	Burst: 3
+	BurstDelays: 0
+	FirstBurstTargetOffset: 0,0,0
+	FollowingBurstTargetOffset: 1024,0,0
+	Projectile:
+		-Image:      
+	Warhead@2Eff: CreateEffect
+		Explosions: wc2_building_collapse
+		ImpactSounds: explode.aud
+
+####################################################################################################
+#		WEAPONS orc2
+####################################################################################################
+
+wc2axeFire:
+	Inherits: wc2arrowFire
+	Report: wc2_axe.aud
+	Projectile:
+		Image: wc2_orc_trollaxethrower_axe
+
+wc2axeFireAA:
+	Inherits: wc2arrowFireAA
+	Report: wc2_axe.aud
+	Projectile:
+		Image: wc2_orc_trollaxethrower_axe
+
+wc2ogrepunch:
+	Inherits: wc2knightslice
+	Report: wc2_punch.aud
+
+wc2catapultFire:
+	Inherits: wc2ballistaFire
+	Projectile:
+		Image: wc2_catapult_stone_projectile
+
+wc2dragonFireVisible:
+	Inherits: wc2gryphonFireVisible
+	Projectile:
+		Image: wc2_fireball
+
+###
+
+wc2submarineFire:
+	ReloadDelay: 40
+	Range: 5c0
+	Report: wc2_fireball.aud
+    ValidTargets: Water
+	Projectile: Bullet
+		Speed: 0c650
+        Image: wc2_torpedo_submarine_turtle_projectile
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 1000
+        ValidTargets: Water
+		Versus:
+			None: 300
+			Wood: 65
+			Light: 120
+            Medium: 40
+			Heavy: 20
+            Concrete: 40
+      	DamageTypes: Prone50Percent, TriggerProne, DefaultDeath         
+	Warhead@2Eff: CreateEffect
+		Explosions: wc2_building_collapse
+		ImpactSounds: explode.aud
+
+wc2lightshipFire:
+	ReloadDelay: 40
+	Range: 5c0
+	Report: wc2_fireball
+    ValidTargets: Ground, Water
+	Projectile: Bullet
+		Speed: 0c650
+		Image: wc2_cannon_projectile_medium
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 500
+        ValidTargets: Ground, Water
+		Versus:
+			None: 300
+			Wood: 65
+			Light: 120
+            Medium: 40
+			Heavy: 20
+            Concrete: 40
+      	DamageTypes: Prone50Percent, TriggerProne, DefaultDeath         
+	Warhead@2Eff: CreateEffect
+		Explosions: wc2_cannon_explosion
+		ImpactSounds: explode.aud
+
+wc2heavyshipFire:
+	ReloadDelay: 40
+	Range: 5c0
+	Report: wc2_fireball
+    ValidTargets: Ground, Water
+	Projectile: Bullet
+		Speed: 0c650
+        Image: wc2_hbattle_bship_jugger_projectile
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 1000
+        ValidTargets: Ground, Water
+		Versus:
+			None: 300
+			Wood: 65
+			Light: 120
+            Medium: 40
+			Heavy: 20
+            Concrete: 40
+      	DamageTypes: Prone50Percent, TriggerProne, DefaultDeath         
+	Warhead@2Eff: CreateEffect
+		Explosions: wc2_cannon_explosion
+		ImpactSounds: explode.aud
+
+wc2cannontowerFire:
+	ReloadDelay: 40
+	Range: 7c0
+	Report: wc2_fireball
+    ValidTargets: Ground, Water
+	Projectile: Bullet
+		Speed: 0c650
+        Image: wc2_cannon_projectile_medium
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 1000
+        ValidTargets: Ground, Water
+		Versus:
+			None: 300
+			Wood: 65
+			Light: 120
+            Medium: 40
+			Heavy: 20
+            Concrete: 40
+      	DamageTypes: Prone50Percent, TriggerProne, DefaultDeath         
+	Warhead@2Eff: CreateEffect
+		Explosions: wc2_cannon_explosion
+		ImpactSounds: explode.aud
+
+wc2tornadoTest:
+	ReloadDelay: 40
+	Range: 5c0
+	Report: bowfire.aud
+    ValidTargets: Ground
+	Projectile: Bullet
+		Speed: 0c650
+        Image: wc2_cannonfire
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 1000
+        ValidTargets: Ground
+		Versus:
+			None: 300
+			Wood: 65
+			Light: 120
+            Medium: 40
+			Heavy: 20
+            Concrete: 40
+      	DamageTypes: Prone50Percent, TriggerProne, DefaultDeath         
+	Warhead@2Eff: CreateEffect
+		ImpactSounds: bowhit.aud
+
+wc2daemonFire:
+	ReloadDelay: 40
+	Range: 5c0
+	Report: bowfire.aud
+    ValidTargets: Ground
+	Projectile: Bullet
+		Speed: 0c650
+        Image: wc2_fire_daemon
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 1000
+        ValidTargets: Ground
+		Versus:
+			None: 300
+			Wood: 65
+			Light: 120
+            Medium: 40
+			Heavy: 20
+            Concrete: 40
+      	DamageTypes: Prone50Percent, TriggerProne, DefaultDeath         
+	Warhead@2Eff: CreateEffect
+		ImpactSounds: bowhit.aud
