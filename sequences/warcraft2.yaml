@@ -1692,8 +1692,8 @@ wc2_daemon_neutral:
 		Start: 80
 		Length: 5
 		Tick: 100
-	icon: wc2_cameos_orc_units.png
-        Start: 10
+	icon: cameos_wc2_extra.png
+        Start: 64
 		AddExtension: False
 
 
