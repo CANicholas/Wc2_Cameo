@@ -587,17 +587,17 @@ Player:
 		RevealsShroudMultiplier@upgrade:
         Modifier: 125
         RequiresCondition: berserkersc_upg
-			
+
 ^wc2_o_berserker_regen:
-		GrantConditionOnPrerequisite@upgrade:
-				Condition: berserkerregen_upg
-				Prerequisites: wc2_o_berserker_regen
+    GrantConditionOnPrerequisite@upgrade:
+        Condition: berserkerregen_upg
+        Prerequisites: wc2_o_berserker_regen
 		SelfHealing@upgrade:
-				PercentageStep: 5
-				Delay: 50
-				HealIfBelow: 100
-				DamageCooldown: 125
-				RequiresCondition: berserkerregen_upg
+        PercentageStep: 5
+        Delay: 50
+        HealIfBelow: 100
+        DamageCooldown: 125
+        RequiresCondition: berserkeregen_upg
 
 ####################################################################################################
 #		BUILDING human2
@@ -1007,7 +1007,7 @@ WC2_HUMAN_ELVEN_LUMBER_MILL:
 	ProductionQueue:
 		Type: lumberupg.human2
 		DisplayOrder: 2
-		Group: Addon
+		Group: Upgrade
 		LowPowerModifier: 300
 		ReadyAudio: UnitReady
 		BlockedAudio: NoBuild
@@ -1078,7 +1078,7 @@ WC2_HUMAN_BLACKSMITH:
 	ProductionQueue:
 		Type: blacksmithupg.human2
 		DisplayOrder: 2
-		Group: Addon
+		Group: Upgrade
 		LowPowerModifier: 300
 		ReadyAudio: UnitReady
 		BlockedAudio: NoBuild
@@ -1146,7 +1146,7 @@ WC2_HUMAN_CHURCH:
 	ProductionQueue:
 		Type: churchupg.human2
 		DisplayOrder: 2
-		Group: Addon
+		Group: Upgrade
 		LowPowerModifier: 300
 		ReadyAudio: UnitReady
 		BlockedAudio: NoBuild
@@ -1161,7 +1161,7 @@ WC2_HUMAN_CHURCH:
 		ProductionType: RAchurchupg.human2
         RequiresCondition: classicproductionqueues
 	Buildable:
-		BuildPaletteOrder: 14
+		BuildPaletteOrder: 17
 		Prerequisites: wc2_human_stables ##once keep/castle are fixed, prereq will be wc2_human_castle
 		Queue: Building.human2, RABuilding.human2
 		BuildDuration: 400
@@ -1202,6 +1202,7 @@ WC2_HUMAN_GNOMISH_INVENTOR:
   	ProductionBar@CLASSICPRODUCTIONQUEUES:
 		ProductionType: RAVehicle.human2     
    	Buildable:
+		BuildPaletteOrder: 16
 		Prerequisites: wc2_human_barracks ##once keep/castle are fixed, prereq will be wc2_human_keep
 		Queue: Building.human2, RABuilding.human2  
         Description: Here Dwarves and Gnomes invent marvels.\nTrains Demo Squads and Gnomish Flying Machines.
@@ -1250,7 +1251,7 @@ WC2_HUMAN_STABLES:
         RequiresCondition: classicproductionqueues       
 	ProvidesPrerequisite:
 	Buildable:
-		BuildPaletteOrder: 16
+		BuildPaletteOrder: 15
 		Prerequisites: wc2_human_barracks, wc2_human_blacksmith ##once keep/castle are fixed, prereq will be wc2_human_keep
 		Queue: Building.human2, RABuilding.human2
 		BuildDuration: 400
@@ -1290,7 +1291,7 @@ WC2_HUMAN_MAGE_TOWER:
 		Name: Mage Tower
 	ProvidesPrerequisite:
 	Buildable:
-		BuildPaletteOrder: 17
+		BuildPaletteOrder: 18
 		Prerequisites: wc2_human_church ##once keep/castle are fixed, prereq will be wc2_human_castle
 		Queue: Building.human2, RABuilding.human2
 		BuildDuration: 400
@@ -1353,6 +1354,7 @@ WC2_HUMAN_KEEP:
 	Tooltip:
 		Name: Keep  
 	Buildable:
+	BuildPaletteOrder: 20
 		Prerequisites: wc2_human_barracks
 		Queue: Building.human2, RABuilding.human2
 		Description: DOES NOTHING AT THE MOMENT\nAllows for Tier 2.
@@ -1368,6 +1370,7 @@ WC2_HUMAN_CASTLE:
 	Tooltip:
 		Name: Castle 
 	Buildable:
+	BuildPaletteOrder: 21
 		Prerequisites: wc2_human_keep, wc2_human_stables
 		Queue: Building.human2, RABuilding.human2
 		Description: DOES NOTHING AT THE MOMENT\nAllows for Tier 3.
@@ -1383,6 +1386,7 @@ WC2_HUMAN_GRYPHON_AVIARY:
 	Tooltip:
 		Name: Gryphon Aviary
 	Buildable:
+		BuildPaletteOrder: 19
 		Prerequisites: wc2_human_stables ##once keep/castle are fixed, prereq will be wc2_human_castle
 		Queue: Building.human2, RABuilding.human2
 		Description: A great Gryphon lives here.\nTrains formidable Gryphon Riders.
@@ -3181,7 +3185,7 @@ WC2_ORC_ALTAR_OF_STORMS:
 	ProductionQueue:
 		Type: altarupg.orc2
 		DisplayOrder: 2
-		Group: Addon
+		Group: Upgrade
 		LowPowerModifier: 300
 		ReadyAudio: UnitReady
 		BlockedAudio: NoBuild
@@ -3841,7 +3845,7 @@ wc2_h_rangerupg:
 		Queue: lumberupg.human2, RAlumberupg.human2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Intense training is given to Elven Archers.\nIncreases health and unlocks upgrades for the Ranger.
+		Description: Intense training is given to Elven Archers.\nIncreases health by 20% and unlocks upgrades for the Ranger.
         Prerequisites: ~!wc2_h_rangerupg ## when keep/castle are fixed, will require Castle
 	Valued:
 		Cost: 2500
@@ -4153,7 +4157,7 @@ wc2_o_berserkerupg:
 		Queue: lumberupg.orc2, RAlumberupg.orc2
         BuildDuration: 1500
         BuildDurationModifier: 100       
-		Description: Troll Axethrowers are driven into a mad frenzy.\nIncreases health and unlocks upgrades for the Berserker.
+		Description: Troll Axethrowers are driven into a mad frenzy.\nIncreases health by 35% and unlocks upgrades for the Berserker.
         Prerequisites: ~!wc2_o_berserkerupg
 	Valued:
 		Cost: 2500

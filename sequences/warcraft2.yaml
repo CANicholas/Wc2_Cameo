@@ -1891,7 +1891,7 @@ wc2_o_berserker_scouting:
         Start: 39
         AddExtension: False
 
-wc2_o_berserker_regeneration:
+wc2_o_berserker_regen:
     icon: cameos_wc2_extra.png
         Start: 40
         AddExtension: False
