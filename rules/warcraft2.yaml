@@ -441,10 +441,10 @@ Player:
         RequiresCondition: sword_upg2             
         
 ^wc2_h_str_shield:
-    GrantConditionOnPrerequisite@supgrade:
+    GrantConditionOnPrerequisite@upgrade:
         Condition: shield_upg
         Prerequisites: wc2_h_str_shield || wc2_o_str_shield
-    GrantConditionOnPrerequisite@supgrade2:
+    GrantConditionOnPrerequisite@upgrade2:
         Condition: shield_upg2
         Prerequisites: wc2_h_str_shield2 || wc2_o_str_shield2
     DamageMultiplier@upgrade:
@@ -1354,7 +1354,7 @@ WC2_HUMAN_KEEP:
 	Tooltip:
 		Name: Keep  
 	Buildable:
-	BuildPaletteOrder: 20
+		BuildPaletteOrder: 20
 		Prerequisites: wc2_human_barracks
 		Queue: Building.human2, RABuilding.human2
 		Description: DOES NOTHING AT THE MOMENT\nAllows for Tier 2.
@@ -1370,7 +1370,7 @@ WC2_HUMAN_CASTLE:
 	Tooltip:
 		Name: Castle 
 	Buildable:
-	BuildPaletteOrder: 21
+		BuildPaletteOrder: 21
 		Prerequisites: wc2_human_keep, wc2_human_stables
 		Queue: Building.human2, RABuilding.human2
 		Description: DOES NOTHING AT THE MOMENT\nAllows for Tier 3.
@@ -1895,7 +1895,7 @@ WC2_HUMAN_ELVEN_ARCHER:
 	Inherits@EXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
 	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
-    Inherits@upgrade_shields: ^wc2_h_str_shield  
+    Inherits@upgrade_h_shields: ^wc2_h_str_shield  
     Inherits@upgrade_arrows: ^wc2_h_str_arrow
 	Valued:
 		Cost: 200
@@ -1948,6 +1948,7 @@ WC2_HUMAN_KNIGHT:
 	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
     Inherits@upgrade_shields: ^wc2_h_str_shield  
     Inherits@upgrade_swords: ^wc2_h_str_sword
+		Inherits@upgrade_paladin: ^wc2_h_paladinupg
 	Valued:
 		Cost: 200
 	Tooltip:
@@ -3329,6 +3330,8 @@ WC2_ORC_SKELETON:
 
 WC2_ORC_TROLL_AXETHROWER:
 	Inherits@WC2_HUMAN_ELVEN_ARCHER: WC2_HUMAN_ELVEN_ARCHER
+	  Inherits@upgrade_shields: ^wc2_h_str_shield 
+    Inherits@upgrade_arrows: ^wc2_h_str_arrow
     Tooltip:
 		Name: Troll Axethrower
 	Buildable:
@@ -3352,7 +3355,6 @@ WC2_ORC_OGRE:
 	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
     Inherits@upgrade_swords: ^wc2_h_str_sword
     Inherits@upgrade_shields: ^wc2_h_str_shield
-	Valued:
 		Cost: 150
 	Tooltip:
 		Name: Ogre
