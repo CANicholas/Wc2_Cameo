@@ -1937,7 +1937,7 @@ WC2_HUMAN_ELVEN_ARCHER:
 		-IdleSequences: idle1,idle2,idle3,idle4
     Voiced:
 		VoiceSet: wc2voicehumanelvenarcher     
-    RenderSprites:  
+	RenderSprites:
 		Scale: 0.6
         
 WC2_HUMAN_KNIGHT:
@@ -1979,16 +1979,15 @@ WC2_HUMAN_KNIGHT:
 	Armament:
 		Weapon: wc2knightslice
 		FireDelay: 7
-   	RevealsShroud:
-		Range: 5c0 
+	RevealsShroud:
+		Range: 5c0
 	WithDeathAnimation:
 		UseDeathTypeSuffix: false
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
-		-IdleSequences: idle1,idle2,idle3,idle4
-    Voiced:
-		VoiceSet: wc2voicehumanknight      
-    RenderSprites:  
+  Voiced:
+  VoiceSet: wc2voicehumanknight      
+	RenderSprites:
 		Scale: 0.6
 
 WC2_HUMAN_BALLISTA:
@@ -1996,7 +1995,6 @@ WC2_HUMAN_BALLISTA:
 	Inherits@WC1Infantry: ^WC1Infantry
 	Inherits@EXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMoveMelee
-	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
     Inherits@upgrade_swords: ^wc2_h_str_ballista
     Inherits@upgrade_shields: ^wc2_h_str_shield
 	Valued:
@@ -2012,9 +2010,9 @@ WC2_HUMAN_BALLISTA:
 		Description: Powerful long range siege unit.
         BuildDuration: 400
         BuildDurationModifier: 100
-		AttackFrontal:
-    RevealsShroud:
-		Range: 5c0 
+	AttackFrontal:
+	RevealsShroud:
+		Range: 5c0
 	Mobile:
 		Speed: 35
 	Health:
@@ -2033,12 +2031,57 @@ WC2_HUMAN_BALLISTA:
 		UseDeathTypeSuffix: false
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
-		-IdleSequences: idle1,idle2,idle3,idle4
-    Voiced:
-		VoiceSet: wc2humancatapult           
-    -Crushable:  
+		-IdleSequences:
+  Voiced:
+  VoiceSet: wc2humancatapult 
 	RenderSprites:
 		Scale: 0.6
+
+WC2_HUMAN_BALLISTA:
+	Inherits: ^Vehicle
+	Inherits@WC1Infantry: ^WC1Infantry
+	Inherits@EXPERIENCE: ^GainsExperience
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@EXT: ^ExternalConditions
+	Inherits@upgrade_swords: ^wc2_h_str_ballista
+	Inherits@upgrade_shields: ^wc2_h_str_shield
+	Valued:
+		Cost: 850
+	Tooltip:
+		Name: Catapult
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+	Buildable:
+		BuildPaletteOrder: 10
+		Prerequisites: wc_h_blacksmith
+		Queue: Infantry.human, RAInfantry.human
+		Description: Siege weapon. Powerful against static targets.
+        BuildDuration: 400
+        BuildDurationModifier: 100
+    AttackFrontal:
+    RevealsShroud:
+		Range: 5c0     
+	Mobile:
+		Speed: 35
+	Armor:
+		Type: Medium        
+	Health:
+		HP: 25000
+    WithMoveAnimation:
+        MoveSequence: run
+    WithAttackAnimation:
+        Sequence: shoot
+	#Food
+	Power:
+		Amount: -30
+	AutoTarget:
+		ScanRadius: 4
+	Armament:
+		Weapon: catapultfire
+	WithDeathAnimation:
+		UseDeathTypeSuffix: false
+    Voiced:
+		VoiceSet: voicehuman 
 
 WC2_HUMAN_DEMOLITIONSQUAD:
 	Inherits: ^Soldier

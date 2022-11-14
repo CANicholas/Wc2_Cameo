@@ -536,7 +536,7 @@ wc2_human_peasant:
 		Start: 0	
 		Facings: -8
 	idle: 
-		Start: 0		
+		Start: 0
         Facings: -8
 	run: 
 		Start: 8
@@ -742,6 +742,10 @@ wc2_human_mage:
 wc2_human_ballista:
 	Inherits: ^WCInfantry
 	stand: 
+		Frames: 0,2,4,6,8,10,12,14
+		Length: 1
+		Facings: -8
+	idle: 
 		Frames: 0,2,4,6,8,10,12,14
 		Length: 1
 		Facings: -8
