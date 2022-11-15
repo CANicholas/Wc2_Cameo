@@ -1994,9 +1994,10 @@ WC2_HUMAN_BALLISTA:
 	Inherits: ^Vehicle
 	Inherits@WC1Infantry: ^WC1Infantry
 	Inherits@EXPERIENCE: ^GainsExperience
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMoveMelee
-    Inherits@upgrade_swords: ^wc2_h_str_ballista
-    Inherits@upgrade_shields: ^wc2_h_str_shield
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits@EXT: ^ExternalConditions
+	Inherits@upgrade_ballista: ^wc2_h_str_ballista
+	Inherits@upgrade_shields: ^wc2_h_str_shield
 	Valued:
 		Cost: 900
 	Tooltip:
@@ -2008,54 +2009,6 @@ WC2_HUMAN_BALLISTA:
 		Prerequisites: wc2_human_blacksmith
 		Queue: Infantry.human2, RAInfantry.human2
 		Description: Powerful long range siege unit.
-        BuildDuration: 400
-        BuildDurationModifier: 100
-	AttackFrontal:
-	RevealsShroud:
-		Range: 5c0
-	Mobile:
-		Speed: 35
-	Health:
-		HP: 25000    
-	Armor:
-		Type: Medium
-	#Food
-	Power:
-		Amount: -30
-	AutoTarget:
-		ScanRadius: 4
-        InitialStance: AttackAnything
-	Armament:
-		Weapon: wc2ballistaFire
-	WithDeathAnimation:
-		UseDeathTypeSuffix: false
-	WithInfantryBody:
-		DefaultAttackSequence: shoot
-		-IdleSequences:
-  Voiced:
-  VoiceSet: wc2humancatapult 
-	RenderSprites:
-		Scale: 0.6
-
-WC2_HUMAN_BALLISTA:
-	Inherits: ^Vehicle
-	Inherits@WC1Infantry: ^WC1Infantry
-	Inherits@EXPERIENCE: ^GainsExperience
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
-	Inherits@EXT: ^ExternalConditions
-	Inherits@upgrade_swords: ^wc2_h_str_ballista
-	Inherits@upgrade_shields: ^wc2_h_str_shield
-	Valued:
-		Cost: 850
-	Tooltip:
-		Name: Catapult
-	UpdatesPlayerStatistics:
-		AddToArmyValue: true
-	Buildable:
-		BuildPaletteOrder: 10
-		Prerequisites: wc_h_blacksmith
-		Queue: Infantry.human, RAInfantry.human
-		Description: Siege weapon. Powerful against static targets.
         BuildDuration: 400
         BuildDurationModifier: 100
     AttackFrontal:
@@ -2077,11 +2030,13 @@ WC2_HUMAN_BALLISTA:
 	AutoTarget:
 		ScanRadius: 4
 	Armament:
-		Weapon: catapultfire
+		Weapon: wc2ballistaFire
 	WithDeathAnimation:
 		UseDeathTypeSuffix: false
     Voiced:
-		VoiceSet: voicehuman 
+		VoiceSet: wc2humancatapult
+	RenderSprites:
+		Scale: 0.6
 
 WC2_HUMAN_DEMOLITIONSQUAD:
 	Inherits: ^Soldier
@@ -3730,7 +3685,7 @@ wc2_goldmine:
 	Tooltip:
 		Name: Gold Mine
 	Buildable:
-		BuildPaletteOrder: 15
+		BuildPaletteOrder: 20
 		Queue: Building.human2, RABuilding.human2, Building.orc2, RABuilding.orc2
         BuildDuration: 375
         BuildDurationModifier: 100
