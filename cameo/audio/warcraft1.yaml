@@ -1,0 +1,131 @@
+####################################################################################################
+#		VOICES
+####################################################################################################
+voicehuman:
+	Voices:
+		Select: hwhat1,hwhat2,hwhat3,hwhat4,hpissed1,hpissed2,hpissed3
+		Attack: hyessir1,hyessir2
+		Action: hyessir1,hyessir2
+		Move: hyessir1,hyessir2
+		Die: hdead
+		Build: hready
+		Burned: hdead
+		Zapped: hdead
+		Poisoned: hdead
+voiceorc:
+	Voices:
+		Select: owhat1,owhat2,owhat3,owhat4,opissed1,opissed2,opissed3
+		Attack: oyessir1,oyessir2,oyessir3,oyessir4
+		Action: oyessir1,oyessir2,oyessir3,oyessir4
+		Move: oyessir1,oyessir2,oyessir3,oyessir4
+		Die: odead
+		Build: oready
+		Burned: odead
+		Zapped: odead
+		Poisoned: odead
+        
+voiceskeleton:
+	Voices:
+		Select: skeletonwhat1,skeletonwhat2,skeletonwhat3
+		Attack: skeletonyesattack1,skeletonyesattack2,skeletonyesattack3
+		Action: skeletonyes1,skeletonyes2,skeletonyes3
+		Move: skeletonyes1,skeletonyes2,skeletonyes3
+		Die: skeletondeath1
+		Build: skeletonyes1,skeletonyes2,skeletonyes3
+		Burned: skeletondeath1
+		Zapped: skeletondeath1
+		Poisoned: skeletondeath1        
+####################################################################################################
+#		HUMAN STRUCTURES
+####################################################################################################
+
+humantownhallvoice:
+	Voices:
+		Select: whattownhall
+		
+humanfarmvoice:
+	Voices:
+		Select: whatfarm
+		
+humanbarracksvoice:
+	Voices:
+		Select: whathumanbarracks
+		
+humanblacksmithvoice:
+	Voices:
+		Select: smith
+
+humanlumbermillvoice:
+	Voices:
+		Select: whathumanlumbermill
+		
+humanstablevoice:
+	Voices:
+		Select: stables
+		
+humanchurchvoice:
+	Voices:
+		Select: hchant
+		
+humantowervoice:
+	Voices:
+		Select: whathumantower
+		
+humanstormwindvoice:
+	Voices:
+		Select: whatstormwind
+
+humanguardtowervoice:
+  	Voices:
+		Select: wc_h_guard_tower_what      
+####################################################################################################
+#		ORC STRUCTURES
+####################################################################################################
+
+orctownhallvoice:
+	Voices:
+		Select: whatorctownhall
+		
+orcfarmvoice:
+	Voices:
+		Select: whatorcfarm
+		
+orcbarracksvoice:
+	Voices:
+		Select: whatorcbarracks
+		
+orcblacksmithvoice:
+	Voices:
+		Select: smith
+
+orclumbermillvoice:
+	Voices:
+		Select: whatorclumbermill
+		
+orckennelvoice:
+	Voices:
+		Select: kennel
+		
+orctemplevoice:
+	Voices:
+		Select: ochant
+		
+orctowervoice:
+	Voices:
+		Select: whatorctower
+		
+orcblackrockvoice:
+	Voices:
+		Select: whatorcblackrock
+        
+orcguardtowervoice:
+  	Voices:
+		Select: wc_o_guard_tower_what   
+        
+####################################################################################################
+#		NEUTRAL STRUCTURES
+####################################################################################################
+
+neutralgoldminevoice:
+	Voices:
+		Select: whatgoldmine

@@ -1,0 +1,324 @@
+^DamagedFire:
+	flame1: smallBurn.png
+		Length: *
+		ZOffset: 512
+		Offset: 0, -9
+		AddExtension: False
+	flame2: bigBurn.png
+		Length: *
+		ZOffset: 512
+		Offset: 0, -9
+		AddExtension: False
+^WCInfantry:
+	WithDeathAnimation:
+        UseDeathTypeSuffix: false
+        CrushedSequence: die
+        CrushedSequencePalette: player
+        CrushedPaletteIsPlayerPalette: true
+####################################################################################################
+#		BUILDING WORMS
+####################################################################################################
+wcon:
+	Defaults:
+		AddExtension: False
+	Inherits: ^DamagedFire
+	idle: wormsConyard.png
+		Start: 4
+		Length: 1
+	damaged-idle: wormsConyard.png
+		Start: 5
+		Length: 1
+	dead: bigBoom.png
+		Start: 0
+		Length: 13
+		Tick: 80
+	make: wormsConyard.png
+		Start: 0
+		Length: 5
+		Tick: 320
+	icon: chromeWormsConyard.png
+		AddExtension: False
+
+laspy:
+	Defaults:
+		Offset: 0,-12
+	idle: wormLaserPyramid.png
+		Length: *
+		Tick: 300
+		AddExtension: False
+	damaged-idle: wormLaserPyramid.png
+		Length: *
+		Tick: 300
+		AddExtension: False
+	active: wormLaserPyramid.png
+		Start: 0
+		Length: 39
+		Tick: 150
+		AddExtension: False
+	damaged-active: wormLaserPyramid.png
+		Start: 0
+		Length: 39
+		Tick: 150
+		AddExtension: False
+	dead: wormLaserPyramid.png
+		Start: 0
+		Length: 39
+		Tick: 150
+		AddExtension: False
+	make: wormLaserPyramid.png
+		Start: 0
+		Length: 39
+		Tick: 150
+		AddExtension: False
+	icon: chromeWormLaserPyramid.png
+		AddExtension: False
+		Offset: 0,0
+
+####################################################################################################
+#		UNIT WORMS
+####################################################################################################
+wormuzi:
+	Inherits: ^WCInfantry
+	stand: wormRunUzi.png
+		Start: 0	
+		Facings: -8
+		AddExtension: False
+	run: wormRunUzi.png
+		Start: 8
+		Length: 13
+		Facings: -8
+		Tick: 100
+		AddExtension: False
+	shoot: wormUzi.png
+		Start: 0
+		Length: 2
+		Facings: -8
+		Tick: 90
+		AddExtension: False
+	die: wormDie.png
+		Length: *
+		Tick: 80
+		AddExtension: False
+	die-crushed: wormCrush.png
+		Length: 33
+		Tick: 120
+		AddExtension: False
+	icon: chromeWormUzi.png
+		AddExtension: False
+wormgrenade:
+	Inherits: ^WCInfantry
+	stand: wormRunGrenade.png
+		Start: 0
+		Facings: -8
+		AddExtension: False
+	run: wormRunGrenade.png
+		Start: 8
+		Length: 13
+		Facings: -8
+		Tick: 150
+		AddExtension: False
+	shoot: wormGrenade.png
+		Start: 0
+		Length: 2
+		Facings: -8
+		Tick: 150
+		AddExtension: False
+	die: wormDie.png
+		Length: *
+		Tick: 80
+		AddExtension: False
+	die-crushed: worm.png
+		Length: *
+		Tick: 120
+		AddExtension: False
+	icon: chromeWormGrenade.png
+		AddExtension: False
+wormbazooka:
+	Inherits: ^WCInfantry
+	stand: wormRunBazooka.png
+		Start: 0
+		Facings: -8
+		AddExtension: False
+	run: wormRunBazooka.png
+		Start: 8
+		Length: 13
+		Facings: -8
+		Tick: 100
+		AddExtension: False
+	shoot: wormBazooka.png
+		Start: 0
+		Length: 2
+		Facings: -8
+		Tick: 200
+		AddExtension: False
+	die: wormDie.png
+		Length: *
+		Tick: 80
+		AddExtension: False
+	die-crushed: wormCrush.png
+		Length: 33
+		Tick: 120
+		AddExtension: False
+	icon: chromeWormBazooka.png
+		AddExtension: False
+wormflamer:
+	Inherits: ^WCInfantry
+	stand: wormRunFlamer.png
+		Start: 0
+		Facings: -8
+		AddExtension: False
+	run: wormRunFlamer.png
+		Start: 8
+		Length: 13
+		Facings: -8
+		Tick: 100
+		AddExtension: False
+	shoot: wormFlamer.png
+		Start: 0
+		Length: 2
+		Facings: -8
+		Tick: 200
+		AddExtension: False
+	die: wormDie.png
+		Length: *
+		Tick: 80
+		AddExtension: False
+	die-crushed: wormCrush.png
+		Length: 33
+		Tick: 120
+		AddExtension: False
+	muzzle:
+		Combine:
+			flame-n:
+				Length: *
+				Offset: 5,8
+			flame-nw:
+				Length: *
+				Offset: 4,10
+			flame-w:
+				Length: *
+				Offset: 6,10
+			flame-sw:
+				Length: *
+				Offset: 4,7
+			flame-s:
+				Length: *
+				Offset: 2,5
+			flame-se:
+				Length: *
+				Offset: -2,7
+			flame-e:
+				Length: *
+				Offset: -6,10
+			flame-ne:
+				Length: *
+				Offset: -2,10
+		Facings: 8
+		Length: 13
+	icon: chromeWormFlamer.png
+		AddExtension: False
+wormengineer:
+	Inherits: ^WCInfantry
+	stand: wormRunEngineer.png
+		Start: 0
+		Facings: -8
+		AddExtension: False
+	run: wormRunEngineer.png
+		Start: 8
+		Length: 13
+		Facings: -8
+		Tick: 100
+		AddExtension: False
+	die: wormDie.png
+		Length: *
+		Tick: 80
+		AddExtension: False
+	die-crushed: wormCrush.png
+		Length: 33
+		Tick: 120
+		AddExtension: False
+	icon: chromeWormEngineer.png
+		AddExtension: False
+
+skunk:
+	Inherits: ^WCInfantry
+	stand: wormSkunk.png
+		Start: 0
+		Facings: -8
+		AddExtension: False
+	run: wormSkunk.png
+		Start: 8
+		Length: 7
+		Facings: -8
+		Tick: 45
+		AddExtension: False
+	shoot: wormSkunk.png
+		Start: 64
+		Length: 7
+		Facings: -8
+		Tick: 150
+		AddExtension: False
+	die: wormSkunk.png
+		Start: 120
+		Length: 8
+		Tick: 60
+		AddExtension: False
+	muzzle:
+		Combine:
+			chem-n:
+				Length: *
+				Offset: 5,8
+			chem-nw:
+				Length: *
+				Offset: 4,10
+			chem-w:
+				Length: *
+				Offset: 6,10
+			chem-sw:
+				Length: *
+				Offset: 4,7
+			chem-s:
+				Length: *
+				Offset: 2,5
+			chem-se:
+				Length: *
+				Offset: -2,7
+			chem-e:
+				Length: *
+				Offset: -6,10
+			chem-ne:
+				Length: *
+				Offset: -2,10
+		Facings: 8
+		Length: 13
+	icon: chromeWormSkunk.png
+		AddExtension: False
+wtruck:
+	idle: wormSheep.png
+		Start: 0
+		Facings: -8
+		AddExtension: False
+	stand: wormSheep.png
+		Start: 0
+		Facings: -8
+		AddExtension: False
+	run: wormSheep.png
+		Start: 8
+		Length: 8
+		Facings: -8
+		Tick: 100
+		AddExtension: False
+	die: wormDie.png
+		Length: *
+		Tick: 80
+		AddExtension: False
+	die-crushed: wormSheep.png
+		Length: *
+		Tick: 80
+	icon: chromeWormSheep.png
+		AddExtension: False
+
+icon:
+	Defaults:
+		AddExtension: False
+    wormicon: wormicon.shp

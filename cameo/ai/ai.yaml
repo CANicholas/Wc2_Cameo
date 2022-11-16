@@ -1,0 +1,6594 @@
+Player:
+	ModularBot@EasyAI:
+		Name: Easy AI
+		Type: easy
+	ModularBot@MediumAI:
+		Name: Medium AI
+		Type: medium
+	ModularBot@HardAI:
+		Name: Hard AI
+		Type: hard
+	ModularBot@BrutalAI:
+		Name: Brutal AI
+		Type: brutal
+	ModularBot@AirForce:
+		Name: Air-Naval AI
+		Type: airforce
+	GrantConditionOnBotOwner@easyai:
+		Condition: enable-easy-ai
+		Bots: easy
+	GrantConditionOnBotOwner@mediumai:
+		Condition: enable-medium-ai
+		Bots: medium
+	GrantConditionOnBotOwner@hardai:
+		Condition: enable-hard-ai
+		Bots: hard
+	GrantConditionOnBotOwner@brutalai:
+		Condition: enable-brutal-ai
+		Bots: brutal
+	GrantConditionOnBotOwner@airforce:
+		Condition: enable-airforce-ai
+		Bots: airforce
+	ProvidesPrerequisite@botplayer:
+		Prerequisite: botplayer
+		RequiresCondition: enable-easy-ai || enable-medium-ai || enable-hard-ai || enable-airforce-ai || enable-brutal-ai
+	ProvidesPrerequisite@hardbot:
+		Prerequisite: hardbotplayer
+		RequiresCondition: enable-airforce-ai || enable-hard-ai || enable-brutal-ai
+	ProvidesPrerequisite@brutalbot:
+		Prerequisite: brutalbotplayer
+		RequiresCondition: enable-brutal-ai || enable-airforce-ai
+	ProvidesPrerequisite@brutalorhuman:
+		Prerequisite: brutalaiorhuman
+		RequiresCondition: !enable-easy-ai && !enable-medium-ai && !enable-hard-ai
+	SupportPowerBotModuleCA:
+		RequiresCondition: enable-easy-ai || enable-medium-ai || enable-hard-ai || enable-airforce-ai || enable-brutal-ai
+		Decisions:
+			AirstrikePower@mininuke:
+				OrderName: Parachuted Mininuke
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
+  			ZombiesAmbush:
+				OrderName: ZombieAmbush
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 6
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 7c0               
+			Airstrike@Chopper:
+				OrderName: AirstrikeChopper
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+			Airstrike@Polmav:
+				OrderName: AirstrikePolmav
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+			ParatroopersPower@paratroopers:
+				OrderName: Scavenger Supply
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 8c0
+			ParatroopersPower@paratroopers2:
+				OrderName: Scavenger Supply x3
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: None
+					CheckRadius: 8c0
+			AirstrikePower@greenbombs:
+				OrderName: Tiberium Seeds
+				Consideration:
+					Against: Ally
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+			AirstrikePower@bluebombs:
+				OrderName: Blue Tiberium Seeds
+				Consideration:
+					Against: Ally
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+			CityInstructor:
+				OrderName: UpgradeVeteran
+				Consideration:
+					Against: Ally
+					Types: Infantry, Vehicle
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 2c0
+			CityEliteInstructor:
+				OrderName: UpgradeElite
+				Consideration:
+					Against: Ally
+					Types: Infantry, Vehicle
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 2c0
+			CityArchitect:
+				OrderName: UpgradeBuilding
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			CityEliteArchitect:
+				OrderName: UpgradeBuilding2
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			spyplane:
+				OrderName: SovietSpyPlane
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			IronCurtain:
+				OrderName: IronCurtain
+				MinimumAttractiveness: 3000
+				FineScanRadius: 2
+				Consideration@1:
+					Against: Ally
+					Types: Vehicle, Tank
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+			Chronoshift:
+				OrderName: ChronoshiftAI
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water, Defense
+					Attractiveness: -1
+					TargetMetric: None
+					CheckRadius: 8c0
+			GeneticMutator:
+				OrderName: GeneticMutator
+				MinimumAttractiveness: 1000
+				FineScanRadius: 3
+				Consideration@1:
+					Against: Enemy
+					Types: Infantry
+					Attractiveness: 5
+					TargetMetric: Value
+					CheckRadius: 2c0
+			ForceShield:
+				OrderName: ForceShield
+				MinimumAttractiveness: 1000
+				FineScanRadius: 3
+				Consideration@1:
+					Against: Ally
+					Types: aiforceshield
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 3c0
+			ra2spyplane:
+				OrderName: SovietRA2SpyPlane
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			paratroopers:
+				OrderName: SovietParatroopers
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water, Defense
+					Attractiveness: -1
+					TargetMetric: None
+					CheckRadius: 8c0
+			ra2paratroopers:
+				OrderName: USA Paratroopers
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water, Defense
+					Attractiveness: -1
+					TargetMetric: None
+					CheckRadius: 8c0
+			ra2airportpara:
+				OrderName: Allies2Paratroopers
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water, Defense
+					Attractiveness: -1
+					TargetMetric: None
+					CheckRadius: 8c0
+			ra2chrono:
+				OrderName: RA2ChronoshiftAI
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water, Defense
+					Attractiveness: -1
+					TargetMetric: None
+					CheckRadius: 8c0
+			droppods:
+				OrderName: GDI Drop
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water, Defense
+					Attractiveness: -1
+					TargetMetric: None
+					CheckRadius: 8c0
+			MutCommando:
+				OrderName: MutantCommando
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 4c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water, Defense
+					Attractiveness: -1
+					TargetMetric: None
+					CheckRadius: 4c0
+			Airstrike:
+				OrderName: AirstrikePowerInfoOrder
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+			Parabombs:
+				OrderName: Parabombs
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			IonCannonPower:
+				OrderName: IonCannonPowerInfoOrder
+				MinimumAttractiveness: 1000
+				FineScanRadius: 2
+				Consideration@1:
+					Against: Enemy
+					Types: Air, Tank, Vehicle, Infantry, Water
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 3c0
+			NukePower:
+				OrderName: NukePowerInfoOrder
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
+			LightningStorm:
+				OrderName: LightningStorm
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
+			EMPPower:
+				OrderName: EMPPower
+				MinimumAttractiveness: 1000
+				Consideration@1:
+					Against: Enemy
+					Types: Tank, Vehicle
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 6c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 6c0
+			MultiMissile:
+				OrderName: TSClusterMissile
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 3c0
+			ChemicalMissile:
+				OrderName: TSChemicalMissile
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 4c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 4c0
+				Consideration@3:
+					Against: Enemy
+					Types: Vehicle
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 3c0
+			MutRampage:
+				OrderName: WildlifeRampage
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 6c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 2c0
+			PsychicDominator:
+				OrderName: PsychicDominator
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 8c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 4c0
+			GLAAmbush:
+				OrderName: GLAmbush
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			GLASneak:
+				OrderName: GLSneakAttack
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			GLAAnthraxBomb:
+				OrderName: GLAAnthraxBomb
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Infantry
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			GLAScudStorm:
+				OrderName: GLAScudStorm
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
+			CHArtilleryBarrage:
+				OrderName: CHArtilleryBarrage
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Infantry, Vehicle
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
+			EmergencyRepair:
+				OrderName: EmergencyRepair
+				MinimumAttractiveness: 3000
+				FineScanRadius: 2
+				Consideration@1:
+					Against: Ally
+					Types: Repair
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+			FrenzyPower:
+				OrderName: FrenzyPower
+				MinimumAttractiveness: 3000
+				FineScanRadius: 2
+				Consideration@1:
+					Against: Ally
+					Types: Vehicle, Tank
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+			CHCarpetBombing:
+				OrderName: CHCarpetBombing
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Infantry, Vehicle, Defense
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+			CHEMP:
+				OrderName: CHEMPBomb
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 2c0
+            SCHNeutronBomb:
+                OrderName: SCHNeutronBomb
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 2c0
+            schnapalmstrike:
+                OrderName: schnapalmstrike
+                MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure, Infantry
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0        
+			CHClusterBomb:
+				OrderName: CHClusterBomb
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+            SCHNeutronClusterBomb:
+				OrderName: SCHNeutronClusterBomb
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+			TankDrop:
+				OrderName: TankDrop
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+            SCHTankDrop1:
+                OrderName: SCHTankDrop1
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+            SCHTankDrop2:
+                OrderName: SCHTankDrop2
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+            SCHTankDrop3:
+                OrderName: SCHTankDrop3
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			MinigunnerDrop:
+				OrderName: MinigunnerDrop
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			spydrone:
+				OrderName: SpydronePower
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+            susaintelligence:
+				OrderName: susaintelligence
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			USAParatroopers:
+				OrderName: USAParatroopers
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+            usapopuppatriotsp1:
+				OrderName: usapopuppatriotsp1
+				MinimumAttractiveness: 1000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure, Ground
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 6c0
+				Consideration@2:
+					Against: Ally
+					Types: Structure, Ground
+					Attractiveness: 500
+					TargetMetric: Value
+					CheckRadius: 6c0
+            usapopuppatriotsp2:
+				OrderName: usapopuppatriotsp2
+				MinimumAttractiveness: 1000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure, Ground
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 6c0
+				Consideration@2:
+					Against: Ally
+					Types: Structure, Ground
+					Attractiveness: 500
+					TargetMetric: Value
+					CheckRadius: 6c0
+            usapopuppatriotsp3:
+				OrderName: usapopuppatriotsp3
+				MinimumAttractiveness: 1000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure, Ground
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 6c0
+				Consideration@2:
+					Against: Ally
+					Types: Structure, Ground
+					Attractiveness: 500
+					TargetMetric: Value
+					CheckRadius: 6c0
+			AirstrikePowerSpectre:
+				OrderName: AirstrikePowerSpectre
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+            AirstrikePowerSpectre2:
+				OrderName: AirstrikePowerSpectre2
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0       
+            AirstrikePowerSpectre3:
+				OrderName: AirstrikePowerSpectre3
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0       
+            RodsFromGods1:  
+                OrderName: RodsFromGods1
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0             
+            RodsFromGods2:
+                OrderName: RodsFromGods2
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0             
+            RodsFromGods3:
+                OrderName: RodsFromGods3
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0             
+            HyperSonicBomb:
+                OrderName: HyperSonicBomb
+                MinimumAttractiveness: 2000
+                Consideration@1:
+					Against: Enemy
+					Types: Structure, Defence
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0                   
+            susabradleyparadrop1:
+                OrderName: susabradleyparadrop1
+                MinimumAttractiveness: 2000
+                Consideration@1:
+					Against: Enemy
+					Types: Structure, Defence
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0                   
+            susabradleyparadrop2:
+                OrderName: susabradleyparadrop2
+                MinimumAttractiveness: 2000
+                Consideration@1:
+					Against: Enemy
+					Types: Structure, Defence
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0                   
+            susabradleyparadrop3:
+                OrderName: susabradleyparadrop3
+                MinimumAttractiveness: 2000
+                Consideration@1:
+					Against: Enemy
+					Types: Structure, Defence
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0                   
+            susaamdggrenade1:
+				OrderName: susaamdggrenade1
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water, Defense
+					Attractiveness: -1
+					TargetMetric: None
+					CheckRadius: 8c0
+            susaamdggrenade2:
+				OrderName: susaamdggrenade2
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water, Defense
+					Attractiveness: -1
+					TargetMetric: None
+					CheckRadius: 8c0
+            susaamdggrenade3:
+				OrderName: susaamdggrenade3
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water, Defense
+					Attractiveness: -1
+					TargetMetric: None
+					CheckRadius: 8c0
+            susaparadrop1:
+				OrderName: susaparadrop1
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+            susaparadrop2:
+				OrderName: susaparadrop2
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0       
+            susaparadrop3:
+				OrderName: susaparadrop3
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0       
+            susaparadrop1laser:
+				OrderName: susaparadrop1laser
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+            susaparadrop2laser:
+				OrderName: susaparadrop2laser
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0       
+            susaparadrop3laser:
+				OrderName: susaparadrop3laser
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+            susahalodrop1:
+                OrderName: susahalodrop1
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0 
+            susahalodrop2:
+                OrderName: susahalodrop2
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0     
+            susahalodrop3:
+                OrderName: susahalodrop3
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0 
+            USAA101:
+				OrderName: USAA101
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+            USAA102:
+				OrderName: USAA102
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0       
+            USAA103:
+				OrderName: USAA103
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0       
+            susaf16sp:
+                OrderName: susaf16sp
+                MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0         
+            susaucav1:
+                OrderName: susaucav1
+                MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0              
+            susaucav2:
+                OrderName: susaucav2
+                MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0              
+            susaucav3:
+                OrderName: susaucav3
+                MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0              
+			USAFuelBomb:
+				OrderName: USAFuelBomb
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Defence
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+			USALeaflet:
+				OrderName: USALeaflet
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Infantry, Vehicle
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 2c0
+			USAParticleCannon:
+				OrderName: ParticleCannon
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Air, Tank, Vehicle, Infantry, Water
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 3c0
+            sowfighter:
+				OrderName: sowfighter
+				MinimumAttractiveness: 1000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 1c0
+                Consideration@2:
+					Against: Enemy
+					Types: Infantry, Vehicle
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 1c0 
+            sowbomber:
+				OrderName: sowbomber
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 3c0   
+                Consideration@2:
+					Against: Enemy
+					Types: Vehicle
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0 
+            sowtripler:
+				OrderName: sowtripler
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 3c0   
+                Consideration@2:
+					Against: Enemy
+					Types: Vehicle
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0     
+            sowasteroid:
+				OrderName: sowasteroid
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 3c0        
+			ornistrike:
+                OrderName: ornistrike
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Tank, Infantry
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 4c0
+            oornistrike:
+                OrderName: oornistrike
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Tank, Infantry
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 4c0
+			deathhand:
+				OrderName: deathhand
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
+            CashBounty1:
+				OrderName: CashBounty1
+				MinimumAttractiveness: 1000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure, Air, Ground, Water
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+            CashBounty2:
+				OrderName: CashBounty2
+				MinimumAttractiveness: 1000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure, Air, Ground, Water
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+            CashBounty3:
+				OrderName: CashBounty3
+				MinimumAttractiveness: 1000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure, Air, Ground, Water
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+            odeathhand:
+				OrderName: odeathhand
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
+            chaoslightning:
+            	OrderName: chaoslightning
+				MinimumAttractiveness: 1000    
+                Consideration:
+					Against: Enemy
+					Types: Vehicle, Tank, Infantry
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 2c0
+		    callatrfremen:
+				OrderName: callatrfremen
+				Consideration@1:
+					Against: Ally
+            ProduceActorPower.Fremen:
+                OrderName: ProduceActorPower.Fremen
+                Consideration@1:
+					Against: Ally
+            ProduceActorPower.Saboteur:
+                OrderName: ProduceActorPower.Saboteur
+                Consideration@1:
+					Against: Ally
+            callfremen:
+                OrderName: callfremen
+            	Consideration@1:
+					Against: Enemy
+                    Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+            sardaukardrop:
+                OrderName: sardaukardrop
+				Consideration@1:
+					Against: Enemy
+                    Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+            callsaboteur:
+				OrderName: callsaboteur
+				Consideration@1:
+					Against: Ally        
+            sandworm:
+            	OrderName: sandworm
+				Consideration@1:
+					Against: Enemy   
+            mercenary_1:
+                OrderName: mercenary_1
+            	Consideration@1:
+					Against: Enemy
+                    Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+            mercenary_2:
+                OrderName: mercenary_2
+            	Consideration@1:
+					Against: Enemy
+                    Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+            mercenary_3:
+                OrderName: mercenary_3
+            	Consideration@1:
+					Against: Enemy
+                    Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0                                  
+            rainoffire:
+                OrderName: rainoffire
+                Consideration@1:
+					Against: Enemy
+                    Types: Structure
+					Attractiveness: 10
+					TargetMetric: Value
+					CheckRadius: 5c0
+            poisoncloud:
+                OrderName: poisoncloud
+                Consideration@1:
+					Against: Enemy
+                    Types: Structure
+					Attractiveness: 10
+					TargetMetric: Value
+					CheckRadius: 5c0        
+			AndyRepair:
+				OrderName: AndyRepair
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			AndyUpgrade:
+				OrderName: AndyUpgrade
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			MaxForce:
+				OrderName: MaxForce
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			MaxBlast:
+				OrderName: MaxBlast
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			SamiDoubleTime:
+				OrderName: SamiDoubleTime
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			SamiVictoryMarch:
+				OrderName: SamiVictoryMarch
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			NellLuckyStar:
+				OrderName: NellLuckyStar
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			NellLadyLuck:
+				OrderName: NellLadyLuck
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			HachiBarter:
+				OrderName: HachiBarter
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 22
+					TargetMetric: None
+					CheckRadius: 3c0
+			JakeBeatDown:
+				OrderName: JakeBeatDown
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			JakeBlockRock:
+				OrderName: JakeBlockRock
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			RachelLuckyLass:
+				OrderName: RachelLuckyLass
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			RachelCoveringFire:
+				OrderName: RachelCoveringFire
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 3c0
+			OlafBlizzard:
+				OrderName: OlafBlizzard
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 3c0
+			OlafWinterFury:
+				OrderName: OlafWinterFury
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 3c0
+			GritSnipeAttack:
+				OrderName: GritSnipeAttack
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			GritSuperSnipe:
+				OrderName: GritSuperSnipe
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			ColinGoldRush:
+				OrderName: ColinGoldRush
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			ColinThePowerofMoney:
+				OrderName: ColinThePowerofMoney
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			SashaWarBonds:
+				OrderName: SashaWarBonds
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 5
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 3c0
+			KanbeiMoraleBoost:
+				OrderName: KanbeiMoraleBoost
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			KanbeiSamuraiSpirit:
+				OrderName: KanbeiSamuraiSpirit
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			SonjaEnhancedVision:
+				OrderName: SonjaEnhancedVision
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			SonjaCounterBreak:
+				OrderName: SonjaCounterBreak
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			GrimmKnuckleduster:
+				OrderName: GrimmKnuckleduster
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			GrimmHaymaker:
+				OrderName: GrimmHaymaker
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			SenseiCopterCommand:
+				OrderName: SenseiCopterCommand
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 22
+					TargetMetric: None
+					CheckRadius: 3c0
+			SenseiAirborneAssault:
+				OrderName: SenseiAirborneAssault
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 22
+					TargetMetric: None
+					CheckRadius: 3c0
+			DrakeTsunami:
+				OrderName: DrakeTsunami
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 3c0
+			DrakeTyphoon:
+				OrderName: DrakeTyphoon
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 3c0
+			EagleLightningDrive:
+				OrderName: EagleLightningDrive
+				Consideration:
+					Against: Ally
+					Types: Air
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			EagleLightningStrike:
+				OrderName: EagleLightningStrike
+				Consideration:
+					Against: Ally
+					Types: Air
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			JessTurboCharge:
+				OrderName: JessTurboCharge
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			JessOverdrive:
+				OrderName: JessOverdrive
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			JavierTowerShield:
+				OrderName: JavierTowerShield
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			JavierTowerofPower:
+				OrderName: JavierTowerofPower
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			FlakBruteForce:
+				OrderName: FlakBruteForce
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			FlakBarbaricBlow:
+				OrderName: FlakBarbaricBlow
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			LashTerrainTactics:
+				OrderName: LashTerrainTactics
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			LashPrimeTactics:
+				OrderName: LashPrimeTactics
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			AdderSideslip:
+				OrderName: AdderSideslip
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			AdderSidewinder:
+				OrderName: AdderSidewinder
+				Consideration:
+					Against: Ally
+					Types: Power
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			HawkeBlackWave:
+				OrderName: HawkeBlackWave
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 1c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 1c0
+			HawkeBlackStorm:
+				OrderName: HawkeBlackStorm
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 1c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 1c0
+			KindleUrbanBlight:
+				OrderName: KindleUrbanBlight
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure, Building
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -1
+					TargetMetric: Value
+					CheckRadius: 1c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 1c0
+			SturmMeteorStrike:
+				OrderName: SturmMeteorStrike
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
+			BoltExmachina:
+				OrderName: BoltExmachina
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Ally
+					Types: Air, Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 7c0
+			WillRallyCry:
+				OrderName: WillRallyCry
+				Consideration:
+					Against: Ally
+					Types: Air
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			BrennerReinforce:
+				OrderName: BrennerReinforce
+				Consideration:
+					Against: Ally
+					Types: Air
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			IsabellaDeepStrike:
+				OrderName: IsabellaDeepStrike
+				Consideration:
+					Against: Ally
+					Types: Air
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			LinScout:
+				OrderName: LinScout
+				Consideration:
+					Against: Ally
+					Types: Air
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			DavisTankBlast:
+				OrderName: DavisTankBlast
+				Consideration:
+					Against: Ally
+					Types: Air
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			GreyfieldSupplyChain:
+				OrderName: GreyfieldSupplyChain
+				Consideration:
+					Against: Ally
+					Types: Air
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			WaylonWingman:
+				OrderName: WaylonWingman
+				Consideration:
+					Against: Ally
+					Types: Air
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			GageLongshot:
+				OrderName: GageLongshot
+				Consideration:
+					Against: Ally
+					Types: Air
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			TashaSonicBoom:
+				OrderName: TashaSonicBoom
+				Consideration:
+					Against: Ally
+					Types: Air
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 3c0
+			TabithaFirestorm:
+				OrderName: TabithaFirestorm
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 1c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 1c0
+			PennyStormFront:
+				OrderName: PennyStormFront
+				MinimumAttractiveness: 3000
+				Consideration@1:
+					Against: Enemy
+					Types: Vehicle, Infantry
+					Attractiveness: 3
+					TargetMetric: Value
+					CheckRadius: 3c0
+				Consideration@2:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -20
+					TargetMetric: Value
+					CheckRadius: 1c0
+				Consideration@3:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 1c0          
+			AnswerA10Strike:
+				OrderName: AnswerA10Strike
+				MinimumAttractiveness: 1000
+				FineScanRadius: 2
+				Consideration@1:
+					Against: Enemy
+					Types: Air, Tank, Vehicle, Infantry, Water
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@2:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 2
+					TargetMetric: Value
+					CheckRadius: 2c0
+				Consideration@3:
+					Against: Ally
+					Types: Ground, Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 3c0
+	HarvesterBotModuleCA:
+		RequiresCondition: enable-easy-ai || enable-medium-ai || enable-hard-ai || enable-airforce-ai || enable-brutal-ai
+		HarvesterTypes: harv, raharv, ra2cmin, ra2harv, yrslav, scscv, scprobe, scbotdrone, cityharvester, jack, c1harv, c2harv, c1raharv, c2raharv, cra2cmin, cra2harv, cyrslav, cscscv, cscprobe, cscdrone, ccityharvester, tsharv, glworker, chharv, usahook, leangharv, swharv, harvester, facedancer_harv, wc_h_peasant, wc_o_peon, ra2slav, harv.camea, drfrigth.imperium, drfrigth.freedom, drhoverfright.imperium, drhoverfright.freedom, wh40kharv, 315chatarrero, awdozer, susasupplytruck, susapavelow, drgather, sc2kbulldozer, oharvester, oharvester.starport, schlargesupply, tinyant, schsupplyhelicopterleang, dtharv, xmas_green_elf_worker, iokworker, scscv.actibliz
+		RefineryTypes: proc, raproc, ra2narefn, ra2narefndoom, ra2garefn, yryarefn,	yryarefn.empy, 2100oil, screfinery, scassimilator, scextractor, cityharbor, citybotr, citybotr2, xfact, shippingboxbot, c1proc, c2proc, c1raproc, c2raproc, cra2narefn, cra2garefn, cyryarefn, c12100oil, c22100oil, cscrefinery, cscassimilator, cscextractor,	ccityharbor, ccityr, tsproc, glsupply, chsupply, usasupply, leangsupply, sowgoldmine, sowgoldmine_a, sowgoldmine_b, sowgoldmine_c, sowgoldmine_d, sowgoldmine_e, sowgoldmine_f, sowgoldmine_g, sowgoldmine_h, sowgoldmine_i, swproc, refinery, d2k_silo_tleilaxu, wc_h_lumbermill, wc_o_lumbermill, raproc.camea, drpowr, drwaterl.imperium, drwaterl.freedom, wh40kproc, wh40kproc.e1, 315proc, susasupply, susasupply_air, susasupply_armor, orefinery, sc2krecyclingcenter, qnest, dtproc, xmas_elves_refinery, tagdiref, tanodref, tamutref, iokproc, drwaterl.actibliz
+	BuildingRepairBotModule:
+		RequiresCondition: enable-easy-ai || enable-medium-ai || enable-hard-ai || enable-airforce-ai || enable-brutal-ai
+	McvManagerBotModule:
+		RequiresCondition: enable-easy-ai || enable-medium-ai || enable-hard-ai || enable-airforce-ai || enable-brutal-ai
+		McvTypes: mcv.gdi, mcv.nod, ramcv.allies, ramcv.soviet, ra2amcv, ra2smcv, yrpcv, yrsmin, 2100mcv.alpha, 2100mcv.scavenger, sctmcv, scpmcv, sczmcv, citymcv, c1mcv, cyrsmin, tsmcvgdi, tsmcvnod, tsmcvmutant, tsmcvcabal, mm1mcv, mm2mcv, mm1ramcv, mm2ramcv, mmra2amcv, mmra2smcv, mmyrpcv, mm12100mcv, mm22100mcv, mmsctmcv, mmscpmcv, mmsczmcv, mmcitymcv, glamcv, chnmcv, usamcv, leangmcv, sow_mcv, wcon, mcv.orange, mcv.bluemoon, mcv.yellowcomet, mcv.greenearth, mcv.blackhole, mcv.daysofruins, mcv.rubinelle, mcv.ids, mcv.newrubinelle, mcv.lazurian, swmcv.empire, swmcv.rebels, swmcv.republic, swmcv.separatist, swmcv.hutt, d2k_mcv, wc_h_townhall, wc_o_townhall, mcv.camea, mcv.imperium, mcv.freedomguard, mcv.shadowhand, mcv.xenite, mcv.togran, wh40kmcv, wc_h_mcv, wc_o_mcv, d2k_tleilaxu_mcv, mcv.flaite, mcv.rubinelle, mcv.ids, mcv.newrubinelle, mcv.lazurian, shockwave_mcv, modramcv.allies, modramcv.soviet, mcv.eodalien, mcv2.eodalien, omcv, sc2kmcv, qant, qant.bot, modramcv.japan, modcore, modcore1, modcore2, modcore3, modcore4, modcore5, modcore6, modcore7, mcv.tomorrow, mcv.answer, mcv.dtusa, ramcv.dtrussia, mcv.dtjapan, mcv.tagdi, mcv.tanod, mcv.taforgotten, mcv.tagdi, mcv.tanod, mcv.tamutant, mcv.modgdi, mcv.modnod, mcv.iok, mcv.actibliz
+		ConstructionYardTypes: fact.gdi, fact.nod, rafact.allies, rafact.soviet, ra2nacnst, ra2gacnst, yrnacnst, tsgtcnstgdi, tsgtcnstnod, tsgtcnstmutant, tsgtcnstcabal, 2100hq.alpha, 2100hq.scavenger, sccommandcenter, scnexus, schatchery, sclair, schive, citymayor, cfact, xfact, glcommand, chcommand, usacommand, leangcommand, sowheadquarters, wcon, hq.orange, hq.bluemoon, hq.yellowcomet, hq.greenearth, hq.blackhole, hq.daysofruins, hq.rubinelle, hq.ids, hq.NRA, hq.lazurian, swfact.empire, swfact.rebels, swfact.republic, swfact.separatist, swfact.hutt, construction_yard, wc_h_townhall, wc_o_townhall, camea_conyard, drihq.imperium, drfghq.freedomguard, drihq.shadowhand, drfghq.xenite, drihq.togran, wh40kfieldcommand, 315flaitefact, hq.rubinelle, hq.ids, hq.newrubinelle, hq.lazurian, shockwave_conyard, modrafact.allies, modrafact.soviet, drahq.eodalien, oconstruction_yard, sc2kfactorystructure, qnest, modrafact.japan, fact.tomorrow, fact.answer, fact.dtusa, rafact.dtrussia, fact.dtjapan, tamutyard, tanodyard, tagdiyard, xmas_tree, fact.modgdi, fact.modnod, fact.modnod2, factiok, drihq.actibliz
+		McvFactoryTypes: weap, afld, raweap, raweapa, ra2gaweap, ra2naweap, yrygweap, tsgtweap, tsgtweap2, tsntweap, tsntweap2, schatchery, scnexus, sccommandcenter, glcommand, chcommand, usacommand, leangcommand, sowheadquarters, wcon, awweap.orange, awweap.bluemoon, awweap.yellowcomet, awweap.greenearth, awweap.blackhole, awweap.daysofruins, swafld, swafldh, swweap, swweapr, swweapd, starport, heavy_factory, heavy_factory_merc, wc_h_townhall, wc_o_townhall, raweapa.camea, drihq.imperium, drfghq.freedomguard, drihq.shadowhand, drfghq.xenite, drihq.togran, wh40kfieldcommand,d2k_flesh_vat,shockwave_conyard, modraweapa, modraweap, drahq.eodalien, ostarport, oheavy_factory, sc2kfactorystructure, qnest, modraweapj, weap.tomorrow, afld.answer, weap.dtusa, weap.dtrussia, weap.dtjapan, xmas_tree, tagdiweap, tanodweap, tamuttrade, bhweap, modweap, modweapr, iokafld, drihq.actibliz
+		MinBaseRadius: 12
+		MaxBaseRadius: 48
+		MinimumConstructionYardCount: 3
+	CaptureManagerBotModuleCA:
+		RequiresCondition: enable-easy-ai || enable-medium-ai || enable-hard-ai || enable-airforce-ai || enable-brutal-ai
+		CapturingActorTypes: e6, rae6, ra2engineer, ra2engineer.soviet, ra2engineer.yuri, 2100e6, scte6, citye6, tsengineer, tsengineer2, c1e6, c2e6, c1rae6, c2rae6, c1ra2engineer, c2ra2engineer, c3ra2engineer, c12100e6, c22100e6, csce6, c2sce6, c3sce6, ccitye6, gle1, gle1toxin, che1, che2, usae1, leange1, gene6, swe6, awe1, awe1bluemoon, awe1yellowcomet, awe1greenearth, awe1blackhole, engineer, d2k_hijacker, d2k_mechanic, crab, ioke6
+		# CapturableActorTypes: v19, hosp, bio, fcom, miss, ramiss, rabio, oilb, v19.husk, hosp.husk, bio.husk, miss.husk, fcom.husk, oilb.husk, ra2caoild, ra2cpower, ra2caairp, ra2csairp, ra2cyairp, ra2cvsairp, ra2cvyairp, ra2hospt, ra2machshop, mammothbunker, c2knuke, c2kfiredepartment, c2kpolicedepartment, c2kindustry, nodweap, nodbio, techbotweap, techmetalffact, techcementffact, techbcannon, techbcannon2, fact.gdi, fact.nod, rafact.allies, rafact.soviet, ra2nacnst, ra2gacnst, yrnacnst, tsgtcnstgdi, tsgtcnstnod, tsgtcnstmutant, tsgtcnstcabal, 2100hq.alpha, 2100hq.scavenger, sccommandcenter, scnexus, schatchery, citymayor, cfact, glcommand, chcommand, usacommand, leangcommand, hq.orange, hq.bluemoon, hq.yellowcomet, hq.greenearth, hq.blackhole, hq.daysofruins, hq.rubinelle, hq.ids, hq.newrubinelle, hq.lazurian, swfact.empire, swfact.rebels, swfact.republic, swfact.separatist, swfact.hutt
+		CheckCaptureTargetsForVisibility: false
+		MaximumCaptureTargetOptions: 15
+	DeployBotModule:
+		RequiresCondition: enable-easy-ai || enable-medium-ai || enable-hard-ai || enable-airforce-ai || enable-brutal-ai
+	SquadManagerBotModuleCA@generic:
+		RequiresCondition: enable-easy-ai || enable-medium-ai || enable-hard-ai || enable-airforce-ai || enable-brutal-ai
+		SquadSize: 5
+		SquadSizeRandomBonus: 3
+		DangerScanRadius: 1
+		AttackScanRadius: 20
+		IdleScanRadius: 14
+		ExcludeFromSquadsTypes: harv, raharv, ra2cmin, ra2harv, yrslav, ra2fvbotrep, yrsmin, 2100repairtruckbot, 2100repairtruckbot2, 2100cranebot, 2100cranebot2, scscv, scprobe, scbotdrone, scbotoverlord, scoverlord, cityharvester, c1harv, c2harv, c1raharv, c2raharv, c2100repairtruck, c2100repairtruck2, c2100crane, cscscv, cscprobe, cscdrone, ccityharvester, cra2cmin, cra2harv, cyrslav, cyrsmin, cityarchitect, cityinstructor, cityelitearchitect, cityeliteinstructor, cityeliteexpert, citytruck, citytruckxxl, citybottruck, jack, angel, e6, rae6, ra2engineer, ra2engineer.soviet, ra2engineer.yuri, 2100e6, scte6, scze6, citye6, c1e6, c2e6, c1rae6, c2rae6, c1ra2engineer, c2ra2engineer, c3ra2engineer, c12100e6, c22100e6, csce6, c2sce6, c3sce6, ccitye6, tsharv, tsengineer, tsengineer2, tsrepair, tsrepair2, ra2amcv, ra2smcv, yrpcv, sczmcv, scpmcv, sctmcv, mcv.gdi, mcv.nod, ramcv.allies, ramcv.soviet, tsmcvgdi, tsmcvnod, tsmcvmutant, tsmcvcabal, glworker, chharv, usahook, gene6, chhacker, leangmcv, leangharv, usapilot, usapilot.lvl1, usapilot.lvl2, usapilot.lvl3, usapilot.lvl4, glsite.soldier, sow_mcv, wharv, awaaarty, swharv, swe6, harvester, carryall, carryall.reinforce, engineer, d2k_hijacker, facedancer_harv, wc_h_peasant, wc_o_peon, d2k_mcv, ra2slav, harv.camea, drfrigth.imperium, drfrigth.freedom, drhoverfright.imperium, drhoverfright.freedom, wh40kharv, wc_h_mcv, wc_o_mcv, d2k_tleilaxu_mcv, mcv.orange, mcv.bluemoon, mcv.yellowcomet, mcv.greenearth, mcv.blackhole, mcv.daysofruins, mcv.rubinelle, mcv.ids, mcv.NRA, mcv.lazurian, swmcv.empire, swmcv.rebels, swmcv.republic, swmcv.separatist, swmcv.hutt, 315chatarrero, awdozer, shockwave_mcv, susasupplytruck, susapavelow, zombie.squad, zombie1.horde, zombie2.horde, zombie3.horde, zombie4.horde, drgather, omcv, oharvester, oharvester.starport, sc2kbulldozer, sc2kmcv, omcv, schlargesupply, qant, tinyant, modcore, modcore1, modcore2, modcore3, modcore4, modcore5, modcore6, schsupplyhelicopterleang, mcv.tomorrow, mcv.answer, dtharv, xmas_green_elf_worker, mcv.tagdi, mcv.tanod, mcv.tamutant, mcv.modnod, mcv.modgdi, mcv.actibliz, scscv.actibliz
+		ConstructionYardTypes:			fact.gdi,		fact.nod,			rafact.allies,		rafact.soviet,	ra2nacnst,	ra2gacnst,	yrnacnst, tsgtcnstgdi, tsgtcnstnod, tsgtcnstmutant, tsgtcnstcabal,			2100hq.alpha,	2100hq.scavenger,	sccommandcenter,	scnexus,		schatchery,	sclair,		schive,		citymayor,	cfact,	xfact, glcommand, chcommand, usacommand, sowheadquarters, wcon, hq.orange, hq.bluemoon, hq.yellowcomet, hq.greenearth, hq.blackhole, hq.daysofruins, hq.rubinelle, hq.ids, hq.NRA, hq.lazurian, swfact.empire, swfact.rebels, swfact.republic, swfact.separatist, swfact.hutt, construction_yard, wc_h_townhall, wc_o_townhall, camea_conyard, drihq.imperium, drfghq.freedomguard, drihq.shadowhand, drfghq.xenite, drihq.togran, 2100crane, 2100repairtruck, shockwave_conyard, oconstruction_yard, sc2kfactorystructure, qnest, xmas_tree, tagdiyard, tanodyard, tamutyard, fact.modgdi, fact.modnod, fact.modnod2, factiok, drihq.actibliz
+		NavalUnitsTypes: ss, msub, dd, ca, pt, cncss, cncmsub, cncdd, cncca, cncpt, ra2sqd, ra2dlph, ra2dest, ra2aegis, ra2sub, ra2hyd, ra2dred, ra2carrier, yrbsub, glgunboat, chflameboat, usagunboat, usabattleship, usacarrier, awcruiser, awss, awss3, awbattleship, awcarrier
+		NavalProductionTypes: raspen, ra1syrd, cncsyrd, cncspen, yrygyard, ra2gayard, ra2nayard, glsyrd, chsyrd, usasyrd, awyard.orange, awyard.bluemoon, awyard.yellowcomet, awyard.blackhole
+	BaseBuilderBotModuleCA@generic:
+		RequiresCondition: enable-easy-ai || enable-medium-ai || enable-hard-ai || enable-airforce-ai || enable-brutal-ai
+		MinimumExcessPower: 30
+		MaximumExcessPower: 150
+		ExcessPowerIncrement: 30
+		ExcessPowerIncreaseThreshold: 5
+		PlaceDefenseTowardsEnemyChance: 75
+		BuildingQueues: Building.GDI, Building.Nod, Building.Allies, Building.Soviet, Building.AlliesRA2, Building.SovietRA2, Building.Yuri, Building.Alpha, Building.Scavenger, Building.Terran, Building.Protoss, Building.Zerg, Building.SimCity, Building.Custom, RABuilding.GDI, RABuilding.Nod, RABuilding.Allies, RABuilding.Soviet, RABuilding.AlliesRA2, RABuilding.SovietRA2, RABuilding.Yuri, RABuilding.Alpha, RABuilding.Scavenger, RABuilding.Terran, RABuilding.Protoss, RABuilding.Zerg, Hatchery.Zerg, Lair.Zerg, Spire.Zerg, Colony.Zerg, EvoChamber, SpawningPool, SpireUpgrades, Forge, CyberCore, RoboBay, FleetBeacon, EngineeringBay, Armory, Academy, RABuilding.SimCity, RABuilding.Custom, Building.X_All, Building.X_Aircrafts, Building.X_Vehicles, Building.X_Infantry, Building.X_Monsters, Upgrade.Jack, Upgrade.Angel, Building.TSGDI, RABuilding.TSGDI, Building.TSNod, RABuilding.TSNod, Building.MUTANT, RABuilding.MUTANT, Building.CABAL, RABuilding.CABAL, Building.GLA, RABuilding.GLA, Building.CHINA, RABuilding.CHINA, Building.USA, RABuilding.USA, Building.LEANG, RABuilding.LEANG, PalaceUpgrades.GLA, MarketUpgrades.GLA, NukeUpgrades.CHINA, PropagandaUpgrades.CHINA, StrategyUpgrades.USA, GLAUpgrades.LEANG, ChinaUpgrades.LEANG, USAUpgrades.LEANG, Building.sow, Building.OrangeStar, RABuilding.OrangeStar, Building.BlueMoon, RABuilding.BlueMoon, Building.YellowComet, RABuilding.YellowComet, Building.GreenEarth, RABuilding.GreenEarth, Building.BlackHole, RABuilding.BlackHole, Building.Rubinelle, RABuilding.Rubinelle, Building.IDS, RABuilding.IDS, Building.NRA, RABuilding.NRA, Building.Lazurian, RABuilding.Lazurian, Building.SWREBELS, RABuilding.SWREBELS, Building.SWEMPIRE, RABuilding.SWEMPIRE, Building.SWREPUBLIC, RABuilding.SWREPUBLIC, Building.SWSEPARATIST, RABuilding.SWSEPARATIST, Building.SWHUTT, RABuilding.SWHUTT, Building.d2k, RABuilding.d2k, Building.human, Building.orc, Building.camea, Building.Imperium, RABuilding.Imperium, Building.FreedomGuard, RABuilding.FreedomGuard, Building.Xenite, RABuilding.Xenite, Building.Shadowhand, RABuilding.Shadowhand, Building.Togran, RABuilding.Togran, drihq1.Imperium, drihq2.Imperium, dribarr.Imperium, driweap.Imperium, drfghq1.FreedomGuard, drfghq2.FreedomGuard, drfgweap.FreedomGuard, drpplant1.FreedomGuard, drfgbarr.FreedomGuard, drbiocom.Xenite, Building.ImperialGuard, RABuilding.ImperialGuard, Defence.ImperialGuard, RADefence.ImperialGuard, Building.Shockwave, RABuilding.Shockwave, Building.ModAllies, Building.ModSoviet, RABuilding.ModAllies, RABuilding.ModSoviet, Defence.ModAllies, Defence.ModSoviet, RADefence.ModAllies, RADefence.ModSoviet, Research.Scavenger, Building.EodAlien, RABuilding.EodAlien, Defence.EodAlien, RADefence.EodAlien, Building.od2k, Building.sc2k, RABuilding.sc2k, NuclearUpgrades.CHINA, Building.ModAnts, RABuilding.ModAnts, Defence.ModAnts, RADefence.ModAnts, Building.ModJapan, RABuilding.ModJapan, Defence.TOMORROW, RADefence.TOMORROW, Building.TOMORROW, RABuilding.TOMORROW, Defence.ANSWER, RADefence.ANSWER, Building.ANSWER, RABuilding.ANSWER, Defence.DTUSA, RADefence.DTUSA, Building.DTUSA, RABuilding.DTUSA, Defence.DTRUSSIA, RADefence.DTRUSSIA, Building.DTRUSSIA, RABuilding.DTRUSSIA, Defence.DTJAPAN, RADefence.DTJAPAN, Building.DTJAPAN, RABuilding.DTJAPAN, Building.Xmas, RABuilding.Xmas, Building.TAGDI, RABuilding.TAGDI, Building.TANod, RABuilding.TANod, Building.TAMUTANT, RABuilding.TAMUTANT, Building.MODNod, RABuilding.MODNod, Building.MODGDI, RABuilding.MODGDI, Building.IOK, RABuilding.IOK, Defence.Actibliz, RADefence.Actibliz, Building.Actibliz, RABuilding.Actibliz
+		DefenseQueues:			Defence.GDI,		Defence.Nod,			Defence.Allies,		Defence.Soviet,		Defence.AlliesRA2,		Defence.SovietRA2,		Defence.Yuri,			Defence.Alpha,		Defence.Scavenger,		Defence.Terran,		Defence.Protoss,	Defence.Zerg,			Defence.SimCity,		Defence.Custom,			RADefence.GDI,		RADefence.Nod,			RADefence.Allies,	RADefence.Soviet,	RADefence.AlliesRA2,	RADefence.SovietRA2,	RADefence.Yuri,			RADefence.Alpha,	RADefence.Scavenger,	RADefence.Terran,	RADefence.Protoss,	RADefence.Zerg,			RADefence.SimCity,		RADefence.Custom,			Defence.X_All,		Defence.X_Aircrafts,	Defence.X_Vehicles,	Defence.X_Infantry,	Defence.X_Monsters, Defence.TSGDI, RADefence.TSGDI, Defence.TSNod, RADefence.TSNod, Defence.MUTANT, RADefence.MUTANT, Defence.CABAL, RADefence.CABAL, Defence.GLA, RADefence.GLA, Defence.CHINA, RADefence.CHINA, Defence.USA, RADefence.USA, Defence.LEANG, RADefence.LEANG, Defence.sow, Defence.OrangeStar, RADefence.OrangeStar, Defence.BlueMoon, RADefence.BlueMoon, Defence.YellowComet, RADefence.YellowComet, Defence.GreenEarth, RADefence.GreenEarth, Defence.BlackHole, RADefence.BlackHole, Defence.Rubinelle, RADefence.Rubinelle, Defence.IDS, RADefence.IDS, Defence.NRA, RADefence.NRA, Defence.Lazurian, RADefence.Lazurian, Defence.SWREBELS, RADefence.SWREBELS, Defence.SWEMPIRE, RADefence.SWEMPIRE, Defence.SWREPUBLIC, RADefence.SWREPUBLIC, Defence.SWSEPARATIST, RADefence.SWSEPARATIST, Defence.SWHUTT, RADefence.SWHUTT, Defence.d2k, RADefence.d2k, Defence.human, RADefence.human, Defence.orc, RADefence.orc, Defence.camea, RADefence.cameo, Defence.Imperium, RADefence.Imperium, Defence.FreedomGuard, RADefence.FreedomGuard, Defence.Shadowhand, RADefence.Shadowhand, Defence.Xenite, RADefence.Xenite, Defence.Togran, RADefence.Togran, Defence.ImperialGuard, RADefence.ImperialGuard, Defence.Shockwave, RADefence.Shockwave, Defence.ModAllies, Defence.ModSoviet, RADefence.ModAllies, RADefence.ModSoviet, Defence.EodAlien, RADefence.EodAlien, Defence.od2k, Defence.sc2k, RADefence.sc2k, Defence.ModAnts, RADefence.ModAnts, Defence.ModJapan, RADefence.ModJapan, Defence.ANSWER, RADefence.ANSWER, RADefence.TOMORROW, Building.TOMORROW, Building.TOMORROW, RABuilding.TOMORROW, Defence.DTUSA, RADefence.DTUSA, Defence.DTRUSSIA, RADefence.DTRUSSIA, Defence.DTJAPAN, RADefence.DTJAPAN, Defence.Xmas, RADefence.Xmas, Defence.TAGDI, RADefence.TAGDI, Defence.TANod, RADefence.TANod, Defence.TAMUTANT, RADefence.TAMUTANT, Defence.MODNod, RADefence.MODNod, Defence.MODGDI, RADefence.MODGDI, Defence.IOK, RADefence.IOK, Defence.Actibliz, RADefence.Actibliz
+		ConstructionYardTypes:			fact.gdi,		fact.nod,			rafact.allies,		rafact.soviet,	ra2nacnst,	ra2gacnst,	yrnacnst, tsgtcnstgdi, tsgtcnstnod, tsgtcnstmutant, tsgtcnstcabal,			2100hq.alpha,	2100hq.scavenger,	sccommandcenter,	scnexus,		schatchery,	sclair,		schive,		citymayor,	cfact,	xfact, glcommand, chcommand, usacommand, leangcommand, sowheadquarters, wcon, construction_yard, wc_h_townhall, wc_o_townhall, camea_conyard, wh40kfieldcommand, drihq.imperium, drfghq.freedomguard, drihq.shadowhand, drfghq.xenite, drihq.togran, shockwave_conyard, modramcv.allies, modramcv.soviet, drahq.eodalien, oconstruction_yard, xmas_tree, tagdiyard, tanodyard, tamutyard, fact.modgdi, fact.modnod, fact.modnod2, fact.tiberiump, drihq.actibliz
+		RefineryTypes:			proc,		raproc,		ra2narefn,		ra2garefn,		yryarefn,		yryarefn.empy, tsproc,			2100oil,	screfinery,	scassimilator,	scextractor,	cityharbor,		citybotr,		citybotr2,	shippingboxbot,	xfact,			c1proc,		c2proc,		c1raproc,		c2raproc,		cra2narefn,		cra2garefn,		cyryarefn,  ra2narefndoom,			c12100oil,	c22100oil,	cscrefinery,	cscassimilator,	cscextractor,	ccityharbor,	ccityr, glsupply, chsupply, usasupply, leangsupply, sowgoldmine, sowgoldmine, sowgoldmine_a, sowgoldmine_b, sowgoldmine_c, sowgoldmine_d, sowgoldmine_e, sowgoldmine_f, sowgoldmine_g, sowgoldmine_h, sowgoldmine_i, swproc, refinery, d2k_silo_tleilaxu, wc_h_lumbermill, wc_o_lumbermill, raproc.camea, wh40kproc, drwaterl.imperium, drwaterl.freedom, susasupply, susasupply_air, susasupply_armor, sglsupply, schsupply, schsupply_tank, drlife.eodalien, orefinery, sc2krecyclingcenter, schsupply_leang, xmas_elves_refinery, tagdiref, tanodref, tamutref, iokproc, bhproc, drwaterl.actibliz
+		PowerTypes:			nuke, nuk2, powr, apwr,		ra2napowr,		ra2gapowr,	ra2nanrct,		yryapowr,		yryapowr.bot,			2100power,	2100scavpowr,	scsupplydepot,	scpylon,	scbotoverlord,	citycoal,	citynuke,			c1nuke, c2nuke, c1nuk2, c2nuk2, c1powr, c2powr, c1apwr, c2apwr, cra2napowr, cra2gapowr,	cra2nanrct, cyryapowr, sowasteroidstation,			c2100power,	c2100scavpowr,	cscsupplydepot,	cscpylon,	cscoverlord,	ccitycoal,		ccitynuke, tsgtpowr, tsgtpowrup, tsntpowr, tsntapwr, chpower, chpower2, usapower, leangpower, swnuke, swnuk2, wind_trap, d2k_mini_windtrap, wc_h_farm, wc_o_farm, sowresearch, powr.camea, nuk2.camea, awcity, drpowr, drtpower, wh40kpower, d2k_silo_tleilaxu, 315ranchhouse, susapower, susapower_laser, susapower_super, schpower, schpower2, drapower, owind_trap, sc2kubermall, sc2kpowercoal, sc2kwindmill, sc2kpoweroil, sc2knaturalgas, sc2knuclear, sc2kpowersolar, sc2kpowermicrowave, sc2kpowerfusion, , breednest, dtnuke, dtpower, dtpower2, dtrpower, dtjpower, xmas_elves_house, tagdipower, tanodpower, tagdiacum, ioknuke, ioknuk2, modtibtree, bhnuke, bhnuk2, scsupplydepot.actibliz
+		BarracksTypes: pyle, hand, tent, barr, ra2gapile, ra2nahand, yryabrck, 2100fy1, 2100ChopShop, scbarracks, scgateway, scspawningpool, cityfd, citypd, cpyle, chand, ctent, cbarr, cra2gapile, cra2nahand, cyryabrck, c2100fy1, c2100ChopShop, cscbarracks, cscgateway, cscspawningpool, ccityfd, xpyle, xpyleall, xhosp, xbio, tsgtpile, tsgtpile2, tsnthand, tsnthand2, glbarracks, chbarracks, usabarracks, leangbarracks, d2k_barracks, wc_h_barracks, wc_o_barracks, hand.camea, driweap.imperium, drfgbarr.freedomguard, dribarr.shadowhand, drbiocom.xenite, d2k_flesh_vat, fremen_sietch, susabarracks, 2100cf, schbarracks, sglbarracks, drabarr.eodalien, sc2kfactorydisaster, sc2kpolicedept, obarracks, xmas_elves_house, tagdibarr, tanodhand, tamutbarr, iokbarracks, modpyle, modhand, modpyler, modhandr, bhhand, dribarr.actibliz
+		VehiclesFactoryTypes: weap, afld, raweapa, raweap, ra2gaweap, ra2naweap, yrygweap, 2100fy2, 2100chopshopadv, scfactory, scroboticsfacility, schatchery, sclair, schive, citypd, cweap, cafld, craweapa, craweap, cra2gaweap, cra2naweap, cyrygweap, c2100fy2, c2100chopshopadv, cscfactory, cscroboticsfacility, cschatchery, csclair, cschive, ccitypd, xweap, xweapall, mcvmarket, cmcvmarket, tsgtweap, tsgtweap2, tsntweap, tsntweap2, glweap, chweap, usaweap, leangweap, sowlightfactory, sowmediumfactory, sowheavyfactory, sowmechfactory, light_factory, heavy_factory, heavy_factory_merc, wc_o_damnedtemple, wc_h_church, raweapa.camea, driweap.imperium, drfgweap.freedomguard, driweap.shadowhand, drfgweap.xenite, susaweap, modbarr, modtent, draweap.eodalien, olight_factory, oheavy_factory, sc2kcardealership, sc2kfiredept, xmas_elves_house, tagdiweap, tanodweap, tamuttrade, iokafld, modweap, modweapr, bhweap, modafld, modafldr, driweap.actibliz
+		ProductionTypes: pyle, weap, hpad.gdi, cncsyrd, hand, afld, hpad.nod, cncspen, tent, raweapa, rahpad, barr, raweap, raafld, ra2gapile, ra2gaweap, ra2gaairc, ra2nahand, ra2naweap, yryabrck, yrygweap, 2100fy1, 2100fy2, 2100ChopShop, 2100chopshopadv, 2100scavhangar, sccommandcenter, scbarracks, scfactory, scstarport, scnexus, scgateway, scroboticsfacility, scstargate, schatchery, sclair, schive, scspire, sccreepcolony, scbotcreepcolony, scevolutionchamber, scspawningpool, scforge, sccyberneticscore, scroboticssupportbay, scengineeringbay, scarmory, scacademy, cityfd, citypd, cpyle, cweap, c1hpad, ccncsyrd, chand, cafld, c2hpad, ccncspen, ctent, craweapa, crahpad, cra1syrd, cbarr, craweap, craafld, craspen, cra2gapile, cra2gaweap, cra2gaairc, cra2gayard, cra2nahand, cra2naweap, cra2nayard, cyryabrck, cyrygweap, cyrygyard, c2100fy1, c2100fy2, c2100ChopShop, c2100chopshopadv, c2100scavhangar, csccommandcenter, cscbarracks, cscfactory, cscstarport, cscnexus, cscgateway, cscroboticsfacility, cscstargate, cschatchery, csclair, cschive, ccityfd, ccitypd, xpyle, xpyleall, xweap, xweapall, xhpad, xhpadall, xhosp, xbio, mcvmarket, cmcvmarket, hero, chero, link, blazer, jack, vicviper, axelay, angel, smash, tsgtweap, tsgtweap2, tsntweap, tsntweap2, tsgtpile, tsgtpile2, tsnthand, tsnthand2, tsgthpad, tsgthpad2, tsnthpad, tsnthpad2, glbarracks, chbarracks, usabarracks, glweap, chweap, usaweap, leangbarracks, leangweap, leangairport, sowlightfactory, sowmediumfactory, sowheavyfactory, sowasteroidstation, starport, starport_smuggler, starport_corrino, high_tech_factory, wc_o_damnedtemple, wc_h_church, wc_h_barracks, wc_o_barracks, wc_h_tower, wc_o_tower, wc_n_portal, RA2DEMONRADAR, hand.camea, raweapa.camea, hpad.camea, driweap.imperium, drfgweap.freedomguard, driweap.shadowhand, drfgweap.xenite, driweap.imperium, drfgbarr.freedomguard, dribarr.shadowhand, drbiocom.xenite, d2k_tleilaxu_tech, susaairport, susahangar, 2100cchopshop, sglbarracks, schweap, schairport, modraweapa, modraweap, draweap.eodalien, drabarr.eodalien, ostarport, ohigh_tech_factory, xmas_santas_house, tagdihpad, hpad.bhnod, scstarport.actibliz
+		NavalProductionTypes: raspen, ra1syrd, cncsyrd, cncspen, yrygyard, ra2gayard, ra2nayard, sc2kmarina
+		SiloTypes: silo, rasilo, scsupplydepot, scpylon, scoverlord, cscsupplydepot, cscpylon, cscoverlord, tsgtsilo, d2k_silo, d2k_silo_tleilaxu, wc_h_lumbermill, wc_o_lumbermill, silo.camea, drnavyard.eodalien, osilo, tagdisilo, tanodsilo, tamutsilo, bhsilo
+		BuildingLimits:
+			#################### BuildingLimits CNC
+			#proc: 4
+			pyle: 2
+			hand: 2
+			hq: 2
+			weap: 4
+			afld: 4
+			hpad.gdi: 2
+			hpad.nod: 2
+			eye: 2
+			tmpl: 2
+			fix: 2
+			silo: 2
+			cncsyrd: 4
+			cncspen: 4
+            #################### BuildingLimits TD Expansion
+            modafld: 2
+            modweap: 3
+            modpyle: 4
+            modhand: 4
+            modpyler: 4
+            modhandr: 4
+            modafldr: 2
+            modweapr: 3
+            modchemgun: 6
+            modchemftur: 6
+            modchemtmpl: 1
+            bhproc: 4
+            bhsilo: 2
+            bhweap: 3
+            hpad.bhnod: 2
+            bhhq: 1
+            bhfix: 2
+            bheye: 1
+            bhtmpl: 1
+            bhgun: 8
+            bhsam: 6
+            bhobli: 6
+            bhgtwr: 6
+            bhcycl: 6
+            #################### BuildingLimits IOK
+            iokbarracks: 4
+            iokproc: 4
+            iokafld: 4
+            iokblackmarket: 1
+            iokpalace: 1
+            iokscudtemple: 1
+            ioksite: 8
+            iokgun: 8
+            iokobli: 6
+			#################### BuildingLimits RA
+			#raproc: 4
+			tent: 2
+			barr: 2
+			kenn: 2
+			dome: 2
+			raweapa: 4
+			raweap: 4
+			rahpad: 2
+			raafld: 2
+			atek: 2
+			stek: 2
+			rafix: 2
+			rasilo: 2
+			ra1syrd: 4
+			raspen: 4
+			iron: 2
+			#################### BuildingLimits Modded RA
+			#raproc: 4
+			modbarr: 2
+			modtent: 2
+			modraweapa: 4
+			modraweap: 4
+            evo: 2
+			tevo: 1
+			modspaceport: 4
+			modtentj: 2
+			modraweapj: 4
+			modraafld: 4
+			modjtek: 2
+			#################### BuildingLimits Dawn of the Tomorrow
+			#proc: 4
+			dtpyle: 2
+			dtpyle.dtrussia: 2
+			dtpyle.dtjapan: 2
+			dthand: 8
+			hq.tomorrow: 2
+			hq.answer: 2
+			dome.dtrussia: 2
+			weap.tomorrow: 4
+			weap.dtusa: 5
+			weap.dtrussia: 5
+			weap.dtjapan: 5
+			afld.answer: 4
+			hpad.tomorrow: 2
+			hpad.answer: 3
+			hpad.dtusa: 3
+			hpad.dtrussia: 3
+			hpad.dtjapan: 3
+			dtstrike: 2
+			dtbio: 2
+			dtsilo: 2
+			atek.answer: 2
+			dtpropaganda: 2
+			dtshop: 2
+			dteye: 2
+			dthq: 2
+            #################### BuildingLimits TA
+            tagdibarr: 4
+            tanodhand: 4
+            tamutbarr: 4
+            tagdisilo: 4
+            tanodsilo: 4
+            tamutsilo: 4
+            tagdiref: 4
+            tanodref: 4
+            tamutref: 4
+            tagdiweap: 3
+            tanodweap: 3
+            tamuttrade: 3
+            tagdihq: 1
+            tanodhq: 1
+            tamuthq: 1
+            tagdihq2: 1
+            tanodhq2: 1
+            tagdihpad: 3
+            tamgnest: 6
+            tacannonb: 6
+            taflakb: 4
+            tagdidept: 2
+            tanoddept: 2
+			#################### BuildingLimits TS GDI
+			#tsproc: 4
+            tsgtpile: 2
+			tsgtradr: 2
+			tsgtweap: 4
+			tsgthpad: 2
+			tsgttech: 2
+			tsgtplug: 2
+			tsntwast: 2
+			tsgtdept: 2
+			tsgtsilo: 4
+			#################### BuildingLimits TS Nod
+			tsnthand: 2
+			tsntradr: 2
+			tsntweap: 4
+			tsnthpad: 2
+			tsnttech: 2
+			tsnttmpl: 2
+			tsntpuls: 2
+			tsntmisl: 2
+			tsntstlh: 2
+			#################### BuildingLimits TS Forgotten
+			tsgtpile2: 2
+			tsgtweap2: 4
+			tsgthpad2: 2
+			tsgtradr2: 2
+            tsgtwr: 10
+            tsfgttech: 4
+			#################### BuildingLimits TS CABAL
+			tsnthand2: 2
+			tsntweap2: 4
+			tsnthpad2: 2
+			tscore: 2
+            oilb.ts: 10
+			#################### BuildingLimits RA2
+			#ra2garefn: 4
+			ra2gapile: 2
+			ra2gayard: 2
+			ra2gaweap: 2
+			ra2gaspysat: 1
+			ra2gaairc: 1
+			ra2gatech: 1
+			ra2gaorep: 1
+			ra2gadept: 1
+			ra2gaweat: 1
+			yrgarobo: 1
+            ra2demonradar: 2
+            ra2narefndoom: 5
+            ra2sentrydoom: 10
+            ra2creepcolony: 10
+            oilb.ra2: 10
+            ################### BuildingLimits CAMEA
+            powr.camea: 10
+            hand.camea: 2
+            raproc.camea: 4
+            raweapa.camea: 2
+            hq.camea: 1
+            rafix.camea: 1
+            nuk2.camea: 5
+            stek.camea: 1
+            hpad.camea: 3
+            silo.camea: 10
+            mslo.camea: 1
+            pdox.camea: 1
+            oilb.camea: 10
+            hosp.camea: 2
+            obli.camea: 20
+            ragun.camea: 20
+            hbox.camea: 20
+            rasam.camea: 20
+            gap.camea: 20
+            mammothbunker.camea: 20                                              
+            ################### BuildingLimits Actibliz
+            dribarr.actibliz: 3
+            driweap.actibliz: 2
+            drirep.actibliz: 1
+            drihosp.actibliz: 1
+            scengineeringbay.actibliz: 1
+            scarmory.actibliz: 1
+            scstarport.actibliz: 3
+            scacademy.actibliz: 1
+            sctemplararchives.actibliz: 1
+            scfleetbeacon.actibliz: 2
+            scsciencefacility.actibliz: 2
+            scroboticssupportbay.actibliz: 1                                   
+			#################### BuildingLimits Brayans
+			315ranchhouse: 2
+			315ruca: 2
+			315radiostation: 1
+			315garage: 2
+			315weedfarm: 2                        
+			##################################################
+			#ra2narefn: 4
+			ra2nahand: 2
+			ra2nayard: 2
+			ra2naweap: 2
+			yrngindp: 1
+			ra2naradr: 1
+			ra2natech: 1
+			ra2naclon: 1
+			ra2nadept: 1
+			ra2namisl: 1
+			ra2nairon: 1
+			##################################################
+			#yryarefn: 5
+			yryabrck: 2
+			yrygyard: 2
+			yrygweap: 2
+			ra2napsis: 1
+			yrygtech: 1
+			yryggntc: 1
+			yryggrnd: 1
+			ra2yclon: 2
+			yrygppet: 1
+			#################### BuildingLimits GLA
+			glbarracks: 2
+			glpalace: 1
+			glweap: 3
+			glblackmarket: 3
+			glstorm: 2
+			glsyrd: 2
+			#################### BuildingLimits CHINA
+			chbarracks: 2
+			chpropaganda: 1
+			chweap: 3
+			chairport: 2
+			chsilo: 2
+			chsyrd: 2
+			#################### BuildingLimits USA
+			usabarracks: 2
+			usastrategy: 1
+			usaweap: 3
+			usaairport: 2
+			usadropzone: 3
+			usacannon: 2
+			usacannon2: 2
+			usasyrd: 2
+            #################### BuildingLimits SUSA
+			susabarracks: 5
+			susastrategy: 1
+			susaweap: 3
+			susaairport: 2
+            susahangar: 2
+			susacannon: 2
+			susadropzone: 3
+            susamissilesilo: 2
+            #################### BuildingLimits SGLA
+			sglbarracks: 2
+			sglpalace: 1
+			sglweap: 3
+			sglblackmarket: 3
+			sglstorm: 2
+			sglsyrd: 2
+			#################### BuildingLimits SCHINA
+			schbarracks: 2
+			schpropaganda: 1
+			schweap: 3
+			schairport: 2
+			schsilo: 2
+			schsyrd: 2
+            schnuclearresearchplant: 1
+			#################### BuildingLimits ALPHA
+			2100oil: 18
+			2100power: 8
+			2100rr: 2
+			2100fy1: 6
+			2100cf: 2
+			2100rf: 3
+			2100crc: 2
+			2100hq.alpha: 2
+			2100wcl: 4
+			2100wcm: 4
+			2100mp: 4
+			2100vfy1: 2
+			2100vtolpad: 8
+			2100radt: 3
+			#################### BuildingLimits SCAVENGER
+			2100hq.scavenger: 1
+			2100chopshop: 5
+			2100chopshopadv: 4
+			2100scavhangar: 2
+			2100scavtech: 2
+			2100scavware: 3
+			2100scavradt: 4
+			#################### BuildingLimits TERRAN
+			sccommandcenter: 1
+			scsupplydepot: 15
+			#screfinery: 6
+			scbarracks: 1
+			scengineeringbay: 1
+			scacademy: 1
+			scfactory: 2
+			scstarport: 1
+			scsciencefacility: 1
+			scarmory: 1
+			#################### BuildingLimits PROTOSS
+			scnexus: 1
+			scpylon: 15
+			#scassimilator: 6
+			scgateway: 1
+			scforge: 1
+			sccyberneticscore: 1
+			scshieldbattery: 1
+			scroboticsfacility: 2
+			scstargate: 1
+			sccitadelofadun: 1
+			scroboticssupportbay: 1
+			scfleetbeacon: 1
+			sctemplararchives: 1
+			scobservatory: 1
+			scarbitertribunal: 1
+			#################### BuildingLimits ZERG
+			schatchery: 1
+			sclair: 1
+			schive: 1
+			scbotoverlord: 10
+			scbotcreepcolony: 15
+			#scextractor: 6
+			scevolutionchamber: 1
+			schydraliskden: 1
+			scspawningpool: 1
+			scspire: 1
+			scgreaterspire: 1
+			scqueensnest: 1
+			scdefilermound: 1
+			scultraliskcavern: 1
+			scinfestedcommandcenter: 1
+			#################### BuildingLimits SIMCITY
+			#cityharbor: 3
+			citymayor: 2
+			cityairport: 1
+			#################### BuildingLimits MCVMARKET
+			mcvmarket: 1
+			#################### BuildingLimits AW
+			#awcity: 16
+			awweap.orange: 6
+			awweap.bluemoon: 6
+			awweap.yellowcomet: 6
+			awweap.greenearth: 6
+			awweap.blackhole: 6
+			awhpad.orange: 2
+			awhpad.bluemoon: 2
+			awhpad.yellowcomet: 2
+			awhpad.greenearth: 2
+			awhpad.blackhole: 2
+			awlab: 1
+			awlabdor: 1
+			awsilo: 1
+			awsupermissile: 1
+			awvolcano: 1
+			awbhweap: 1
+			awyard.orange: 2
+			awyard.bluemoon: 2
+			awyard.yellowcomet: 2
+			awyard.greenearth: 2
+			awyard.blackhole: 2                  
+			awhpad.rubinelle: 2
+			awhpad.ids: 2
+			awhpad.newrubinelle: 2
+			awhpad.lazurian: 2
+			awweap.rubinelle: 6
+			awweap.ids: 6
+			awweap.newrubinelle: 6
+			awweap.lazurian: 6
+			awyard.lazurian: 2
+			awyard.rubinelle: 2
+			awyard.ids: 2
+			awyard.newrubinelle: 2                
+			#################### BuildingLimits SW
+			#proc: 4
+			swpyle: 1
+			swpyler: 1
+			swpyleh: 1
+			swhand: 1
+			swbarrdroid: 1
+			swhqe: 1
+			swhqr: 1
+			swhqre: 1
+			swhqs: 1
+			swhqh: 1
+			swweap: 2
+			swweapr: 2
+			swweapd: 2
+			swafld: 2
+			swafldh: 2
+			swhpad.empire: 1
+			swhpad.rebels: 1
+			swhpad.swseparatist: 1
+			swhpad.republic: 1
+			swhpad.hutt: 1
+			sweye: 1
+			swntpuls: 1
+			sweyee: 1
+			swtmpl: 1
+			swdtmpl: 1
+			swpalace: 1
+			swfix: 1
+			swsilo: 1
+			swdsilo: 1
+ 			#################### BuildingLimits Imperial Guard
+			#proc: 4
+			wh40kbarr: 1
+			wh40kbarr.e1: 3
+			wh40karmory: 1
+			wh40kweap: 2
+			wh40kweap.e1: 2
+			#################### BuildingLimits Imperium
+			#proc: 4
+			dribarr.imperium: 1
+			drihelipad.imperium: 1
+			driportal.imperium: 1
+			driweap.imperium: 2
+			dririft.imperium: 1
+			drirep: 1
+			drihosp: 1
+			#################### BuildingLimits Freedom Guard
+			#proc: 4
+			drfgbarr.freedomguard: 1
+			drfgweap.freedomguard: 2
+			drfghelipad.freedomguard: 1
+			drpplant1.freedomguard: 1
+			drfgrep: 1
+			drfghosp: 1
+			#################### BuildingLimits Togran
+			#proc: 4
+			dribarr.togran: 1
+			drihelipad.togran: 1
+			driportal.togran: 1
+			driweap.togran: 2     
+			#################### BuildingLimits Aliens
+			#proc: 4
+			drabarr.eodalien: 2
+			drhive.eodalien: 2
+			draweap.eodalien: 5
+			drnavyard.eodalien: 4            
+            #################### BuildingLimits SOW
+            sowheadquarters: 1
+            sow_mcv: 1
+            sowlightfactory: 1
+            sowgoldmine: 15
+            sowmediumfactory: 5
+            sowheavyfactory: 5
+            sowmechfactory: 3
+            sowabcfactory: 2
+            sowresearch: 1
+            sowpower: 1
+            sowradar: 1
+            sowasteroidstation: 1
+            sow_gun_tower: 50
+            sow_antiair_tower: 20
+            sow_plasma_tower: 50
+            sow_minigun_tower: 50
+            sow_vulcano_tower: 20
+            sow_defragmenter_tower: 50
+            #################### BuildingLimits Xmas
+            xmas_tree: 1
+            xmas_elves_refinery: 4
+            xmas_elves_house: 10
+            xmas_elf_workshop: 2
+            xmas_santas_house: 1
+            xmas_snowman_snowball: 6
+            xmas_snowman_cannon: 6
+            xmas_snowman_elite: 6
+            #################### BuildingLimits Dune Universe
+            construction_yard: 1
+			d2k_barracks: 5
+            d2k_barracks_ixian: 5
+            d2k_barracks_merc: 5
+            d2k_barracks_corrino: 5
+            fremen_sietch: 5
+			refinery: 4
+            d2k_silo: 20
+            d2k_silo_tleilaxu: 10
+            d2k_munitions: 3
+            wind_trap: 10
+            d2k_mini_windtrap: 15
+			outpost: 1
+			high_tech_factory: 5
+			light_factory: 5
+			heavy_factory: 5
+            heavy_factory_merc: 5
+			starport: 5
+            starport_smuggler: 5
+            starport_corrino: 5
+			repair_pad: 1
+			research_centre: 1
+			palace: 1
+            palace_emperor: 1
+            d2k_command_center: 1
+            large_gun_turret: 20
+            medium_gun_turret: 20
+            machine_gun_turret: 20
+            storm_lasher: 5
+            autogun_turret: 20
+            flame_turret: 20
+            artillery_platform: 20
+            oilb.d2k: 10
+            d2k_mine_at: 20
+            d2k_mine_ap: 20
+            d2k_sandworm_tower: 20
+            d2k_flesh_vat: 10
+            d2k_tleilaxu_tech: 2
+            ##################### BuildingLimits Dune 2000
+            oconstruction_yard: 1
+            owind_trap: 10
+            obarracks: 5
+            orefinery: 6
+            osilo: 20
+            olight_factory: 5
+            oheavy_factory: 5
+            ooutpost: 1
+            ostarport: 5
+            omedium_gun_turret: 10
+            olarge_gun_turret: 10
+            orepair_pad: 1
+            ohigh_tech_factory: 1
+            oresearch_centre: 1
+            opalace: 1
+            ##################### BuildingLimits Simcity 2000
+            sc2kfactorystructure: 1
+            sc2kpowercoal: 2
+            sc2kwindmill: 5
+            sc2knaturalgas: 2
+            sc2knuclear: 1
+            sc2kpowersolar: 2
+            sc2kpowermicrowave: 2
+            sc2kpowerfusion: 2
+            sc2kfactorydisaster: 3
+            sc2krecyclingcenter: 3
+            sc2kdomicile: 5
+            sc2kcardealership: 3
+            sc2kmarina: 3
+            sc2kfactoryfarm: 1
+            sc2kobservatory: 1
+            sc2ktradecenter: 1
+            sc2ksupermall: 1
+            sc2kubermall: 1
+            sc2kbeaconpolice: 10
+            sc2kbeaconfire: 10
+            sc2kbeaconarmy: 10
+            sc2kmissilesilo: 1
+            sc2kpolicedept: 3
+            sc2kfiredept: 3
+            sc2khospital: 2
+            ##################### BuildingLimits Warcraft
+            wc_h_townhall: 1
+            wc_h_farm: 30
+            wc_h_barracks: 5
+            wc_h_lumbermill: 10
+            wc_h_blacksmith: 2
+            wc_h_church: 1
+            wc_h_stable: 1
+            wc_h_tower: 1
+            wc_h_stormwind: 1
+            wc_h_guard_tower: 20
+            wc_o_townhall: 1
+            wc_o_farm: 30
+            wc_o_barracks: 5
+            wc_o_lumbermill: 10
+            wc_o_blacksmith: 2
+            wc_o_damnedtemple: 1
+            wc_o_kennel: 1
+            wc_o_tower: 1
+            wc_o_blackrockspire: 1
+            wc_o_guard_tower: 20
+            wc_goldmine: 5
+            wc_h_mcv: 1
+            wc_o_mcv: 1
+            wc_n_portal: 1
+			##################################################
+			#	BuildingLimits CUSTOM START
+			##################################################
+			cfact: 2
+			#c1proc: 3
+			#c2proc: 3
+			cpyle: 1
+			chand: 1
+			c1hq: 1
+			c2hq: 1
+			cweap: 2
+			cafld: 2
+			c1hpad: 1
+			c2hpad: 1
+			ceye: 1
+			ctmpl: 1
+			c1fix: 1
+			c2fix: 1
+			##################################################
+			#c1raproc: 3
+			#c2raproc: 3
+			ctent: 1
+			cbarr: 1
+			ckenn: 1
+			c1dome: 1
+			c2dome: 1
+			craweapa: 2
+			craweap: 2
+			crahpad: 1
+			craafld: 1
+			catek: 1
+			cstek: 1
+			c1rafix: 1
+			c2rafix: 1
+			cgap: 1
+			##################################################
+			c12100oil: 24
+			c22100oil: 24
+			c12100rr: 1
+			c22100rr: 1
+			c2100fy1: 1
+			c2100fy2: 2
+			c2100rf: 1
+			c2100crc: 1
+			c12100hq: 1
+			c22100hq: 1
+			c2100wcl: 2
+			c2100wcm: 2
+			c2100mp: 2
+			##################################################
+			c2100chopshop: 1
+			c2100chopshopadv: 2
+			c2100scavhangar: 1
+			c2100scavtech: 1
+			##################################################
+			csccommandcenter: 2
+			#cscrefinery: 3
+			cscbarracks: 1
+			cscengineeringbay: 1
+			cscacademy: 1
+			cscfactory: 2
+			cscstarport: 1
+			cscsciencefacility: 1
+			cscarmory: 1
+			##################################################
+			cscnexus: 2
+			#cscassimilator: 3
+			cscgateway: 1
+			cscforge: 1
+			csccyberneticscore: 1
+			cscshieldbattery: 1
+			cscroboticsfacility: 2
+			cscstargate: 1
+			csccitadelofadun: 1
+			cscroboticssupportbay: 1
+			cscfleetbeacon: 1
+			csctemplararchives: 1
+			cscobservatory: 1
+			##################################################
+			cschatchery: 1
+			csclair: 1
+			cschive: 1
+			#cscextractor: 3
+			csccreepcolony: 1
+			cscevolutionchamber: 1
+			cschydraliskden: 2
+			cscspawningpool: 1
+			cscspire: 1
+			cscgreaterspire: 1
+			cscultraliskcavern: 1
+			cscinfestedcommandcenter: 1
+			##################################################
+			ccityfd: 1
+			ccitypd: 2
+			#ccityharbor: 3
+			ccitymayor: 1
+			ccityairport: 1
+			##################################################
+			cmcvmarket: 1
+			##################################################
+			#	BuildingLimits CUSTOM END
+			##################################################
+		BuildingFractions:
+			#################### BuildingFractions CNC
+			proc: 20
+			pyle: 5
+			hand: 5
+			hq: 4
+			weap: 9
+			afld: 9
+			gtwr: 5
+			gun: 5
+			atwr: 9
+			obli: 10
+			sam: 7
+			eye: 1
+			tmpl: 1
+			silo: 1
+			fix: 1
+			hpad.gdi: 2
+			hpad.nod: 2
+			cncsyrd: 2
+			cncspen: 2
+            #################### BuildingFractions TD Expansion
+            modafld: 2
+            modweap: 3
+            modpyle: 4
+            modhand: 4
+            modpyler: 4
+            modhandr: 4
+            modafldr: 2
+            modweapr: 3
+            modchemgun: 6
+            modchemftur: 6
+            modchemtmpl: 1
+            bhproc: 4
+            bhsilo: 2
+            bhweap: 3
+            hpad.bhnod: 2
+            bhhq: 1
+            bhfix: 2
+            bheye: 1
+            bhtmpl: 1
+            bhgun: 8
+            bhsam: 6
+            bhobli: 6
+            bhgtwr: 6
+            bhcycl: 6
+            #################### BuildingFractions IOK
+            iokbarracks: 4
+            iokproc: 4
+            iokafld: 4
+            iokblackmarket: 1
+            iokpalace: 1
+            iokscudtemple: 1
+            ioksite: 8
+            iokgun: 8
+            iokobli: 6
+			#################### BuildingFractions RA
+			raproc: 20
+			tent: 5
+			barr: 5
+			kenn: 1
+			dome: 4
+			raweapa: 9
+			raweap: 9
+			pbox: 5
+			hbox: 5
+			pbox.e3: 3
+			hbox.e3: 3
+			ragun: 9
+			ftur: 5
+			tsla: 10
+			agun: 7
+			rasam: 7
+			rahpad: 2
+			raafld: 2
+			atek: 1
+			stek: 1
+			rafix: 1
+			rasilo: 1
+			mslo: 1
+			ra1syrd: 2
+			raspen: 2
+			iron: 1
+			pdox: 1
+            oilb.allies: 2
+            oilb.soviet: 2
+            #################### BuildingFractions Modded RA
+			modbarr: 5
+			modtent: 5
+			modraweapa: 9
+			modraweap: 9
+			modpdox: 1
+			modgap: 1
+			modgap2: 1
+			tinynest: 20
+			tinynest2: 5
+			evo: 2
+			tevo: 2
+			modspaceport: 4
+			modtentj: 5
+			modraweapj: 9
+			modraafld: 9
+			modjtek: 1
+			hboxj: 6
+			#################### BuildingFractions Dawm of the Tomorrow
+			dtproc: 20
+			dtpyle: 5
+			dtpyle.dtrussia: 5
+			dtpyle.dtjapan: 5
+			dthand: 5
+			hq.tomorrow: 4
+			hq.answer: 4
+			dome.dtrussia: 4
+			afld.answer: 9
+			weap.tomorrow: 9
+			weap.dtusa: 9
+			weap.dtrussia: 9
+			weap.dtjapan: 9
+			gtwr.answer: 5
+			gun.tomorrow: 5
+			pbox.tomorrow: 5
+			dtobli: 10
+			dtrkpod: 10
+			sam.tomorrow: 7
+			dtstrike: 1
+			dteye: 1
+			dthq: 1
+			dtshop: 1
+			dtbio: 1
+			dtsilo: 1
+			hpad.tomorrow: 2
+			hpad.answer: 2
+			hpad.dtusa: 2
+			hpad.dtrussia: 2
+			hpad.dtjapan: 2
+			atek.answer: 2
+			dtpropaganda: 2
+			oilb.tomorrow: 1
+            #################### BuildingFractions TA
+            tagdibarr: 4
+            tanodhand: 4
+            tamutbarr: 4
+            tagdisilo: 4
+            tanodsilo: 4
+            tamutsilo: 4
+            tagdiref: 4
+            tanodref: 4
+            tamutref: 4
+            tagdiweap: 3
+            tanodweap: 3
+            tamuttrade: 3
+            tagdihq: 1
+            tanodhq: 1
+            tamuthq: 1
+            tagdihq2: 1
+            tanodhq2: 1
+            tagdihpad: 3
+            tamgnest: 8
+            tacannonb: 8
+            taflakb: 8
+            tagdidept: 2
+            tanoddept: 2
+			#################### BuildingFractions TS GDI
+			tsproc: 20
+			tsgtpile: 5
+			tsgtradr: 4
+			tsgtweap: 9
+			tsgthpad: 2
+			tsgttech: 1
+			tsgtplug: 1
+			tsgtctwrmg: 5
+			tsgtctwrrpg: 5
+			tsgtctwrsam: 7
+			tsgtdept: 3
+            oilb.td: 2
+			#################### BuildingFractions TS Nod
+			tsnthand: 5
+			tsntradr: 4
+			tsntweap: 9
+			tsnthpad: 2
+			tsnttech: 1
+			tsnttmpl: 1
+			tsntpuls: 1
+			tsntlasr: 5
+			tsntobel: 5
+			tsntsam: 7
+			tsntwast: 10
+			tsntmisl: 1
+			tsntstlh: 1
+			#################### BuildingFractions TS Forgotten
+			tsgtpile2: 5
+			tsgtweap2: 9
+			tsgthpad2: 2
+			tsgtradr2: 4
+            tsgtwr: 10
+            tsfgttech: 1
+			#################### BuildingFractions TS CABAL
+			tsnthand2: 5
+			tsntweap2: 9
+			tsnthpad2: 2
+			tscore: 1
+			tsobl2: 3
+            oilb.ts: 10
+			#################### BuildingFractions RA2
+			ra2garefn: 20
+			ra2gapile: 5
+			ra2gayard: 4
+			ra2gaweap: 9
+			ra2gapill: 5
+			ra2gtgcan: 9
+			ra2atesla: 8
+			ra2gagap: 5
+			ra2nasam: 4
+			ra2gaspysat: 1
+			ra2gaairc: 2
+			ra2gatech: 1
+			ra2gaorep: 1
+			ra2gadept: 1
+			ra2gaweat: 1
+			ra2gacsph: 1
+			yrgarobo: 1
+            ra2creepcolony: 10
+            oilb.ra2: 10
+			##################################################
+            ra2demonradar: 2
+            ra2sentrydoom: 10
+			ra2narefn: 20
+            ra2narefndoom: 20
+			ra2nahand: 5
+			ra2nayard: 4
+			ra2naweap: 9
+			yrngbnkr.bot: 5
+			ra2nalasr: 5
+			ra2tesla: 9
+			ra2naflak: 8
+			yrngindp: 1
+			ra2naradr: 3
+			ra2natech: 1
+			ra2naclon: 1
+			ra2nadept: 1
+			ra2namisl: 1
+			ra2nairon: 1
+			##################################################
+			yryarefn: 20
+			yryabrck: 5
+			yrygyard: 4
+			yrygweap: 9
+			yrngtbnk.magnet: 1
+			yrngtbnk.ytnk: 3
+			yrngtbnk.ltnk: 3
+			yrygggun: 9
+			yrygpsyt: 9
+			ra2napsis: 3
+			yrygtech: 1
+			yryggntc: 1
+			yryggrnd: 1
+			ra2yclon: 2
+			yrygppet: 1
+			##################################################
+			ra2america: 1
+			ra2french: 1
+			ra2german: 1
+			ra2british: 1
+			ra2korea: 1
+			ra2koreaaddon: 1
+			ra2russia: 1
+			ra2cuba: 1
+			ra2cubaaddon: 1
+			ra2libyan: 1
+			ra2iraq: 1
+			ra2iraqaddon: 1
+            ra2doom: 1
+			#################### BuildingFractions GLA
+			glsupply: 20
+			glbarracks: 5
+			glpalace: 1
+			glweap: 9
+			glsite: 9
+			glblackmarket: 1
+			glstorm: 1
+			gltrap: 5
+			glsyrd: 3
+			#################### BuildingFractions CHINA
+			chsupply: 20
+			chbarracks: 5
+			chpropaganda: 4
+			chpropagandatower: 5
+			chweap: 9
+			chbunker.e1: 5
+			chbunker.e2: 5
+			chbunker.e3: 9
+			chbunker2.e2: 9
+			chgattling: 9
+			chairport: 2
+			chsilo: 1
+			chsyrd: 3
+			#################### BuildingFractions USA
+			usasupply: 20
+			usabarracks: 5
+			usastrategy: 4
+			usaweap: 9
+			usapatriot: 9
+			usapatriot2: 9
+			usalasertur: 9
+			usaairport: 2
+			usacannon: 1
+			usacannon2: 1
+			usadropzone: 1
+			usafirebase.e1: 5
+			usafirebase.e3: 8
+			usasyrd: 3
+            #################### BuildingFractions SUSA
+			susasupply: 20
+            susasupply_air: 20
+            susasupply_armor: 20
+			susabarracks: 5
+			susastrategy: 4
+			susaweap: 9
+			susapatriot: 9
+			susapatriot2: 9
+            susapatriotair: 9
+			susalasertur: 9
+            susaconcreteslab: 9
+            susapopuppatriot: 9
+            susaphalynx: 9
+            susafortifiedfirebase.e1: 5
+            susafortifiedfirebase.e3: 5
+            susalaserdesignatorbase.e1: 5
+            susalaserdesignatorbase.e3: 5
+			susaairport: 2
+            susapillbox.e1: 4
+            susapillbox.e3: 9
+            susahangar: 2
+			susacannon: 1
+            susacannon_super: 1
+            susacannon_laser: 1
+			susadropzone: 1
+			susafirebase.e1: 5
+            susafirebase.e3: 5
+            susamissilesilo: 1
+			#################### BuildingFractions SGLA
+			sglsupply: 20
+			sglbarracks: 5
+			sglpalace: 1
+			sglweap: 9
+			sglsite: 9
+			sglblackmarket: 1
+			sglstorm: 1
+			sgltrap: 5
+			sglsyrd: 3
+            sglairpad: 3
+			#################### BuildingFractions SCHINA
+			schsupply: 20
+            schsupply_tank: 20
+            schsupply_leang: 20
+			schbarracks: 5
+			schpropaganda: 4
+			schpropagandatower: 5
+			schweap: 9
+			schbunker.e1: 5
+			schbunker.e2: 5
+			schbunker.e3: 9
+			schbunker2.e2: 9
+			schgattling: 9
+			schairport: 2
+			schsilo: 1
+			schsyrd: 3
+            schminedispenser: 5
+            schflametower: 5
+            schramjet: 5
+            schapgattling: 5
+            schindustrialplant: 1
+            schfortifiedgattling: 5
+            schfortifiedbunker.e1: 2
+            schfortifiedbunker.e2: 2
+            schfortifiedbunker.e3: 3
+            schfalloutbunker.e1: 2
+            schfalloutbunker.e2: 2
+            schfalloutbunker.e3: 2
+            schnukegattlingcannon: 5
+            schnuclearresearchplant: 1
+            schlisteningpost.che2: 3
+            schlisteningpost.che3: 3
+            upschradiationsuits: 1
+            upschradiationwarheads: 1
+            upschweapongradeuraniumshells: 1
+            upschisotopestability: 1
+            upschfusionreactor: 1
+			#################### BuildingFractions LEANG
+			leangsupply: 20
+			leangbarracks: 5
+			leangweap: 9
+			leangtunnel: 5
+			leangstorm: 1
+			leangsyrd: 3
+			leanggattling: 9
+			leangairport: 2
+			leangsilo: 1
+			leangpatriot: 9
+			leangcannon: 1
+			#################### BuildingFractions Generals
+			selectchnormal: 1
+			selectchtanks: 1
+			selectchinf: 1
+			selectchatomic: 1
+			selectglanormal: 1
+			selectglatoxin: 1
+			selectglademo: 1
+			selectglacamo: 1
+			selectusanormal: 1
+			selectusaairforce: 1
+			selectusalaser: 1
+			selectusasuper: 1
+			uparmthemob: 1
+			uprebelcamo: 1
+			upcamonetting: 1
+			upglfort: 1
+			uparmorpiercingrocket: 1
+			uparmorpiercingbullet: 1
+			upjunkrepair: 1
+			uptoxinshells: 1
+			upantraxbeta: 1
+			upnewshoes: 1
+			upbuggyammo: 1
+			upglatrap: 1
+			updemolition: 1
+			upnationalism: 1
+			upuraniumshell: 1
+			upneutronshell: 1
+			upatomictank: 1
+			upisotopestability: 1
+			upcamonetting2: 1
+			upsubliminal: 1
+			uplandmines: 1
+			upneutronmines: 1
+			upautoload: 1
+			usaupchemsuit: 1
+			usauparmor: 1
+			usaupsupplylines: 1
+			usauptraining: 1
+			usaupdronearmor: 1
+			upusamotherbomb: 1
+            #################### BuildingFractions Dark
+			drwaterl.imperium: 9
+			drwaterl.freedom: 9
+			dribarr.imperium: 5
+			driweap.imperium: 9
+			draweap.eodalien: 9
+			driportal.imperium: 1
+			dririft.imperium: 1
+			drlife.eodalien: 9
+			drhive.eodalien: 1
+			drirep: 1
+			drfgbarr.freedomguard: 5
+			drfgweap.freedomguard: 9
+			drpplant1.freedomguard: 1
+			drfgrep: 1
+			drfghelipad.freedomguard: 9
+			drihelipad.imperium: 1
+			dribarr.shadowhand: 5
+			drabarr.eodalien: 5
+			driweap.shadowhand: 9
+			drmadrix.shadowhand: 1
+			drbiocom.xenite: 5
+			drfgweap.xenite: 9
+			dribarr.togran: 5
+			driweap.togran: 9
+			driportal.togran: 1
+			drihelipad.togran: 1
+			drcamera: 1
+			drplastur1: 9
+			drneutronturret: 9
+			drrailtur1: 9
+			drlastur1: 9
+			drtmissile: 9
+			drtsentry: 5
+			drtflamer: 5
+			pscdrihq2: 1
+			pscdrihq3: 1
+			pscdribarr: 1
+			pscdriweap: 1
+			pscdrfghq2: 1
+			pscdrfghq3: 1
+			pscdrfgbarr: 1
+			pscdrfgweap: 1
+			pscdrpplant2: 1
+			pscbiocom2: 1
+			drihosp: 1
+			drfghosp: 1
+			driaaturret: 5
+			draacannon1: 5
+			draplastur: 5
+			drbattery: 5                                                          
+  			#################### BuildingFractions Brayans
+			315proc: 4
+			315ruca: 2
+			315radiostation: 1
+			315garage: 2
+			315weedfarm: 2     
+			315sturret: 1
+			315ranchhousebot: 1           
+			#################### BuildingFractions ALPHA
+			2100oil: 40
+			2100oilbot: 40
+			2100rr: 1
+			2100fy1: 5
+			2100cf: 1
+			2100rf: 1
+			2100crc: 1
+			2100hq.alpha: 1
+			2100wcl: 7
+			2100wcm: 4
+			2100wch: 4
+			2100mp: 1
+			2100wcmg: 1
+			2100wall: 1
+			2100mt: 2
+			2100pp: 3
+			2100mb: 9
+			2100fb: 3
+			2100rt: 3
+			2100tt: 3
+			2100aa: 3
+			2100cchopshop: 1
+			2100vfy1: 1
+			2100vtolpad: 1
+			2100radt: 1
+			#################### BuildingFractions SCAVENGER
+			2100hq.scavenger: 1
+			2100chopshop: 5
+			2100chopshopadv: 10
+			2100scavhangar: 1
+			2100scavtech: 1
+			2100scavturret: 5
+			2100scavpill: 5
+			2100scavmort: 5
+			2100scavrt: 4
+			2100scavware: 2
+			2100scavmt: 5
+			2100scavft: 5
+			2100scavradt: 1
+			#################### BuildingFractions TERRAN
+			sccommandcenter: 10
+			scsupplydepot: 65
+			screfinery: 10
+			scbarracks: 10
+			scengineeringbay: 1
+			scmissileturret: 5
+			scacademy: 1
+			scbunkerd: 10
+			scfactory: 10
+			scstarport: 10
+			scsciencefacility: 1
+			scarmory: 1
+			upinfweapon: 1
+			upinfarmor: 1
+			upmechweapon: 1
+			upmecharmor: 1
+			upshipweapon: 1
+			upshiparmor: 1
+			upmarinerange: 1
+			upstimpack: 1
+			#################### BuildingFractions PROTOSS
+			scnexus: 10
+			scpylon: 65
+			scassimilator: 10
+			scgateway: 10
+			scforge: 1
+			scphotoncannon: 25
+			sccyberneticscore: 1
+			scshieldbattery: 1
+			scroboticsfacility: 10
+			scstargate: 10
+			sccitadelofadun: 1
+			scroboticssupportbay: 1
+			scfleetbeacon: 1
+			sctemplararchives: 1
+			scobservatory: 1
+			scarbitertribunal: 1
+			upgroundweapons: 1
+			upgroundarmor: 1
+			upairweapons: 1
+			upairarmor: 1
+			upplasmashield: 1
+			updragoonrange: 1
+			upairspeed: 1
+			upreavercapacity: 1
+			upreaverdamage: 1
+			#################### BuildingFractions ZERG
+			schatchery: 3
+			#sclair: 3
+			#schive: 3
+			scbotoverlord: 10
+			scextractor: 10
+			scbotcreepcolony: 5
+			#scsunkencolony: 20
+			#scsporecolony: 5
+			schydraliskden: 1
+			scspawningpool: 1
+			scspire: 1
+			#scgreaterspire: 1
+			scqueensnest: 1
+			scdefilermound: 1
+			scultraliskcavern: 1
+			scinfestedcommandcenter: 1
+			psclair: 1
+			pschive: 1
+			pscsunkencolony: 1
+			pscsporecolony: 1
+			pscgreaterspire: 1
+			uplingspeed: 1
+			uplingattack: 1
+			upzergmelee: 1
+			upzergmissile: 1
+			upcarapace: 1
+			upflyerattack: 1
+			upflyerarmor: 1
+			#################### BuildingFractions SIMCITY
+			cityfd: 10
+			citypd: 10
+			cityharbor: 20
+			citylibrary: 1
+			citybank: 1
+			citypark: 1
+			cityfountain: 1
+			citymayor: 1
+			cityairport: 1
+			cityr: 80
+			cityc: 15
+			cityi: 20
+			#################### BuildingFractions HEROES
+			hero: 1
+			plantturnip: 1
+			plantpotato: 1
+			shippingboxbot: 1
+			housebot: 100
+			field: 100
+			templebot: 100
+			mcvmarket: 1
+			#################### BuildingFractions X_FACTIONS
+			xpyle: 100
+			xweap: 100
+			xhpad: 100
+			xhosp: 100
+			xbio: 100
+			xpyleall: 33
+			xweapall: 33
+			xhpadall: 33
+			#################### BuildingFractions AW
+			awcity: 22
+			awcitybm: 22
+			awcityyc: 22
+			awcityge: 22
+			awcitybh: 22
+			awcitybot: 22
+			awcitybmbot: 22
+			awcityycbot: 22
+			awcitygebot: 22
+			awcitybhbot: 22
+			awcitybmbot2: 11
+			awcityycbot2: 11
+			awcitygebot2: 11
+			awcitybhbot2: 11
+ 			awcityids: 22               
+			awlab: 4
+ 			awlabdor: 4             
+			awweap.orange: 9
+			awweap.bluemoon: 9
+			awweap.yellowcomet: 9
+			awweap.greenearth: 9
+			awweap.blackhole: 9
+			awweap.rubinelle: 9
+            awweap.lazurian: 9
+            awweap.newrubinelle: 9
+            awweap.ids: 9
+			awsilo: 1
+			awvolcano: 1
+			awsupermissile: 1
+			awbhweap: 1
+			awhpad.orange: 2
+			awhpad.bluemoon: 2
+			awhpad.yellowcomet: 2
+			awhpad.greenearth: 2
+			awhpad.blackhole: 2
+			awhpad.rubinelle: 2
+            awhpad.lazurian: 2
+            awhpad.newrubinelle: 2
+            awhpad.ids: 2
+			awyard.orange: 2
+			awyard.bluemoon: 2
+			awyard.yellowcomet: 2
+			awyard.greenearth: 2
+			awyard.blackhole: 2
+            awyard.rubinelle: 9
+            awyard.lazurian: 9
+            awyard.newrubinelle: 9
+            awyard.ids: 9
+			awminicannon: 5
+			awtalon: 5
+			selectandy: 1
+			selectmax: 1
+			selectsami: 1
+			selectnell: 1
+			selecthachi: 1
+			selectjake: 1
+			selectrachel: 1
+			selectredstar: 1
+			selectolaf: 1
+			selectgrit: 1
+			selectcolin: 1
+			selectsasha: 1
+			selectwhitemoon: 1
+			selectkanbei: 1
+			selectsonja: 1
+			selectsensei: 1
+			selectgrimm: 1
+			selecteagle: 1
+			selectdrake: 1
+			selectjess: 1
+			selectjavier: 1
+			selectflak: 1
+			selectlash: 1
+			selectadder: 1
+			selecthawke: 1
+			selectjugger: 1
+			selectkoal: 1
+			selectkindle: 1
+			selectsturm: 1
+			selectbolt: 1
+			selectwill: 1
+			selectlin: 1
+			selectbrenner: 1
+			selectisabella: 1
+			selectforsythe: 1
+			selecttasha: 1
+			selectgage: 1
+			selectgreyfield: 1
+			selectdavis: 1
+			selectwaylon: 1
+			selectpenny: 1
+			selectbeast: 1
+			selecttabitha: 1
+			selectcaulder: 1             
+			#################### BuildingFractions SW
+			swproc: 20
+			swpyle: 5
+			swpyler: 5
+			swpyleh: 5
+			swhand: 5
+			swbarrdroid: 5
+			swhqe: 4
+			swhqr: 4
+			swhqre: 4
+			swhqs: 4
+			swhqh: 4
+			swweap: 9
+			swweapr: 9
+			swweapd: 9
+			swafld: 9
+			swafldh: 9
+			swgtwr: 5
+			swgun: 5
+			swdgun: 5
+			swsite: 5
+			swatwr: 9
+			swobli: 10
+			swsam: 7
+			sweye: 1
+			swntpuls: 1
+			sweyee: 1
+			swtmpl: 1
+			swpalace: 1
+			swtrade: 1
+			swdtmpl: 1
+			swsilo: 1
+			swdsilo: 1
+			swfix: 1
+			swhpad.empire: 2
+			swhpad.rebels: 2
+			swhpad.republic: 2
+			swhpad.swseparatist: 2
+			swhpad.hutt: 2
+            #################### BuildingFractions CNC
+			wh40kproc.e1: 20
+			wh40kproc: 5
+			wh40kbarr: 1
+			wh40kbarr.e1: 5
+			wh40karmory: 4
+			wh40kweap: 2
+			wh40kweap.e1: 9
+			wh40kheavybolt: 5
+			wh40kheavybolt2: 9                   
+            #################### BuildingFractions SOW
+            sowheadquarters: 2
+            sow_mcv: 2
+            sowlightfactory: 1
+            sowgoldmine: 15
+            sowmediumfactory: 5
+            sowheavyfactory: 5
+            sowmechfactory: 3
+            sowabcfactory: 2
+            sowresearch: 10
+            sowpower: 1
+            sowradar: 3
+            sowasteroidstation: 1
+            sow_gun_tower: 50
+            sow_antiair_tower: 20
+            sow_plasma_tower: 50
+            sow_minigun_tower: 50
+            sow_vulcano_tower: 20
+            sow_defragmenter_tower: 50
+            #################### BuildingFractions Xmas
+            xmas_tree: 1
+            xmas_elves_refinery: 4
+            xmas_elves_house: 10
+            xmas_elf_workshop: 2
+            xmas_santas_house: 1
+            xmas_snowman_snowball: 6
+            xmas_snowman_cannon: 6
+            xmas_snowman_elite: 6
+            #################### BuildingFractions Dune Universe
+            construction_yard: 1
+            d2k_barracks: 5
+            d2k_barracks_ixian: 5
+            d2k_barracks_merc: 5
+            d2k_barracks_corrino: 5
+            fremen_sietch: 5
+			refinery: 20
+            d2k_silo: 20
+            d2k_silo_tleilaxu: 20
+            d2k_munitions: 3
+            wind_trap: 10
+            d2k_mini_windtrap: 15
+			outpost: 1
+			high_tech_factory: 5
+			light_factory: 5
+			heavy_factory: 5
+            heavy_factory_merc: 5
+			starport: 5
+            starport_smuggler: 5
+            starport_corrino: 5
+			repair_pad: 1
+			research_centre: 1
+			palace: 1
+            palace_emperor: 1
+            emperor_a_palace: 1
+            emperor_h_palace: 1
+            emperor_o_palace: 1
+            emperor_command_center: 1
+            d2k_command_center: 1
+            large_gun_turret: 20
+            storm_lasher: 5
+            medium_gun_turret: 20
+            machine_gun_turret: 20
+            autogun_turret: 20
+            flame_turret: 20
+            artillery_platform: 20
+            oilb.d2k: 10
+            d2k_mine_at: 20
+            d2k_mine_ap: 20
+            d2k_sandworm_tower: 20
+            d2k_flesh_vat: 10
+            d2k_tleilaxu_tech: 2
+            d2k_personal_shield: 1
+            ##################### BuildingFractions Dune 2000
+            oconstruction_yard: 1
+            owind_trap: 10
+            obarracks: 5
+            orefinery: 20
+            osilo: 20
+            olight_factory: 5
+            oheavy_factory: 5
+            ooutpost: 1
+            ostarport: 5
+            omedium_gun_turret: 10
+            olarge_gun_turret: 10
+            orepair_pad: 1
+            ohigh_tech_factory: 1
+            oresearch_centre: 1
+            opalace: 1
+            ##################### BuildingFractions Simcity 2000
+            sc2kfactorystructure: 1
+            sc2kpowercoal: 2
+            sc2kwindmill: 5
+            sc2knaturalgas: 2
+            sc2knuclear: 1
+            sc2kpowersolar: 2
+            sc2kpowermicrowave: 2
+            sc2kpowerfusion: 2
+            sc2kfactorydisaster: 3
+            sc2krecyclingcenter: 3
+            sc2kdomicile: 5
+            sc2kcardealership: 3
+            sc2kmarina: 3
+            sc2kfactoryfarm: 1
+            sc2kobservatory: 1
+            sc2ktradecenter: 1
+            sc2ksupermall: 1
+            sc2kubermall: 1
+            sc2kbeaconpolice: 10
+            sc2kbeaconfire: 10
+            sc2kbeaconarmy: 10
+            sc2kmissilesilo: 1
+            sc2kpolicedept: 3
+            sc2kfiredept: 3
+            sc2khospital: 2
+            ##################### BuildingFractions Warcraft
+            wc_h_townhall: 1
+            wc_h_farm: 30
+            wc_h_barracks: 20
+            wc_h_lumbermill: 20
+            wc_h_blacksmith: 5
+            wc_h_church: 5
+            wc_h_stable: 5
+            wc_h_tower: 5
+            wc_h_stormwind: 5
+            wc_h_guard_tower: 20
+            wc_o_townhall: 1
+            wc_o_farm: 30
+            wc_o_barracks: 20
+            wc_o_lumbermill: 20
+            wc_o_blacksmith: 5
+            wc_o_damnedtemple: 5
+            wc_o_kennel: 5
+            wc_o_tower: 5
+            wc_o_blackrockspire: 5
+            wc_o_guard_tower: 20
+            wc_goldmine: 5
+            wc_n_portal: 1
+            ################### BuildingFractions CAMEA
+            powr.camea: 10
+            hand.camea: 2
+            raproc.camea: 4
+            raweapa.camea: 2
+            hq.camea: 1
+            rafix.camea: 1
+            nuk2.camea: 5
+            stek.camea: 1
+            hpad.camea: 3
+            silo.camea: 10
+            mslo.camea: 1
+            pdox.camea: 1
+            oilb.camea: 5
+            hosp.camea: 2
+            obli.camea: 20
+            ragun.camea: 20
+            hbox.camea: 20
+            rasam.camea: 20
+            gap.camea: 20
+            mammothbunker.camea: 20
+            ################### BuildingFractions Actibliz
+            scsupplydepot.actibliz: 8
+            dribarr.actibliz: 2
+            drwaterl.actibliz: 4
+            driweap.actibliz: 2
+            drirep.actibliz: 1
+            drihosp.actibliz: 1
+            scstarport.actibliz: 5
+            scfleetbeacon.actibliz: 2
+            scsciencefacility.actibliz: 2
+            scengineeringbay.actibliz: 1
+            scarmory.actibliz: 1
+            scacademy.actibliz: 1
+            sctemplararchives.actibliz: 1
+            scroboticssupportbay.actibliz: 1
+            drneutronturret.actibliz: 20
+            drplastur1.actibliz: 20
+            scbunker.actibliz.full: 18
+            scmissileturret.actibliz: 12
+            scbunker.actibliz.full2: 20
+            ################### BuildingFractions HEROES
+            volkovcc: 1
+			##################################################
+			#	BuildingFractions CUSTOM START
+			##################################################
+			cfact: 5
+			c1proc: 20
+			c2proc: 20
+			cpyle: 5
+			chand: 5
+			c1hq: 4
+			c2hq: 4
+			cweap: 9
+			cafld: 9
+			c1gtwr: 5
+			c2gtwr: 5
+			c1gun: 5
+			c2gun: 5
+			catwr: 9
+			cobli: 10
+			csam: 7
+			ceye: 1
+			ctmpl: 1
+			c1fix: 1
+			c2fix: 1
+			c1hpad: 2
+			c2hpad: 2
+			c1mslo: 1
+			c2mslo: 1
+			ccncsyrd: 1
+			ccncspen: 1
+			##################################################
+			c1raproc: 20
+			c2raproc: 20
+			ctent: 5
+			cbarr: 5
+			ckenn: 1
+			c1dome: 4
+			c2dome: 4
+			craweapa: 9
+			craweap: 9
+			cpbox: 5
+			chbox: 1
+			cragun: 9
+			cftur: 5
+			ctsla: 10
+			cagun: 7
+			crasam: 7
+			crahpad: 2
+			craafld: 2
+			catek: 1
+			cstek: 1
+			c1rafix: 1
+			c2rafix: 1
+			cgap: 1
+			cra1syrd: 1
+			craspen: 1
+			########## BuildingFractions Custom RA2ALLIES
+			cra2gaweap: 9
+			cra2gapile: 5
+			cra2garefn: 20
+			cra2gaairc: 2
+			cra2gaorep: 1
+			cra2gadept: 1
+			cra2gatech: 1
+			cyrgarobo: 1
+			cra2gaspysat: 1
+			cra2gagap: 5
+			cra2gaweat: 1
+			cra2gapill: 5
+			cra2nasam: 7
+			cra2atesla: 8
+			cra2gtgcan: 9
+			cra2gayard: 4
+			########## BuildingFractions Custom RA2SOVIET
+			cra2naweap: 9
+			cra2nahand: 2
+			cra2narefn: 20
+			cra2naradr: 3
+			cra2nadept: 1
+			cra2naflak: 8
+			cra2natech: 1
+			cra2nalasr: 5
+			cra2tesla: 9
+			cyrngindp: 1
+			cra2naclon: 1
+			cra2namisl: 1
+			cra2nayard: 4
+			########## BuildingFractions Custom YURI
+			cyrygweap: 9
+			cyryabrck: 2
+			cyryarefn: 20
+			cra2napsis: 3
+			cyryggntc: 1
+			cyryggrnd: 1
+			cra2yclon: 1
+			cyrygggun: 9
+			cyrygppet: 1
+			cyrygtech: 1
+			cyrygpsyt: 9
+			cyrygyard: 4
+			##################################################
+			c12100oil: 40
+			c22100oil: 40
+			c12100rr: 1
+			c22100rr: 1
+			c2100fy1: 1
+			c2100fy2: 5
+			c2100rf: 1
+			c2100crc: 1
+			c12100hq: 1
+			c22100hq: 1
+			c2100wcl: 5
+			c2100wcm: 5
+			c2100wch: 3
+			c2100mp: 1
+			c2100pp: 3
+			c2100mb: 9
+			c2100fb: 3
+			c2100rt: 3
+			c2100tt: 3
+			c2100aa: 3
+			##################################################
+			c2100chopshop: 1
+			c2100chopshopadv: 10
+			c2100scavhangar: 1
+			c2100scavtech: 1
+			c2100scavturret: 5
+			c2100scavpill: 3
+			c2100scavmort: 3
+			c2100scavrt: 3
+			##################################################
+			csccommandcenter: 10
+			cscsupplydepot: 65
+			cscrefinery: 10
+			cscbarracks: 10
+			cscengineeringbay: 1
+			cscmissileturret: 5
+			cscacademy: 1
+			cscbunkerd: 10
+			cscfactory: 10
+			cscstarport: 10
+			cscsciencefacility: 1
+			cscarmory: 1
+			##################################################
+			cscnexus: 10
+			cscpylon: 65
+			cscassimilator: 10
+			cscgateway: 10
+			cscforge: 1
+			cscphotoncannon: 25
+			csccyberneticscore: 1
+			cscshieldbattery: 1
+			cscroboticsfacility: 10
+			cscstargate: 10
+			csccitadelofadun: 1
+			cscroboticssupportbay: 1
+			cscfleetbeacon: 1
+			csctemplararchives: 1
+			cscobservatory: 1
+			##################################################
+			cschatchery: 3
+			csclair: 3
+			cschive: 3
+			cscextractor: 10
+			csccreepcolony: 1
+			cscsunkencolony: 20
+			cscsporecolony: 5
+			cscevolutionchamber: 1
+			cschydraliskden: 10
+			cscspawningpool: 10
+			cscspire: 10
+			cscgreaterspire: 1
+			cscultraliskcavern: 1
+			cscinfestedcommandcenter: 1
+			##################################################
+			ccityfd: 10
+			ccitypd: 10
+			ccityharbor: 20
+			ccitylibrary: 1
+			ccitybank: 1
+			ccitypark: 1
+			ccityfountain: 1
+			ccitymayor: 1
+			ccityairport: 1
+			ccityr: 80
+			ccityc: 15
+			ccityi: 20
+			##################################################
+			chero: 1
+			cmcvmarket: 1
+			##################################################
+			#	BuildingFractions CUSTOM END
+			##################################################
+		BuildingDelays:
+			psclair: 9000
+			pschive: 12000
+			pscgreaterspire: 6000
+			### Prevent AI techrush
+			hq: 6000
+			dome: 6000
+			tsgtradr: 6000
+			tsntradr: 6000
+			tsgtradr2: 6000
+			ra2gaairc: 5000
+			ra2naradr: 5000
+			ra2napsis: 6000
+			2100rf: 4500
+			citylibrary: 6000
+			citybank: 6000
+			cityairport: 6000
+			scstargate: 4500
+			scstarport: 4500
+			hpad.gdi: 5000
+			hpad.nod: 5000
+			rahpad: 5000
+			raafld: 5000
+			tsgthpad: 5000
+			tsgthpad2: 5000
+			tsnthpad: 5000
+			tsnthpad2: 5000
+            sowmediumfactory: 2000
+            sowpower: 4000
+            sowheavyfactory: 6000
+            sowradar: 8000
+            sowmechfactory: 9000
+            sow_mcv: 10000
+            sowabcfactory: 10000
+            sowasteroidstation: 10000
+            sow_antiair_tower: 6000
+	UnitBuilderBotModuleCA@generic:
+		RequiresCondition: enable-easy-ai || enable-medium-ai || enable-hard-ai ||  enable-brutal-ai
+		IdleBaseUnitsMaximum: 15
+		MaxAircraft: 24
+		UnitBuilderMinCredits: 0
+		UnitQueues:			Infantry.GDI,			Vehicle.GDI,			Aircraft.GDI,			Naval.GDI,			Infantry.Nod,			Vehicle.Nod,			Aircraft.Nod,			Naval.Nod,			Infantry.Allies,		Vehicle.Allies,			Aircraft.Allies,		Naval.Allies,			Infantry.Soviet,		Vehicle.Soviet,			Aircraft.Soviet,		Naval.Soviet,			Infantry.AlliesRA2,		Vehicle.AlliesRA2,		Aircraft.AlliesRA2,		Naval.AlliesRA2,			Infantry.SovietRA2,		Vehicle.SovietRA2,		Naval.SovietRA2,			Infantry.Yuri,			Vehicle.Yuri,			Naval.Yuri,			Infantry.Alpha,			Vehicle.Alpha,			Infantry.Scavenger,		Vehicle.Scavenger,		Aircraft.Scavenger,			Infantry.Terran,		Vehicle.Terran,			Aircraft.Terran,		Defence.Terran,			Infantry.Protoss,		Vehicle.Protoss,		Aircraft.Protoss,		Defence.Protoss,			Infantry.Zerg,			Defence.Zerg,			Infantry.SimCity,		Vehicle.SimCity,			Infantry.Custom,		Vehicle.Custom,			Aircraft.Custom,		Defence.Custom,		Building.Custom,	Naval.Custom,			RAInfantry.GDI,			RAVehicle.GDI,			RAAircraft.GDI,			RANaval.GDI,			RAInfantry.Nod,			RAVehicle.Nod,			RAAircraft.Nod,			RANaval.Nod,			RAInfantry.Allies,		RAVehicle.Allies,		RAAircraft.Allies,		RANaval.Allies,			RAInfantry.Soviet,		RAVehicle.Soviet,		RAAircraft.Soviet,		RANaval.Soviet,			RAInfantry.AlliesRA2,	RAVehicle.AlliesRA2,	RAAircraft.AlliesRA2,	RANaval.AlliesRA2,			RAInfantry.SovietRA2,	RAVehicle.SovietRA2,	RANaval.SovietRA2,			RAInfantry.Yuri,		RAVehicle.Yuri,			RANaval.Yuri,			RAInfantry.Alpha,		RAVehicle.Alpha,			RAInfantry.Scavenger,	RAVehicle.Scavenger,	RAAircraft.Scavenger,			RAInfantry.Terran,		RAVehicle.Terran,		RAAircraft.Terran,		RADefence.Terran,			RAInfantry.Protoss,		RAVehicle.Protoss,		RAAircraft.Protoss,		RADefence.Protoss,			RAInfantry.Zerg,		RADefence.Zerg,			RAInfantry.SimCity,		RAVehicle.SimCity,			RAInfantry.Custom,		RAVehicle.Custom,		RAAircraft.Custom,		RADefence.Custom,	RABuilding.Custom,	RANaval.Custom,			CityI.SimCity,			CityV.SimCity,			Infantry.X_Infantry,	Vehicle.X_Vehicles,		Aircraft.X_Aircrafts,			Infantry.X_Monsters,	Vehicle.X_Monsters,			Heroes,					Vehicle.MCVMarket, research.sow, lt.sow, mt.sow, ht.sow, walker.sow, wmk2.sow, upgrade.sow, Armor.d2k, Infantry.d2k, Starport.d2k, Vehicle.d2k, Upgrade.d2k, Research.d2k, Aircraft.d2k, Vehicle.orc, Vehicle.human, Infantry.orc, Infantry.human, Aircraft.orc, Aircraft.human, WC.Neutral, kennelupg.orc, blacksmithupg.orc, lumberupg.orc, stablesupg.human, blacksmithupg.human, lumberupg.human, Defence.orc, Defence.human, Farmupgrade.human, Farmupgrade.orc, Infantry.camea, Vehicle.camea, Aircraft.camea, Policeupg.SimCity, cityupgrade.aw, pylonupg.Protoss, Armor.od2k, Infantry.od2k, Vehicle.od2k, Starport.od2k, Upgrade.od2k, Aircraft.od2k, Police.sc2k, RAPolice.sc2k, FireDept.sc2k, RAFireDept.sc2k, Vehicle.sc2k, RAVehicle.sc2k, Infantry.sc2k, RAInfantry.sc2k, Naval.sc2k, RANaval.sc2k,			Upgrade.Link, Upgrade.Blazer, Upgrade.Jack, Upgrade.VicViper, Upgrade.Axelay, Upgrade.Angel, Upgrade.Contestant,			Biolab, RaBiolab, Vehicle.TECHNOD, Biolab.TECHNOD, Vehicle.TECHBOTST, Infantry.TSGDI, RAInfantry.TSGDI, Infantry.MUTANT, RAInfantry.MUTANT, Infantry.TSNod, RAInfantry.TSNod, Infantry.CABAL, RAInfantry.CABAL, Vehicle.TSGDI, RAVehicle.TSGDI, Vehicle.MUTANT, RAVehicle.MUTANT, Vehicle.TSNod, RAVehicle.TSNod, Vehicle.CABAL, RAVehicle.CABAL, Aircraft.TSGDI, RAAircraft.TSGDI, Aircraft.MUTANT, RAAircraft.MUTANT, Aircraft.TSNod, RAAircraft.TSNod, Aircraft.CABAL, RAAircraft.CABAL, Infantry.GLA, RAInfantry.GLA, Vehicle.GLA, RAVehicle.GLA, Aircraft.GLA, RAAircraft.GLA, Naval.GLA, RANaval.GLA, Infantry.CHINA, RAInfantry.CHINA, Vehicle.CHINA, RAVehicle.CHINA, Aircraft.CHINA, RAAircraft.CHINA, Naval.CHINA, RANaval.CHINA, Infantry.USA, RAInfantry.USA, Vehicle.USA, RAVehicle.USA, Aircraft.USA, RAAircraft.USA, Naval.USA, RANaval.USA, Bombtruck.GLA, Overlord.CHINA, Helix.CHINA, Drones.USA, PowerPlant.USA, Gunboat.GLA, Infantry.LEANG, RAInfantry.LEANG, Vehicle.LEANG, RAVehicle.LEANG, Aircraft.LEANG, RAAircraft.LEANG, Naval.LEANG, RANaval.LEANG, Promotions.GLA, Promotions.CHINA, Promotions.USA, Promotions.LEANG, Vehicle.OrangeStar, RAVehicle.OrangeStar, Vehicle.BlueMoon, RAVehicle.BlueMoon, Vehicle.YellowComet, RAVehicle.YellowComet, Vehicle.GreenEarth, RAVehicle.GreenEarth, Vehicle.BlackHole, RAVehicle.BlackHole, Vehicle.DaysofRuins, RAVehicle.DaysofRuins, Aircraft.OrangeStar, RAAircraft.OrangeStar, Aircraft.BlueMoon, RAAircraft.BlueMoon, Aircraft.YellowComet, RAAircraft.YellowComet, Aircraft.GreenEarth, RAAircraft.GreenEarth, Aircraft.BlackHole, RAAircraft.BlackHole, Aircraft.DaysofRuins, RAAircraft.DaysofRuins, Naval.OrangeStar, RANaval.OrangeStar, Naval.BlueMoon, RANaval.BlueMoon, Naval.YellowComet, RANaval.YellowComet, Naval.GreenEarth, RANaval.GreenEarth, Naval.BlackHole, RANaval.BlackHole, Vehicle.Rubinelle, RAVehicle.Rubinelle, Vehicle.IDS, RAVehicle.IDS, Vehicle.NRA, RAVehicle.NRA, Vehicle.Lazurian, RAVehicle.Lazurian, Aircraft.Rubinelle, RAAircraft.Rubinelle, Aircraft.IDS, RAAircraft.IDS, Aircraft.NRA, RAAircraft.NRA, Aircraft.Lazurian, RAAircraft.Lazurian, Naval.Rubinelle, RANaval.Rubinelle, Naval.IDS, RANaval.IDS, Naval.NRA, RANaval.NRA, Naval.Lazurian, RANaval.Lazurian, Infantry.SWREBELS, RAInfantry.SWREBELS, Infantry.SWEMPIRE, RAInfantry.SWEMPIRE, Infantry.SWSEPARATIST, RAInfantry.SWSEPARATIST, Infantry.SWREPUBLIC, RAInfantry.SWREPUBLIC, Vehicle.SWREBELS, RAVehicle.SWREBELS, Vehicle.SWEMPIRE, RAVehicle.SWEMPIRE, Vehicle.SWSEPARATIST, RAVehicle.SWSEPARATIST, Vehicle.SWREPUBLIC, RAVehicle.SWREPUBLIC, Aircraft.SWREBELS, RAAircraft.SWREBELS, Aircraft.SWEMPIRE, RAAircraft.SWEMPIRE, Aircraft.SWSEPARATIST, RAAircraft.SWSEPARATIST, Aircraft.SWREPUBLIC, RAAircraft.SWREPUBLIC, Infantry.SWHUTT, RAInfantry.SWHUTT, Vehicle.SWHUTT, RAVehicle.SWHUTT, Aircraft.SWHUTT, RAAircraft.SWHUTT, Infantry.FreedomGuard, RAInfantry.FreedomGuard, Vehicle.FreedomGuard, RAVehicle.FreedomGuard, Infantry.Imperium, RAInfantry.Imperium, Vehicle.Imperium, RAVehicle.Imperium, Infantry.Shadowhand, RAInfantry.Shadowhand, Vehicle.Shadowhand, RAVehicle.Shadowhand, Infantry.Xenite, RAInfantry.Xenite, Vehicle.Xenite, RAVehicle.Xenite, Infantry.Togran, RAInfantry.Togran, Vehicle.Togran, RAVehicle.Togran, Defence.ImperialGuard, RADefence.ImperialGuard, Infantry.ImperialGuard, RAInfantry.ImperialGuard, Vehicle.ImperialGuard, RAVehicle.ImperialGuard, Tactica.ImperialGuard, Research.BlackHole, Research.BlueMoon, Research.GreenEarth, Research.YellowComet, Research.OrangeStar, Research.Rubinelle, Research.Lazurian, Research.NRA, Research.IDS, Helicopter.USA, RAHelicopter.USA, ConcreteSlab.Shockwave, Scavs.Collective, RAScavs.Collective, Research.Alpha, FactoryUpgrade1.Alpha, FactoryUpgrade2.Alpha, PowerPlant.Alpha, Aircraft.Alpha, RAAircraft.Alpha, InfantryInfection, Hip.GLA, TransportHelix.CHINA, Vehicle.EodAlien, RAVehicle.EodAlien, Infantry.EodAlien, RAInfantry.EodAlien, Vehicle.ModAllies, RAVehicle.ModAllies, Vehicle.ModSoviet, RAVehicle.ModSoviet, Infantry.ModSoviet, RAInfantry.ModSoviet, Infantry.ModAllies, RAInfantry.ModAllies, FactoryUpgrade1.Scavenger, FactoryUpgrade2.Scavenger, Research.Scavenger, Building.ModAnts, RABuilding.ModAnts, Defence.ModAnts, RADefence.ModAnts, Infantry.ModAnts, RAInfantry.ModAnts, Vehicle.ModAnts, RAVehicle.ModAnts, Vehicle.ModUSAPad, RAVehicle.ModUSAPad, Infantry.ModJapan, RAInfantry.ModJapan, Vehicle.ModJapan, RAVehicle.ModJapan, Aircraft.ModJapan, RAAircraft.ModJapan, Infantry.Xmas, RAInfantry.Xmas, Infantry.TAGDI, RAInfantry.TAGDI, Infantry.TANod, RAInfantry.TANod, Infantry.TAMUTANT, RAInfantry.TAMUTANT, Vehicle.TAGDI, RAVehicle.TAGDI, Vehicle.TANod, RAVehicle.TANod, Vehicle.TAMUTANT, RAVehicle.TAMUTANT, Aircraft.TAGDI, RAAircraft.TAGDI, Upgrade.TAGDI, Upgrade.TANod, Upgrade.TAMUTANT, Infantry.IOK, RAInfantry.IOK, Vehicle.IOK, RAVehicle.IOK, Vehicle.MODNodR, RAVehicle.MODNodR, Vehicle.MODNod, RAVehicle.MODNod, Infantry.MODNod, Infantry.MODNodR, RAInfantry.MODNod, RAInfantry.MODNodR, Vehicle.MODGDIR, RAVehicle.MODGDIR, Vehicle.MODGDI, RAVehicle.MODGDI, Infantry.MODGDI, Infantry.MODGDIR, RAInfantry.MODGDI, RAInfantry.MODGDIR, Infantry.TOMORROW, RAInfantry.TOMORROW, Vehicle.TOMORROW, RAVehicle.TOMORROW, Aircraft.TOMORROW, RAAircraft.TOMORROW, Infantry.ANSWER, RAInfantry.ANSWER, Vehicle.ANSWER, RAVehicle.ANSWER, Aircraft.ANSWER, RAAircraft.ANSWER, Vehicle.DTUSA, RAVehicle.DTUSA, Aircraft.DTUSA, RAAircraft.DTUSA, Infantry.DTRUSSIA, RAInfantry.DTRUSSIA, Vehicle.DTRUSSIA, RAVehicle.DTRUSSIA, Aircraft.DTRUSSIA, RAAircraft.DTRUSSIA, Infantry.DTJAPAN, RAInfantry.DTJAPAN, Vehicle.DTJAPAN, RAVehicle.DTJAPAN, Aircraft.DTJAPAN, RAAircraft.DTJAPAN, Infantry.Actibliz, RAInfantry.Actibliz, Vehicle.Actibliz, RAVehicle.Actibliz, Aircraft.Actibliz, RAAircraft.Actibliz, Defence.Actibliz, RADefence.Actibliz
+		UnitsToBuild:
+			#################### UnitsToBuild CNC
+			e1: 65
+			e2: 25
+			e3: 40
+			e4: 15
+			e5: 15
+			rmbo: 1
+			harv: 10
+			bggy: 5
+			bike: 40
+			ltnk: 25
+			ftnk: 10
+			arty: 60
+			stnk: 40
+			mssm: 1
+			jeep: 5
+			apc: 1
+			apc.e2: 2
+			mtnk: 20
+			msam: 40
+			htnk: 50
+			heli: 5
+			orca: 5
+			tran.e2: 1
+			tran.e4: 1
+			tran.e5: 1
+			tran.rmbo: 1
+            #################### UnitsToBuild TD Expansion
+            bhbike: 20
+            bhe3: 40
+            bhe1: 60
+            e1officergdi: 50
+            mode3chem: 30
+            e1officernod: 50
+            modne6: 5
+            e1.renegade: 40
+            e3.renegade: 20
+            e4.renegade: 20
+            e6.renegade: 5
+            e1officergdi.renegade: 50
+            e1officernod.renegade: 50
+            modegg: 20
+            modmssm: 15
+            modchemtnk: 20
+            modchembike: 30
+            modchemltnk: 25
+            modchemstnk: 20
+            modchemheli: 10
+            modsstnk: 20
+            modsbike: 30
+            modsltnk: 30
+            modsftnk: 15
+            modsarty: 15
+            modsmssm: 10
+            bhapc: 20
+            newltnk: 30
+            newftnk: 20
+            newarty: 15
+            newsmm: 20
+            newbggy: 30
+            nodv2rl: 10
+            nodftrk: 15
+            nod4tnk: 15
+            nmodkirov: 5
+            nmodapoc: 10
+            nmodrhino: 10
+            noddtrk: 10
+            newltnk.renegade: 30
+            newbggy.renegade: 30
+            newftnk.renegade: 25
+            newarty.renegade: 15
+            newsmm.renegade: 10
+            newnapc.renegade: 10
+            newhumvee: 20
+            modrapc: 15
+            mtnk.renegade: 15
+            modrapc.renegade: 20
+            newhumvee.renegade: 25
+            htnk.renegade: 20
+            msam.renegade: 15
+            #################### UnitsToBuild IOK
+            iokworker: 20
+            ioke1: 40
+            iokterror: 10
+            ioke5: 25
+            ioke3: 25
+            iokmob: 20
+            ioke6: 5
+            iokbggy: 30
+            iokrocketbggy: 25
+            iokscorpion: 25
+            iokradar: 3
+            iokftnk: 5
+            iokquad: 20
+            iokscud: 10
+            iokstnk: 15
+            iokjetplane: 10
+			#################### UnitsToBuild RA
+			dog: 1
+			rae1: 65
+			rare1: 65
+			rae2: 25
+			rae3: 40
+			rare3: 40
+			rae4: 15
+			e7: 1
+			medi: 1
+			mech: 1
+			shok: 15
+			raharv: 10
+			rajeep: 5
+			raapc: 5
+			raapc.bot1: 1
+			raapc.bot2: 1
+			sapc.bot: 1
+			1tnk: 25
+			2tnk: 20
+			3tnk: 30
+			4tnk: 50
+			ttnk: 10
+			ftrk: 5
+			ftrk.bot1: 1
+			raarty: 60
+			v2rl: 60
+			mrj: 1
+			ctnk: 1
+			raheli: 3
+			mh60: 3
+			mig: 3
+			yak: 3
+			ratran.e4: 1
+			ratran.shok: 1
+			ratran.e7: 1
+            #################### UnitsToBuild Modded RA
+			raje3: 65
+            raje1: 40
+			modramgg: 1
+			modmrj: 1
+			modraspy: 1
+			modsapc: 20
+			modraapc: 5
+			modctnk: 20
+			modtnkd: 25
+			mod88flak: 50
+			modttnk: 20
+			modshok: 40
+			modgtnk: 5
+			modbtr: 5
+			moddtrk: 1
+			moddog: 2
+			modkirov: 20
+			modkaty: 50
+			modmarkiv: 25
+			modcruisetnk: 20
+			modft: 25
+			modchar: 20
+			modtiger: 25
+			modpanzer: 20
+			modkubel: 5
+			rabggy: 5
+			modbggy: 10
+			rabggyj: 5
+			modbggyj: 10
+			modtypej: 10
+			modhover: 5
+			modhover.bot1: 2
+			modhover.bot2: 2
+			modkami: 20
+			modbomber: 15
+			modcore: 1
+			modcore1: 1
+			modcore2: 1
+			modcore3: 1
+			modcarr: 7
+			modcarr.bot1: 2
+			modtypejg: 25
+			modpanzerg: 25
+			modtigerg: 20
+			mod3tnkg: 30
+			mod4tnkg: 50
+			modttnkg: 30
+			modhindg: 1
+			mod3tnki: 30
+			mod4tnki: 50
+            modv2rli: 20
+			#################### UnitsToBuild Dawn of the Tomorrow
+			dte2: 25
+			dte3: 40
+			dtmutant: 15
+			dtharv: 10
+			dtrmbo: 1
+			dte5: 15
+			dtover: 5
+			rajeep.answer: 5
+			jeep.dtusa: 5
+			dtapc: 5
+			dtapc2: 1
+			dtltnk2: 25
+			dtltnk: 25
+			dtstnk: 25
+			dtltnk2.answer: 25
+			mtnk.tomorrow: 20
+			dthtnk: 50
+			dthtnk2: 50
+			ftnk.tomorrow: 5
+			v2rl.tomorrow: 60
+			arty.answer: 60
+			arty.dtusa: 60
+			mssm.dtrussia: 60
+			msam.dtjapan: 60
+			mrj.answer: 1
+			heli.tomorrow: 3
+			heli.dtusa: 3
+			heli.answer: 3
+			hind.dtrussia: 3
+			dtorca: 3
+			tran.answer.e2: 1
+			tran.answer.e3: 1
+			tran.tomorrow.e3: 1
+			tran.tomorrow.e4: 1
+			tran.dtrussia.e2: 1
+			tran.dtrussia.e3: 1
+			apc.answer.e2: 1
+			apc.tomorrow.e3: 1
+			apc.tomorrow.e4: 1
+			apc.dtusa.e2: 1
+			apc.dtusa: 1
+			dtstnk.dtrussia.e2: 1
+			dtstnk.dtrussia.e3: 1
+			dtapc2.dtjapan.e3: 1
+			dtapc2.dtjapan.e5: 1
+			tran.dtjapan.e3: 1
+			tran.dtjapan.e5: 1
+			#################### UnitsToBuild Modded RA Ants
+			tinyant: 40
+			modant: 65
+			tinyant.rush: 65
+			fant: 15
+			hant: 30
+			modant2: 65
+			modant3: 25
+			sant: 20
+			crab: 1
+			flyant: 8
+			antdoggie: 10
+			tant: 20
+			tant2: 30
+			htant: 50
+			mant: 10
+			chant: 5
+			testant: 10
+			qant.bot: 1
+            #################### UnitsToBuild TA
+            tae1: 40
+            tsa1.nod: 40
+            taforgotten: 30
+            tae3: 30
+            tae3.nod: 30
+            tae3.mutant: 30
+            tatrooper: 25
+            tasnipe: 15
+            taguardian: 10
+            tapitbull: 10
+            tabowler: 20
+            tareckoner: 15
+            tastnk: 15
+            taspecter: 20
+            tabike: 20
+            taavatar: 15
+            tamammoth: 10
+            tamammoth2: 10
+            tajugg: 10
+            taptnk: 10
+            tapaladin: 10
+            #################### UnitsToBuild TA UPGRADES
+            taupsmokegrenades: 1
+            taupmissilestorm: 1
+            taupcharge: 1
+            taupcharge2: 1
+            tauplaserscope: 1
+            taupflashbang: 1
+            taupheatcannon: 1
+            taupbarrage: 1
+            taupbatteringram: 1
+            upgrade.tagdipower1: 1
+            upgrade.tagdipower2: 1
+            upgrade.tagdipower3: 1
+            upgrade.tagdiacum1: 1
+            upgrade.tagdiacum2: 1
+            upgrade.tagdiacum3: 1
+            upgrade.tagdibarr1: 1
+            upgrade.tagdibarr2: 1
+            upgrade.tagdibarr3: 1
+            upgrade.tagdisilo1: 1
+            upgrade.tagdisilo2: 1
+            upgrade.tagdisilo3: 1
+            upgrade.tagdiweap1: 1
+            upgrade.tagdiweap2: 1
+            upgrade.tagdiweap3: 1
+            upgrade.tagdihq1: 1
+            upgrade.tagdihq2: 1
+            upgrade.tagdihq3: 1
+            upgrade.tagdihq21: 1
+            upgrade.tagdihq22: 1
+            upgrade.tagdihq23: 1
+            upgrade.tacannonb1: 1
+            upgrade.tacannonb2: 1
+            upgrade.tacannonb3: 1
+            upgrade.taflakb1: 1
+            upgrade.taflakb2: 1
+            upgrade.taflakb3: 1
+            upgrade.tamgnest1: 1
+            upgrade.tamgnest2: 1
+            upgrade.tamgnest3: 1
+			#################### UnitsToBuild TS GDI
+			tse1: 65
+			tse2: 25
+			tsjumpjet: 15
+			tsghost: 1
+			tsharv: 10
+			tshvr: 5
+			tssmech: 5
+			tsapc.bot: 1
+			tsmmch: 20
+			tsjugg: 40
+			tshmec: 50
+			tssonic: 1
+			tsorca: 3
+			tsorcab: 3
+			#################### UnitsToBuild TS Nod
+			tse1.nod: 65
+			tse3: 40
+			tscyborg: 15
+			tscyc2: 1
+			tsbggy: 5
+			tsbike: 40
+			tsttnk: 25
+			tssubtank: 10
+			tsart2: 60
+			tsstnk: 40
+			tsrepair: 1
+			tsapache: 3
+			tsscrin: 3
+			tssgen: 1
+            elitcadre: 20
+			#################### UnitsToBuild TS Forgotten
+			tsmutant: 65
+			tsmwmn: 65
+			tsmutant3: 25
+			tsdoggie: 40
+			tsweedguy: 15
+			tsumagon: 1
+			tsghost.mutant: 1
+			tscar2: 5
+			tswini2: 5
+			tsarty: 5
+			tsmlrs: 5
+			tsm113.bot1: 5
+			tsm113.bot2: 5
+			tsm113.bot3: 1
+			ts1tnk: 25
+			tsftnk: 10
+			ts2tnk: 20
+			ts3tnk: 40
+			ts4tnk: 50
+			tsheli: 3
+			tshind: 3
+			#################### UnitsToBuild CABAL
+			tscyborgc: 65
+			tsreaper: 40
+			tsreaper2: 10
+			tsbike2: 40
+			tsttnk2: 25
+			tssubtank2: 10
+			tsart2c: 60
+			tsstnk2: 40
+			tsrepair2: 1
+			tscyc2.cabal: 1
+            tsdissolver: 40
+            tsarnd: 40          
+			#################### UnitsToBuild RA2
+			ra2adog: 1
+			ra2e1: 65
+			ra2snipe: 25
+			yrggi: 40
+			ra2cleg: 5
+			ra2engineer: 2
+			ra2tany: 15
+			ra2seal: 8
+			ra2cmin: 10
+			ra2fvbotmg: 5
+			ra2fvbotms: 5
+			ra2fvbotchrono: 1
+			yrrobo: 25
+			ra2mtnk: 20
+			ra2tnkd: 20
+			ra2mgtk: 10
+			ra2sref: 15
+			ra2fv: 5
+			ra2fvbotrep: 5
+			yrbfrt.bot: 30
+			yrbfrt.bot2: 5
+			yrbfrt.bot3: 5
+			ra2rock: 6
+			ra2falc: 3
+			ra2beag: 3
+			ra2shad.bot1: 1
+			ra2shad.bot2: 4
+			ra2shad.bot3: 1
+            ra2zep: 5
+            ra2slav: 30
+            ra2zombie: 50
+            ra2mutalisk: 10
+            ra2demon: 10
+            ra2skeleton: 20
+            ra2imp: 10
+            ra2mancubus: 5
+            ra2revenant: 5
+            ra2pinky: 5
+            ra2exciter: 5
+            ra2floater: 5
+            ra2tripod: 5
+            ra2cyborg: 5
+            ra2zepdoom: 5
+			##################################################
+			ra2dog: 1
+			ra2e2: 65
+			ra2deso: 25
+			ra2flakt: 40
+			ra2shk: 15
+			yrboris: 15
+			ra2harv: 10
+			ra2terror: 5
+			ra2dtruck: 1
+			ra2htnk: 20
+			ra2apoc: 30
+			ra2v3: 60
+			ra2ttnk: 15
+			ra2htk: 5
+			ra2htk.bot1: 4
+			ra2htk.bot2: 1
+			ra2dron: 6
+			ra2yuri: 10
+			ra2ivan: 1
+			##################################################
+			yrinit: 65
+			yrvirus: 25
+			yrbrute: 40
+			yryuri: 15
+			yryurix: 15
+			yrslav: 40
+			yrsmin: 3
+			yrytnk: 5
+			yrltnk: 20
+			yrmind: 15
+			yrtele: 15
+			yrcaos: 6
+			yrdisk: 20
+			##################################################
+			ss: 10
+			msub: 10
+			dd: 10
+			ca: 10
+			pt: 10
+			cncss: 10
+			cncmsub: 10
+			cncdd: 10
+			cncca: 10
+			cncpt: 10
+			##################################################
+			ra2sqd: 5
+			ra2dlph: 5
+			ra2dest: 10
+			ra2aegis: 8
+			ra2sub: 10
+			ra2hyd: 10
+			ra2dred: 10
+			ra2carrier: 10
+			yrbsub: 10
+			##################################################
+			rnbggy: 1
+			rnbike: 1
+			rnv2rl: 1
+			rnapc: 1
+			rnltnk: 1
+			rnftnk: 1
+			##################################################
+			rne4: 1
+			rne5: 1
+			e3flamer: 1
+			e3chem: 1
+			chemtnk: 1
+			##################################################
+			techroomba: 1
+			techsoomba: 1
+			techrctiger: 1
+			techgdrone: 1
+			#################### UnitsToBuild GLA
+			gle1: 45
+			gle1toxin: 45
+			glamob: 25
+			gle3: 40
+			glkell: 1
+			glterror: 5
+			glworker: 50
+			glpickup: 5
+			glquad: 40
+			glscorpion: 25
+			gltractor: 10
+			glbggy: 60
+			glradar: 1
+			glvan: 5
+			glbbus.e1: 1
+			glbbus.e2: 1
+			glmaura: 20
+			glscud: 40
+			glscud.exp: 40
+			glscud.tox: 40
+			glbiker: 5
+			glbiker.e3: 8
+			glbiker.toxin: 5
+			glbiker.terror: 8
+			glbombtruck: 1
+			glscrapcar: 1
+			glgunboat: 10
+			#################### UnitsToBuild CHINA
+			che1: 65
+			che2: 65
+			che3: 40
+			#chhacker: 1
+			chhacker2: 1
+			chlotus: 1
+			#chcrawl: 1
+			chharv: 10
+			chgtnk: 40
+			chcrawl2: 40
+			chbattle: 25
+			chdragon: 10
+			charty: 60
+			chnukecann: 40
+			choverlord: 50
+			choverlord2: 50
+			chhelix: 5
+			chmig: 5
+			chmig2: 5
+			choutpost: 5
+			choutpost2: 5
+			chflameboat: 10
+			chasub: 5
+			checm: 5
+			#################### UnitsToBuild USA
+			usae1: 65
+			usae3: 40
+			usapath: 15
+			usaburton.bot: 1
+			usaambulan: 1
+			usahook: 10
+			usaavenger: 10
+			usajeep: 10
+			usajeep.bot1: 10
+			usajeep.bot2: 20
+			usacrusader: 25
+			usacrusader2: 25
+			usasentry: 10
+			usattnk: 60
+			usamicro: 20
+			usapala: 50
+			usaraptor: 5
+			usaraptor2: 5
+			usaaurora: 5
+			usacomanche: 5
+			usagunboat: 10
+			usabattleship: 9
+			usacarrier: 5
+            usacombathook: 1
+            #################### UnitsToBuild SUSA
+            susattnk: 20
+            susattnkp: 20
+            susapala: 20
+            susalosathumvee: 15
+            susalittlebird.USAE1: 5
+            susalittlebird.USAE3: 15
+            susacomanche: 15
+            susakingcomanche: 15
+            susadecoydrone: 3
+            susarobottank: 5
+            susamortarhmmwv.e1: 10
+            susamortarhmmwv.e3: 15
+            susaminigunhmmwv.e1: 10
+            susaminigunhmmwv.e3: 15
+            susamedicdrone: 5
+            susaenforcerdrone: 10
+            susalockdownmlrs: 10
+            susashatterer: 10
+            susamicrohumvee: 10
+            susaexosuit.USAE3: 20
+            susaexosuit.USAE1: 20
+            susaexosuit.USAPATH: 10
+            susaexosuit.susamarine: 20
+            susapalalaser: 10
+            susalaserranger: 50
+            susalaserburton.bot: 1
+            susalasermissiledefender: 20
+            susarailgunartillery: 5
+            susalaserstealth: 5
+            susafb22: 5
+            susalasercomanche: 10
+            susacrusader2: 10
+            susasheridan: 10
+            susahurricane: 5
+            susaraptor: 5
+            susaraptor2: 5
+            susatornado: 3
+            susapavelow: 10
+            susaauroraalpha: 10
+            susasupportstealthfighter: 10
+            usacombathook.usae1: 5
+            usacombathook.usae3: 10
+            susaacolytedrone: 5
+            susamedivacblackhawk.bot: 3
+            susasupplytruck: 10
+            susawraith: 10
+            susabradleyifv.bot: 10
+            susamammoth: 10
+            susagladiator: 10
+            susatankdestroyer: 10
+            susahowitzer: 5
+            susastrykermedic.bot: 3
+            susapredatordrone: 10
+            susavulcantank: 10
+            susablackwidow: 5
+            susaf16xl: 5
+            susavaporiser: 5
+            susaguardian: 5
+            susadetection: 5
+            susaranger: 50
+            susapath: 10
+            susamissiledefender: 20
+            susamarine: 20
+            susaburton.bot: 1
+            susaarmorburton.bot: 1
+            susaempmissiledefender: 20
+            usaarmorranger: 50
+            susaadvancedmicro: 20
+            susahypersonicaurora: 5
+            susajavelinsoldier: 15
+            susastarlifter.bot1: 2
+            susastarlifter.bot2: 2
+            susastarlifter.bot3: 2
+            susastarlifter.bot4: 2
+            susastarlifter.bot5: 2
+			#################### UnitsToBuild SUSA UPGRADES
+            susaburtonequipment: 1
+            susawptargetting: 1
+            upsusagunship: 1
+            upsusagunship2: 1
+            upsusagunship3: 1
+            susaupcombatvest: 1
+            upsusashatterer: 1
+            upsusaenforcer: 1
+            upsusamammoth: 1
+            upsusarailgunartillery: 1
+            upsusajeeplaser: 1
+            susauppointdefense: 1
+            susaupdronepointdefense: 1
+            upsusafocusingcrystal: 1
+            pscusapower3: 10
+            pscusapower4: 10
+            susashilleighat: 1
+            upsusatankdestroyer: 1
+            upsusahowitzer: 1
+            upsusapalalaser: 1
+            susaupmisspod: 1
+            upssusatealthcomanche: 1
+            upsusarodfromgod1: 1
+            upsusarodfromgod2: 1
+            upsusarodfromgod3: 1
+            HyperSonicBomb: 1
+            upsusabradleyparadrop1: 1
+            upsusabradleyparadrop2: 1
+            upsusabradleyparadrop3: 1
+            upsusaamdggrenadebarrage: 1
+            upsusaamdggrenadebarrage2: 1
+            upsusaamdggrenadebarrage3: 1
+            upsusaparadrop1: 1
+            upsusaparadrop2: 1
+            upsusaparadrop3: 1
+            upsusatornado: 1
+            upsusaveteranair: 1
+            upsusaucav1: 1
+            upsusaucav2: 1
+            upsusaucav3: 1
+            upsusaf16sp: 1
+            upsusahypersonicbomb: 1
+            upsusahalo1: 1
+            upsusahalo2: 1
+            upsusahalo3: 1
+            susauptowmiss: 1
+            upsusamammothshield: 1
+            upsusasabremissiles: 1
+            susaarmorburtonequipment: 1
+            #################### UnitsToBuild SCHINA
+            schredguard: 65
+            schredguard_nuke: 65
+            schsiegesoldier_nuke: 15
+            schtankhunter_nuke: 20
+            schtankhunter: 20
+            schhacker: 10
+            schlotus: 1
+            schhacker_nuke: 10
+            schlotus_nuke: 1
+            schminigunnersquad: 10
+            schtankhuntersquad: 10
+            schredguardsquad: 10
+            schsiegesoldier: 15
+            scharty: 10
+            schhackvan.bot: 5
+            schempmig: 15
+            schtiger: 15
+            schscoutcar: 5
+            schpropagandatruck: 3
+            schwarmaster: 20
+            schreaper: 20
+            schadvancedecm: 10
+            schrazerbomb: 10
+            schtransporthelix: 5
+            pscschhelix1: 1
+            schrazerbomber: 10
+            schtigershark: 20
+            schberzerkermlrs: 10
+            schtransporthelix.e1: 3
+            schtransporthelix.e3: 3
+            schgattlingapc: 20
+            schbattlefortress.e2: 1
+            schbattlefortress.e3: 3
+            schsiegecannon: 10
+            schradtank: 10
+            schnuclearbattlemaster: 15
+            schnuclearoverlord: 5
+            schdevastator: 5
+            schlargesupply: 5
+            schravagetank: 20
+            schburatino: 10
+            schhammercannon: 5
+            schanviltank: 3
+            schsupportcrawler.e1: 2
+            schsupportcrawler.e2: 3
+            schsupportcrawler.e3: 2
+            schsupplyhelicopterleang: 15
+            schassaulthelix: 10
+            schgrindercannon: 15
+            #################### UnitsToBuild SCHINA UPGRADES
+            upschmigspeed: 1
+            upschheliarmor: 1
+            upschmassproduction: 1
+            upschinfernoapupgrade: 1
+            upschnucleartanks: 1
+            upschreaper: 1
+            upschreactivearmor: 1
+            upschadvancedautoloader: 1
+            upschsharkpropaganda: 1
+            upschrazerbomberarmor: 1
+            upschberzerkermlrs: 1
+            upschdevastator: 1
+            psscchoverlord: 5
+            upschautoload: 1
+            upschneutronbomb: 1
+            upschbattlemaster: 1
+            upschneutronclustermine: 1
+            upschtankdrop1: 1
+            upschtankdrop2: 1
+            upschtankdrop3: 1
+            #################### UnitsToBuild SGLA
+            sglaquadbike: 15
+            sglbggy: 15
+            sglballoon: 15
+            sglcobra: 15
+            sglbadger: 20
+            glsmaura: 20
+            sglbasilisk: 10
+            sglhip: 10
+            sglsparka: 10
+            sgltopol: 10
+            sglbus.e1: 7
+            sglbus.e3: 7
+            sglbggyexp: 15
+            sglcamel: 15
+            sgltarantula: 15
+            #################### UnitsToBuild SGLA UPGRADES
+            upsglbasilisk: 1
+            pscchhip1: 1
+            pscchhip2: 1
+            pscchhip3: 1
+			#################### UnitsToBuild LEANG
+			leange1: 65
+			leangmob: 25
+			leange3: 40
+			leangkell: 1
+			leangbggy: 60
+			leangbiker: 5
+			leanggunboat: 10
+			leange2: 65
+			leanglotus: 1
+			leangharv: 10
+			leanggtnk: 40
+			leangdragon: 10
+			leangoverlord: 50
+			leanghelix: 5
+			leangmig: 5
+			leangflameboat: 10
+			leangasub: 5
+			leangpath: 15
+			leangburton: 1
+			leangavenger: 10
+			leangsentry: 10
+			leangttnk: 60
+			leangpala: 50
+			leangraptor: 5
+			leangaurora: 5
+			leangbattleship: 9
+			leangcarrier: 5
+			#################### UnitsToBuild GENERALSUPGRADES
+			upscorpionrocket: 1
+			upchaingun: 1
+			upusgrenade: 1
+			upbluefire: 1
+			upmigarmor: 1
+			upmignuke: 1
+			usauptowmiss: 1
+			usaupdronegun: 1
+			usauparmor: 1
+			usauplasmiss: 1
+			usaupmisspod: 1
+			usaupbunkerbuster: 1
+			usaupcounter: 1
+			upstealthcomanche: 1
+			pscchoverlord1: 1
+			pscchoverlord2: 1
+			pscchoverlord3: 1
+			pscchhelix1: 1
+			pscchhelix2: 1
+			pscchhelix3: 1
+			pscdrones1: 1
+			pscdrones2: 1
+			pscdrones3: 1
+			pscusapower: 1
+			pscglgunboat1: 1
+			pscglgunboat2: 1
+			#################### Generals Promotions
+			upmarauder: 1
+			uptechnical: 1
+			upscudlauncher: 1
+			upredguard: 1
+			upcharty: 1
+			upnukecann: 1
+			upemergencyrepair1: 1
+			upemergencyrepair2: 1
+			upemergencyrepair3: 1
+			upartybarrage1: 1
+			upartybarrage2: 1
+			upartybarrage3: 1
+			upchemp: 1
+			upcarpetbomb: 1
+			upfrenzy1: 1
+			upfrenzy2: 1
+			upfrenzy3: 1
+			uprebelambush1: 1
+			uprebelambush2: 1
+			uprebelambush3: 1
+			upsneakattack: 1
+			upanthraxbomb: 1
+			upusapath: 1
+			upusapala: 1
+			upusastealth: 1
+			upusaspydrone: 1
+			upusaparadrop1: 1
+			upusaparadrop2: 1
+			upusaparadrop3: 1
+			upusagunship: 1
+			upusaa101: 1
+			upusaa102: 1
+			upusaa103: 1
+			upusaleaflet: 1
+            upusaleaflet_1: 1
+			upusafuelbomb: 1
+			leangsneakattack: 1
+			leangartybarrage1: 1
+			leangartybarrage2: 1
+			leangartybarrage3: 1
+			leangupusapath: 1
+			leangupusapala: 1
+			leangchemp: 1
+			leangusagunship: 1
+			leangclustermines: 1
+			leangcarpetbomb: 1
+			#################### UnitsToBuild Zombie
+			civzombie.infect: 35
+			zombie1.infect: 65
+			zombie2.infect: 65
+			jumpzombie.infect: 80
+			zombie.squad: 88
+			tnkzombie.infect: 35
+			zombie6.infect: 35
+			zombiechan.infect: 35
+			upzombiemutate1: 1
+			upzombiemutate2: 1
+			upzombiemutate3: 1
+			upzombiemutate4: 1
+			upzombiemutate5: 1
+			upzombiemutate6: 1
+			upzintelligence1: 1
+			upzintelligence2: 1
+			upzintelligence3: 1
+			upzmsquad1: 1
+			upzmsquad2: 1
+			upzmsquad3: 1
+			#################### UnitsToBuild ALPHA
+			2100repairtruckbot: 1
+			2100healtruck: 9
+			2100mvw: 35
+			2100mgch: 20
+			2100rvw: 30
+			2100fvw: 10
+			2100tch: 50
+			2100mch: 40
+			2100apt: 55
+			2100hpt: 65
+			2100cpt: 5
+			2100moch: 40
+			2100rach: 40
+			2100mchov: 20
+			2100aphov: 20
+			2100hphov: 20
+			2100a2pt: 20
+			2100mvvtol: 5
+			2100rvvtol: 5
+			2100acpt: 50
+			2100ac2pt: 65
+			2100ifch: 10
+			2100t2ch: 55
+			2100hvch: 20
+			2100flach: 1
+			2100nedch: 20
+			#################### UnitsToBuild COLLECTIVE
+			2100repairtruckbotc: 1
+			2100healtruckc: 9
+			2100mbuw: 35
+			2100mgsch: 20
+			2100rbuw: 30
+			2100fbuw: 10
+			2100tsch: 50
+			2100msch: 40
+			2100amat: 55
+			2100hmat: 65
+			2100cmat: 5
+			2100mosch: 40
+			2100rabuw: 40
+			2100mschov: 20
+			2100amahov: 20
+			2100hmahov: 20
+			2100a2mat: 20
+			2100cscav: 65
+			2100ctrike: 2
+			2100cjeep: 3
+			2100cjeepmsl: 4
+			2100cbus.bot: 7
+			2100mbuvtol: 5
+			2100rbuvtol: 5
+			2100acmat: 50
+			2100ac2mat: 65
+			2100ifsch: 10
+			2100t2sch: 55
+			2100hvsch: 20
+			2100flasch: 1
+			2100nedsch: 20
+			#################### UnitsToBuild PARADIGM
+			2100repairtruckbotp: 1
+			2100healtruckp: 9
+			2100mlew: 35
+			2100mgphh: 20
+			2100rlew: 30
+			2100flew: 10
+			2100tphh: 50
+			2100mphh: 40
+			2100atit: 55
+			2100htit: 65
+			2100ctit: 5
+			2100mophh: 40
+			2100ralew: 40
+			2100mphhov: 20
+			2100atihov: 20
+			2100htihov: 20
+			2100a2tit: 20
+			2100mlevtol: 5
+			2100rlevtol: 5
+			2100actit: 50
+			2100ac2tit: 65
+			2100ifphh: 10
+			2100t2phh: 55
+			2100hvphh: 20
+			2100flaphh: 1
+			2100nedphh: 20
+			#################### UnitsToBuild NEXUS
+			2100repairtruckbotn: 1
+			2100healtruckn: 9
+			2100mrew: 35
+			2100mgrth: 20
+			2100rrew: 30
+			2100frew: 10
+			2100trth: 50
+			2100mrth: 40
+			2100avet: 55
+			2100hvet: 65
+ 			2100cvet: 5
+			2100morth: 40
+			2100rarth: 40
+			2100mrthov: 20
+			2100avehov: 20
+			2100hvehov: 20
+			2100a2vet: 20
+			2100mrevtol: 5
+			2100rrevtol: 5
+			2100acvet: 50
+			2100ac2vet: 65
+			2100ifrth: 10
+			2100t2rth: 55
+			2100hvrth: 20
+			2100flarth: 1
+			2100nedrth: 20
+			#################### UnitsToBuild 2100 Cyborgs
+			2100cymg: 65
+			2100cycan: 30
+			2100cylan: 30
+			2100cymor: 30
+			2100cyfla: 25
+			#################### UnitsToBuild 2100 Upgrades
+			up2100uplmg1: 2
+			up2100uptwinmg1: 1
+			up2100uphurricane1: 2
+			up2100upflamer1: 1
+			up2100upflamer2: 1
+			up2100upflamer3: 1
+			up2100upflamer4: 1
+			up2100upflamer5: 1
+			up2100upflamer6: 1
+			up2100upinferno1: 2
+			up2100upinferno2: 1
+			up2100upinferno3: 1
+			up2100uplmg3: 1
+			up2100uplmg4: 1
+			up2100uplmg2: 1
+			up2100uplmg5: 1
+			up2100uplmg6: 1
+			up2100upheavymg1: 2
+			up2100upassaultmg1: 2
+			up2100uptwinassaultmg1: 2
+			up2100upengine1: 1
+			up2100upengine2: 1
+			up2100upengine3: 1
+			up2100upengine4: 1
+			up2100uplrk1: 2
+			up2100uplrk2: 1
+			up2100uplrk3: 1
+			up2100uplrk4: 1
+			up2100uplrk5: 1
+			up2100uplancer1: 2
+			up2100upbunkerbuster1: 2
+			up2100uplancer2: 1
+			up2100uplancer3: 1
+			up2100uplancer4: 1
+			up2100uplancer5: 1
+			up2100uptankkiller1: 2
+			up2100uparmor1: 1
+			up2100uparmor2: 1
+			up2100uparmor3: 1
+			up2100uparmor4: 1
+			up2100uparmor5: 1
+			up2100uparmor6: 1
+			up2100uparmor7: 1
+			up2100uplcannon1: 2
+			up2100uplcannon2: 1
+			up2100uplcannon3: 1
+			up2100uplcannon4: 1
+			up2100uplcannon5: 1
+			up2100uplcannon6: 1
+			up2100uplcannon7: 1
+			up2100upmcannon1: 2
+			up2100uphcannon1: 2
+			up2100upacannon1: 2
+			up2100upa2cannon1: 2
+			up2100upneedle: 2
+			up2100upmortar1: 2
+			up2100upmortar2: 1
+			up2100upmortar3: 1
+			up2100upmortar4: 1
+			up2100upmortar5: 1
+			up2100upmortar6: 1
+			up2100upmortar7: 1
+			up2100uptracks1: 2
+			up2100uphycannon: 2
+			up2100upflak1: 2
+			up2100upviper1: 2
+			up2100upbug1: 2
+			up2100upcobra1: 2
+			up2100uppython1: 2
+			up2100upscorpion1: 2
+			up2100upmantis1: 2
+			up2100upleopard1: 2
+			up2100uppanther1: 2
+			up2100uptiger1: 2
+			up2100upretaliaton1: 2
+			up2100upretribution1: 2
+			up2100upvengeance1: 2
+			up2100uppowermodule1: 1
+			up2100upfactorymodule1: 1
+			up2100upresearchmodule1: 1
+			up2100upsypnaticdata1: 1
+			up2100upsypnaticdata2: 1
+			up2100upsypnaticdata3: 1
+			up2100upsypnaticdata4: 1
+			up2100uphover1: 1
+			up2100upvtols1: 2
+			up2100rkarray1: 2
+			up2100upengineer1: 1
+			up2100upengineer2: 1
+			up2100upwall1: 1
+			up2100upwall2: 1
+			up2100upwall3: 1
+			up2100upwall4: 1
+			up2100upwall5: 1
+			up2100upwall6: 1
+			up2100upwall7: 1
+			up2100upbombard1: 2
+			#################### Building Upgrades
+			psc2100power: 1
+			psc2100factory1: 1
+			psc2100factory2: 1
+			psc2100chopshop1: 1
+			psc2100chopshop2: 1
+			#################### UnitsToBuild SCAVENGER
+			2100scav: 65
+			2100scav2: 65
+			2100scav3: 12
+			2100cranebot2: 1
+			2100cranebot: 1
+			2100trike: 2
+			2100buggy: 2
+			2100jeep: 4
+			2100scavcar: 1
+			2100jeepmsl: 4
+			2100trike2: 4
+			2100buggyrk: 3
+			2100camper.bot: 5
+			2100camper: 2
+			2100camper2: 2
+			2100camper3: 3
+			2100hcamper: 2
+			2100hcamper2: 2
+			2100tractor: 6
+			2100tractor2: 3
+			2100bus.bot: 7
+			2100ftruk: 8
+			2100hftruk: 7
+			2100trailer: 8
+			2100scavtruck: 9
+			2100icecream: 10
+			2100chopper: 5
+			2100polmav: 5
+			2100scavtank: 5
+			2100bus: 1
+			2100bus2: 4
+			2100bus3: 2
+			2100bus4: 3
+			2100bus5: 3
+			2100ftruk2: 3
+			2100ftruk3: 2
+			#################### UnitsToBuild TERRAN
+			scscv: 40
+			scmarine: 50
+			scfirebat: 9
+			scghost: 5
+			scmedic: 1
+			scvulture: 10
+			scsiegetank: 40
+			scgoliath: 50
+			scwraith: 20
+			scbattlecruiser: 20
+			scdropship.marine: 1
+			scdropship.mech: 1
+			#################### UnitsToBuild PROTOSS
+			scprobe: 40
+			sczealot: 30
+			scdragoon: 20
+			schightemplar: 1
+			scdarktemplar: 5
+			screaver: 5
+			scshuttle.reaver: 2
+			scshuttle.reaver2: 1
+			scshuttle.hightemplar: 1
+			scshuttle.darktemplar: 1
+			scobserver: 1
+			scarchon: 20
+			scscout: 20
+			sccarrier: 20
+			scarbiter: 1
+            pylonupg.Protoss: 20
+			#################### UnitsToBuild ZERG
+			scbotdrone: 40
+			sczergling: 50
+			schydralisk: 30
+			scmutalisk: 20
+			scqueen: 1
+			scultralisk: 20
+			scguardian: 20
+			scinfestedterran: 3
+			sclurker: 1
+			scdefiler: 1
+            sckerriganzerg: 1
+			#################### UnitsToBuild SIMCITY
+			cityfirefighter: 40
+			citypoliceofficer: 60
+			cityarchitect: 1
+			cityinstructor: 1
+			cityelitearchitect: 1
+			cityeliteinstructor: 1
+			cityswat: 10
+			cityharvester: 20
+			citybottruck: 30
+			cityambulance: 10
+			cityfiretruck: 5
+			citypolicecar: 10
+            cityswatgl: 10
+            cityswatvan: 5
+            simcity_smg: 1
+            simcity_bpv: 1
+            simcity_gl: 1
+            simcity_taser: 1
+			#################### UnitsToBuild X_MONSTER
+			zombie1: 85
+            civzombie: 85
+			zombie2: 10
+			spitter: 5
+			ant2: 20
+			steg2: 20
+			trex2: 20
+			tric2: 20
+			rapt2: 20
+            galagabee: 20
+			galagabutterfly: 20
+			smgoomba: 85
+			smgoomba2: 80
+			smbeetle: 20
+			smkoopa: 25
+			smkoopa2: 25
+			smflamechomp: 20
+			smangrysun: 20
+			bcltnk: 20
+			bcbtnk: 20
+			bchtnk: 20
+			digdugpooka: 25
+			digdugfigars: 25      
+			#################### UnitsToBuild HEROES
+			link: 1
+			linksword2: 1
+			linksword3: 1
+			linksword4: 1
+			pegasusboots: 1
+			mail2: 1
+			mail3: 1
+			blazer: 1
+			blazersword2: 1
+			blazersword3: 1
+			blazersword4: 1
+			blazerarmor2: 1
+			blazerarmor3: 1
+			blazerarmor4: 1
+			blazermh: 1
+			jack: 1
+			#hammer2: 1
+			#axe2: 1
+			powerberry: 1
+			vicviper: 1
+			vvspeedup: 1
+			vvmissile: 1
+			vvlaser: 1
+			vvforcefield: 1
+			vvup: 1
+			axelay: 1
+			axelaysl: 1
+			axelaymm: 1
+			axelayup: 1
+			axelayrv: 1
+			axelayms: 1
+			angel: 1
+			bowupgrade: 1
+			smash: 1
+			rockets: 1
+			spreader: 1
+			grenades: 1
+			bonuslife: 1
+			speedboost: 1
+			orb: 1
+			forcefield: 1
+            ancientvisceroid: 1
+            RA2HTANY: 1
+            giegue: 1
+			#################### UnitsToBuild MCVMARKET
+			mm1mcv: 1
+			mm2mcv: 1
+			mm1ramcv: 1
+			mm2ramcv: 1
+			mmra2amcv: 1
+			mmra2smcv: 1
+			mmyrpcv: 1
+			mm12100mcv: 1
+			mm22100mcv: 1
+			mmsctmcv: 1
+			mmscpmcv: 1
+			mmsczmcv: 1
+			mmcitymcv: 1
+			#################### UnitsToBuild ENGINEERS & TECH
+			e6: 1
+            rae6: 1
+            2100e6: 1
+            scte6: 1
+            citye6: 1
+            pvice: 1
+            zombie: 1
+            ant: 1
+            #################### UnitsToBuild AW
+            awe1: 65
+            awe1bluemoon: 65
+            awe1yellowcomet: 65
+            awe1greenearth: 65
+            awe1blackhole: 65
+            awe1botsami: 65
+            awe1lz: 65
+            awe1rb: 65
+            awe3: 40
+            awe3bluemoon: 40
+            awe3yellowcomet: 40
+            awe3greenearth: 40
+            awe3blackhole: 40
+            awe3botsami: 40
+            awraidrecon: 40                        
+            awe3rb: 40
+            awe3lz: 40        
+            awmob: 35
+            awoozium: 35        
+            awrecon: 5
+            awifv: 10
+            awifv.e1: 5
+            awifv.e3: 15
+            awbike: 5
+            awbggy: 5
+            awftnk: 10
+            awcombatcar: 5
+			awaa: 40
+			awaabh: 40
+			awltnk: 25
+			awfrost: 2
+			awsiege: 40
+			awltnk.botjess: 40
+			awarty: 60
+			awarty.botgrit: 60
+            awflare: 20
+			awaaarty: 1
+			awaaarty2: 1
+			awapc: 1
+ 			awdozer: 1            
+			awhtrack: 1
+            awapc2: 1
+            awapc3: 1
+			awmtnk: 20
+ 			awmtnk2: 20             
+			awbtnk: 20
+            awmegatnk: 20
+            awctnk: 20
+            awiatank: 20
+            awantitank: 20
+            awaaarty2.famicon: 10
+			awroyaltnk: 20
+			awradarvan: 7                 
+			awrocketl: 40
+			awntnk: 50
+			awbcopter: 8
+			awbcopter2: 8
+			awduster: 5
+			awhydro: 5
+			awfighter: 5
+			awfighter2: 5
+			awattacker: 5
+            awblackbomb: 5
+			awbomber: 5
+			awbomber.boteagle: 10
+			awkirov: 5
+			awstealth: 5
+			awtcopter.e3: 6
+			awtcopter.e3bm: 6
+			awtcopter.e3yc: 6
+			awtcopter.e3ge: 6
+			awtcopter.e3bh: 6
+			awapc.e3: 3
+			awapc.e3bm: 3
+			awapc.e3yc: 3
+			awapc.e3ge: 3
+			awapc.e3bh: 3
+   			awspider: 3
+			awrepairtnk: 3           
+			awhtrack.e1bm: 4
+			awhtrack.e1yc: 4
+			awcruiser: 10
+			awss: 9
+            awss2: 9
+			awss3: 9
+            awcarrier: 10
+			awbattleship: 9
+            awupgradecity: 20
+            awdevastator: 5
+			awmtnkcowill: 1
+			awmtnkcobrenner: 1
+			awltnkcoisabelle: 1
+			awradarvancolin: 1
+			awmtnkcodavis: 1
+			awbattleshipcogreyf: 1
+			awfightercowaylon: 1
+			awltnkcoforsythe: 1
+			awartycogage: 1
+			awdustercotasha: 1
+			awreconcobeast: 1
+			awmegatnkcopenny: 1
+			awdevastatorcotabitha: 1
+			awdevastatorcocaulder: 1                  
+             #################### Upgrades AW
+            awupsystem1: 1
+            awupsystem2: 1                                           
+            #################### UnitsToBuild CNC Meet Star Wars
+			swe1: 65
+			swe1troop: 65
+            swe1clone: 65        
+			swrmbo.hutt: 65
+			swe1droid: 70
+			swdroidb2: 25
+  			swjumpjet: 25              
+			swvice: 25
+			swe2: 25
+			swddroid: 25
+			swe3: 40
+			swe3troop: 40
+  			swe3clone: 40
+			swe3droid: 40                          
+			swe4: 15
+			swrmbo: 1
+			swgreedo: 1
+			swjedi: 1
+			swsith: 1
+			swharv: 10
+			swbggy: 5
+			swbike: 5
+			swltnk: 25
+			swarty: 60
+			swjeep: 5
+			swcrawl: 1
+			swmtnk: 20
+			sw2tnk: 20
+			swquad: 20
+			sw3tnk: 20
+			swhtnk: 50
+			swjabbaparty.e3: 40
+			swheli: 5
+			sworca: 5
+			swxwing: 5
+			swlaat: 5
+			swc17player: 2
+			swlaat.e1: 1
+			swdarty: 60
+			swmsam: 60
+			sw4tnk: 50
+            swjugger: 50           
+			swftnk: 10
+			swftnk2: 10
+			swstarfighter: 5
+			swfalc: 5
+			swtrifighter: 5
+			swstard: 1
+			swaclamator: 1
+			swspider: 5
+			sw1tnk: 15
+			swtran.e2: 1
+			swtran.e1: 1
+			swc17player.e1: 1
+			sw2tnk.hutt: 20
+			swptnk: 20
+            #################### UnitsToBuild Dark Imperium
+			drguardian: 65
+			drext: 25
+			drbion: 40
+			drfrigth.imperium: 10
+			drfrigth.freedom: 10
+			drhoverfright.imperium: 10
+			drhoverfright.freedom: 10
+			drsctnk: 5
+			drptnk: 25
+			dramp: 1
+			drshreder: 5
+			drimpapc: 1
+			drttnk: 20
+			drscarab: 40
+			drcyclone: 5
+			drskyfort: 5
+			drimpapc.e1: 2
+			drimpapc.e2: 2
+			drhostage: 1
+			drdrone: 1      
+			#################### UnitsToBuild FreedomGuard
+			drraid: 65
+			drsnipe: 25
+			drmercenary: 40
+			drmartyr: 15
+			drsabot: 15
+			drscout: 1
+			drspid: 5
+			drstnk: 40
+			drphasetnk: 25
+			drtnkh: 10
+			drarty: 60
+			drjack: 1
+			drrtnk: 20
+			drskybike: 5
+			droutrider: 5
+			drmech: 1
+			drrat.e1: 2
+			drrat.e2: 2
+			drrat.e3: 1
+			drjebradec: 1
+			#################### UnitsToBuild Shadowhand
+			drreaper: 25
+			drgemenis1: 25
+			drfury: 20
+			drhades: 5
+			drimpapc.e3: 2
+			drshadowblade: 5
+			#################### UnitsToBuild Xenite
+			drtrainer: 6
+			drgant: 40
+			drrat2: 1
+			drgrendel: 25
+			drgrider: 20
+			dravenger: 5
+			drrat2.e1: 2
+			drrat2.e2: 1
+			#################### UnitsToBuild Dark Togran
+			drshok: 65
+			drreaper2: 25
+			drbiocontrol: 40
+			drtscout: 5
+			drntnk: 25
+			drvortextank: 20
+			drflamedeath: 40
+			drticktank: 20
+			drsonic: 1
+			drphasemine: 15
+            #################### UnitsToBuild Dark Aliens
+			drramnoth: 65
+			drrelmnoth: 25
+			drmamnoth: 40
+			drsalamander: 15
+			drassimilator: 15
+			drgather: 10
+			drarunner: 5
+			drmole: 40
+			drrouter: 25
+			drpboat: 10
+			drmissboat: 40
+			drmecha: 50
+			drdrednaut.e1: 1
+			drdrednaut.e2: 2
+			drlynoth: 2
+			drblazer: 5
+			drbomber: 5
+			drcarrier.e1: 1
+			drcarrier.e2: 2
+			drhealer: 1
+			#################### UnitsToBuild CNC
+			315flaite: 65
+			315shinobi: 25
+			315weichafe: 15
+			315dog: 1
+			315chatarrero: 10
+			315charade: 5
+			315racer: 40
+			315tsuru: 25
+			315guanaco: 10
+			315narcojeep: 5                
+			#################### UnitsToBuild Imperial Guard
+			wh40kguard: 65
+			wh40kguardplasma: 25
+			wh40kgrenade: 40
+			wh40kogryn: 15
+			wh40kcommisair: 1
+			wh40kkars: 65
+			wh40kkarsplasma: 25
+			wh40kkarsgrenade: 40
+			wh40kharv: 10
+			wh40kbigguns: 5
+			wh40kbigguns2: 5
+			wh40kbigguns3: 5
+			wh40kguardsargent: 5
+			wh40kkarssargent: 5
+			wh40kogrynsargent: 5
+			wh40kchime: 1
+			wh40khellhound: 10
+			wh40kbanewolf: 10
+			wh40kbasilisk: 60
+			wh40kchime.e2: 2
+			wh40kchime.e3: 2
+			wh40kchime.e4: 2
+			wh40ksentinel: 20
+			wh40kleman: 50
+			wh40kbaneblade: 50
+			wh40kmaurader: 5
+			wh40ktechpriest: 1
+			#################### UnitsToBuild Imperial Guard Upgrades
+			wh40kuphonor: 1
+			wh40kupguardarmor: 1
+			wh40kupguardemperor: 1
+			wh40kupsateliterange: 1
+			wh40kupweapspecialization: 1
+			wh40kuppoweredbayonets: 1
+			wh40kupbattlecommand: 1
+			wh40kupregimentalcommand: 1
+			wh40kupogrynquarters: 1
+			wh40kupkasrkinquarters: 1
+			wh40kupsentineldepot: 1
+			wh40kuphellhounddepot: 1
+			wh40kupbasiliskdepot: 1
+			wh40kupmarauderdepot: 1
+			wh40kuplemanrussdepot: 1
+			wh40kupfullscalewar: 1
+			wh40kupenergy1: 1
+			wh40kupenergy2: 1
+			wh40kupgenenhancement: 1
+			wh40kupkasrkinarmor: 1              
+            ################### UnitsToBuild SOW upgrades+research
+            sow_mcv: 2
+            heavyunits: 1
+            stateofwar: 1
+            goldmineupgrade: 1
+            goldmineupgrade2: 1
+            sow_invader: 1
+            sow_invader_mk2: 1
+            sowovercharge: 1
+            advancedairstrikes: 1
+            researchupgrade: 1
+            researchupgrade2: 1
+            satelliteprotection_mk1: 1
+            satelliteprotection_mk2: 1
+            mta_unlock: 1
+            mtb_unlock: 1
+            mtc_unlock: 1
+            mtd_unlock: 1
+            mte_unlock: 1
+            hta_unlock: 1
+            htb_unlock: 1
+            htc_unlock: 1
+            htd_unlock: 1
+            hte_unlock: 1
+            sow_lt_cannon: 50
+            sow_lt_flame: 50
+            sow_lt_special: 50
+            sow_lt_siege: 50
+            sow_lt_antiair: 50   
+            sow_mt_cannon: 50
+            sow_mt_flame: 50
+            sow_mt_special: 50
+            sow_mt_siege: 50
+            sow_mt_antiair: 50
+            sow_ht_cannon: 50
+            sow_ht_flame: 10
+            sow_ht_special: 50
+            sow_ht_siege: 50
+            sow_ht_antiair: 50           
+            sow_mech_avenger: 50    
+            sow_mech_kodiak: 50  
+            sow_mech_gatling: 50  
+            sow_mech_jaguar: 50
+            sow_mech_achilles: 50
+            sow_mech_achilles_mk2: 1
+            sow_mech_avenger_mk2: 1
+            sow_mech_kodiak_mk2: 1
+            sow_mech_jaguar_mk2: 1
+            sow_mech_gatling_mk2: 1
+            #################### UnitsToBuild Xmas
+            xmas_green_elf: 15
+            xmas_red_elf: 20
+            xmas_green_elf_worker: 15
+            xmas_satangoblin: 80
+            xmas_reindeer_green: 15
+            xmas_reindeer_red: 20
+            xmas_artillery: 8
+            xmas_rocket_sledge: 30
+            xmas_main_battle_sledge: 30
+            #################### UnitsToBuild Dune Universe
+            d2k_mcv: 1
+            carryall: 2
+			light_inf: 65
+            chem_troop: 50
+            contaminator: 40
+            shotgunner: 50
+            submachinegunner: 50
+            shock_infantry: 40
+			trooper: 30
+			mpsardaukar: 40
+            d2k_sardaukar_elite: 20
+            nsfremen: 20
+            fremen: 20
+            engineer: 1
+            facedancer_harv: 20
+            plasma_infantry: 10
+            facedancer: 30
+            fedaykin: 10
+            rocketeer: 10
+            rocketeer_o: 10
+            rocketeer_tleilaxu: 10
+            d2k_drone_h: 5
+            d2k_leech: 40
+            d2k_sniper: 10
+            d2k_marksman: 10
+            d2k_stealth_apc.bot1: 3
+            d2k_stealth_apc.bot2: 2
+            d2k_stealth_apc.bot3: 1
+            phoenix: 10
+            quake_tank: 1
+            d2k_mechanic: 1
+            d2k_hijacker: 1
+            swarmer: 10
+            guild_quad: 10
+            siege_quad: 10
+            shock_raider: 10
+            d2k_atreides_apc.bot1: 3
+            d2k_atreides_apc.bot2: 2
+            d2k_autogun_tank: 10
+            d2k_flame_tank: 20
+            duelist_tank: 15
+            ornithopter.controllable: 10
+			grenadier: 20
+			harvester: 2
+			sonic_tank: 10
+			devastator: 10
+			deviator: 7
+            d2k_aa_mine: 5
+            d2k_laser_tank: 10
+            d2k_qafza: 15
+            d2k_stealth_tank: 10
+            d2k_light_tank.bot1: 4
+            d2k_light_tank.bot2: 2
+            d2k_light_tank.bot3: 4
+            d2k_apc.bot1: 4
+            d2k_apc.bot2: 2
+            d2k_apc.bot3: 4
+            d2k_jammer: 1
+            flamethrower: 10
+            bomb_buggy: 5
+			trike: 10
+            d2k_tyrant: 5
+            d2k_air_drone: 5
+            d2k_annihilator: 1
+            d2k_buzzsaw: 10
+			raider.bot: 10
+			quad: 15
+            mg_quad: 10
+            mg_quad_tleilaxu.bot: 10
+            d2k_scourge: 3
+			siege_tank: 10
+			missile_tank: 15
+			stealth_raider: 7
+			combat_tank_a: 100
+			combat_tank_h: 100
+			combat_tank_o: 100
+            d2k_combat_buggy: 50
+            d2k_kwny_fighter: 10
+            rocket_raider_ixian.bot1: 10
+            rocket_raider_ixian.bot2: 10
+            combat_siege_tank: 10
+            siege_tank_ixian: 10
+            missile_tank_ixian: 10
+            rocket_raider.bot: 10
+            rocket_raider_o: 10
+            combat_tank_ixian: 10
+            combat_tank_o_stealth: 10
+            devastator.starport: 5
+            sonic_tank.starport: 5
+            deviator.starport: 5
+            d2k_stealth_tank.starport: 5
+            upgrade.conyard: 1
+            d2k_combat_fleet: 5
+            d2k_farasha: 1
+            d2k_basq: 20
+            d2k_zergling: 50 
+            d2k_lion_king: 1
+            combat_tank_corrino: 15
+            d2k_rocket_buggy: 15
+            combat_tank_fremen.bot1: 25
+            combat_tank_fremen.bot2: 25
+            combat_tank_fremen.bot3: 50
+            d2k_autogun_tank_small: 15
+            d2k_sardaukar_buggy: 3
+            d2k_transport_buggy.bot1: 3
+            d2k_transport_buggy.bot2: 3
+            d2k_combat_siege_upgrade: 1
+            d2k_quake_tank_upgrade: 1
+            d2k_spice_sifter_upgrade: 1
+            d2k_duelist_tank_upgrade: 1
+            emperor_fremen: 25
+            emperor_sardaukar: 50
+            emperor_fedaykin: 10
+            emperor_plasmainf: 10
+            emperor_sardaukar_elite: 10
+            emperor_sonic_tank: 10
+            emperor_deviator: 10
+            emperor_devastator: 10
+            emperor_rocket_raider: 20
+            emperor_mg_quad: 40
+            emperor_stealth_tank: 20
+            combat_tank_emperor: 25
+            emperor_tyrant: 10
+            d2k_airdefenseplatform: 10
+			d2k_striketeam2: 1
+            d2k_striketeam3: 1            
+            upgrade.contaminator: 1
+            upgrade.leech: 1
+            upgrade.rocketeer: 1
+            upgrade.rocket_raider: 1
+            upgrade.mg_quad: 1
+            upgrade.mcv: 1
+            upgrade.basq: 1
+            upgrade.tleilaxueyes: 1
+			upgrade.barracks: 1
+			upgrade.light: 1
+			upgrade.heavy: 1
+			upgrade.hightech: 1
+            #################### UnitsToBuild Dune2000
+            olight_inf: 60
+            oengineer: 10
+            otrooper: 40
+            ogrenadier: 10
+            ompsardaukar: 20
+            omcv: 1
+            oharvester: 5
+            otrike: 15
+            oquad: 15
+            osiege_tank: 10
+            omissile_tank: 10
+            osonic_tank: 10
+            odevastator: 10
+            odeviator: 10
+            oraider: 15
+            ostealth_raider: 10
+            ocombat_tank_a: 10
+            ocombat_tank_h: 10
+            ocombat_tank_o: 10
+            omcv.starport: 1
+            oharvester.starport: 3
+            otrike.starport: 5
+            oquad.starport: 5
+            osiege_tank.starport: 15
+            omissile_tank.starport: 15
+            ocombat_tank_a.starport: 20
+            ocombat_tank_h.starport: 20
+            ocombat_tank_o.starport: 20
+            ocarryall.starport: 10
+            ocarryall: 10
+            upgrade.oconyard: 1
+            upgrade.obarracks: 1
+			upgrade.olight: 1
+			upgrade.oheavy: 1
+			upgrade.ohightech: 1
+            ##################### UnitsToBuild Simcity 2000
+            sc2kfire: 15
+            sc2ktornado: 10
+            sc2kmob: 15
+            sc2k_thundercloud_main: 10
+            sc2kbulldozer: 5
+            sc2kjetplane: 10
+            sc2khelicopter: 2
+            sc2kcargoship: 3
+            sc2kpolicecar: 15
+            sc2kfiretruck: 10
+            ##################### UnitsToBuild Warcraft
+            wc_h_peasant: 50
+            wc_h_footman: 50
+            wc_h_archer: 50
+            wc_h_knight: 50
+            wc_h_catapult: 50
+            wc_h_conjurer: 50
+            wc_h_cleric: 50
+            wc_o_peon: 50
+            wc_o_grunt: 50
+            wc_o_spearman: 50
+            wc_o_raider: 50
+            wc_o_catapult: 50
+            wc_o_warlock: 50
+            wc_o_necrolyte: 50
+            wc_o_skeleton_army: 10
+            wc_h_str_arrow: 1
+            wc_h_str_arrow2: 1
+            wc_h_str_sword: 1
+            wc_h_str_sword2: 1
+            wc_h_str_shield: 1
+            wc_h_str_shield2: 1
+            wc_h_horses: 1
+            wc_h_horses2: 1
+            wc_o_str_spear: 1
+            wc_o_str_spear2: 1
+            wc_o_str_axe: 1
+            wc_o_str_axe2: 1
+            wc_o_str_shield: 1
+            wc_o_str_shield2: 1
+            wc_o_wolves: 1
+            wc_o_wolves2: 1
+            wc_h_upgradefarm: 20
+            wc_o_upgradefarm: 20
+            wc_n_spider: 50
+            wc_n_demon: 20
+            wc_n_brigand: 20
+            wc_n_slime: 20
+            wc_n_ogre: 20
+            ##################### UnitsToBuild Warcraft 2
+            wc2_mech_critter: 10
+            ##################### UnitsToBuild Warcraft 3
+            wc3_undead_ghoul: 10
+            wc3_nightelf_huntress: 10
+            wc3_orc_raider: 10
+            wc3_crypt_fiend: 10
+            wc3_knight: 10
+            ##################### UnitsToBuild Starcraft 2
+            sc2_marine: 10
+            sc2_zergling: 10
+            ######################## UnitsToBuild CAMEA
+            e7.camea: 20
+            shok.camea: 20
+            rmbo.camea: 20
+            mech.camea: 20
+            jeep.camea: 20
+            ftnk.camea: 20
+            htnk.camea: 20
+            stnk.camea: 20
+            ttnk.camea: 20
+            ctnk.camea: 20
+            raapc.camea: 20
+            mnly.camea: 20
+            dtrk.camea: 20
+            msam.camea: 20
+            raarty.camea: 20
+            mssm.camea: 20
+            hind.camea: 20
+            orca.camea: 20
+            mig.camea: 20
+            tran.camea: 20
+            harv.camea: 10
+            ######################## UnitsToBuild Actibliz
+            scscv.actibliz: 30
+            scmarine.actibliz: 45
+            scghost.actibliz: 20
+            scmedic.actibliz: 1
+            drbion.actibliz: 30
+            drext.actibliz: 22
+            scdarktemplar.actibliz: 22
+            drguardian.actibliz: 60
+            scvulture.actibliz: 5
+            scgoliath.actibliz: 20
+            drfury.actibliz: 30
+            drptnk.actibliz: 20
+            drimpapc.actibliz: 1
+            drttnk.actibliz: 20
+            drmad.actibliz: 1
+            scsiegetank.actibliz: 20
+            scwraith.actibliz: 20
+            scbattlecruiser.actibliz: 20
+            drdrone.actibliz: 2
+            drhades.actibliz: 10
+            scdragoon.actibliz: 15
+            screaver.actibliz: 30
+            sccarrier.actibliz: 20
+            scscout.actibliz: 20
+            drimpapc.actibliz.e1: 2
+            drimpapc.actibliz.e2: 2
+            drimpapc.actibliz.e3: 2
+            scdropship.actibliz.marine: 2
+            scdropship.actibliz.marine2: 2
+            scdropship.actibliz.mech: 2
+            scdropship.actibliz.mech2: 2
+            scdropship.actibliz.mech3: 2
+            scdropship.actibliz.reaver: 2
+            scdropship.actibliz.reaver2: 20
+            scdropship.actibliz.templar: 4
+			##################################################
+			#	UnitsToBuild CUSTOM START
+			##################################################
+			c1e1: 65
+			c2e1: 65
+			ce2: 25
+			c1e3: 40
+			c2e3: 40
+			ce4: 15
+			ce5: 15
+			crmbo: 1
+			c1harv: 10
+			c2harv: 10
+			cbggy: 5
+			cbike: 40
+			cltnk: 25
+			cftnk: 10
+			carty: 60
+			cstnk: 40
+			cjeep: 5
+			capc: 1
+			cmtnk: 20
+			cmsam: 40
+			chtnk: 50
+			cmlrs: 1
+			cheli: 5
+			corca: 5
+			##################################################
+			cdog: 1
+			c1rae1: 65
+			c2rae1: 65
+			crae2: 25
+			c1rae3: 40
+			c2rae3: 40
+			crae4: 15
+			cshok: 15
+			ce7: 1
+			c1raharv: 10
+			c2raharv: 10
+			crajeep: 5
+			ccraapc: 5
+			c1tnk: 25
+			c2tnk: 20
+			c3tnk: 30
+			c4tnk: 50
+			cttnk: 10
+			cftrk: 5
+			craarty: 60
+			cv2rl: 60
+			cmrj: 1
+			cctnk: 1
+			craheli: 3
+			cmh60: 3
+			cmig: 3
+			cyak: 3
+			########## infantry ra2allies
+			cra2e1: 65
+			cra2cleg: 5
+			cyrggi: 40
+			cra2snipe: 25
+			cra2tany: 15
+			cra2seal: 8
+			cra2adog: 1
+			########## infantry ra2soviet
+			cyrboris: 15
+			cra2e2: 65
+			cra2flakt: 40
+			cra2deso: 25
+			cra2terror: 5
+			cra2shk: 15
+			cra2dog: 1
+			cra2yuri: 10
+			########## infantry yuri
+			cyrinit: 65
+			cyrbrute: 40
+			cyrslav: 40
+			cyrvirus: 25
+			cyryuri: 15
+			cyryurix: 15
+			########## vehicle ra2allies
+			cra2cmin: 10
+			cra2mtnk: 20
+			cyrrobo: 25
+			cra2tnkd: 20
+			cra2fv: 5
+			cra2sref: 15
+			cra2mgtk: 10
+			########## vehicle ra2soviet
+			cra2htnk: 20
+			cra2htk: 5
+			cra2apoc: 30
+			cra2v3: 60
+			cra2ttnk: 15
+			cra2harv: 10
+			cra2dron: 6
+			########## vehicle yuri
+			cyrsmin: 3
+			cyrytnk: 5
+			cyrltnk: 20
+			cyrtele: 15
+			cyrcaos: 6
+			cyrmind: 15
+			########## aircraft ra2
+			cra2falc: 3
+			cra2beag: 3
+			cyrdisk: 20
+			cra2rock: 6
+			########## naval ra2
+			cra2sqd: 5
+			cra2dlph: 5
+			cra2dest: 10
+			cra2aegis: 8
+			cra2sub: 10
+			cra2hyd: 10
+			cra2dred: 10
+			cra2carrier: 10
+			cyrbsub: 10
+			##################################################
+			c2100repairtruck: 1
+			c2100repairtruck2: 1
+			c2100healtruck2: 4
+			c2100healtruck: 5
+			c2100mvw: 35
+			c2100mvw2: 35
+			c2100rvw: 30
+			c2100rvw2: 30
+			c2100tch: 50
+			c2100mch: 40
+			c2100apt: 55
+			c2100hpt: 65
+			c2100cpt: 5
+			##################################################
+			c12100scav: 65
+			c22100scav: 65
+			c12100crane: 1
+			c22100crane: 1
+			c12100trike: 2
+			c22100trike: 2
+			c12100jeep: 3
+			c22100jeep: 3
+			c12100jeepmsl: 4
+			c22100jeepmsl: 4
+			c12100camper: 5
+			c22100camper: 5
+			c12100tractor: 6
+			c22100tractor: 6
+			c2100bus: 7
+			c2100ftruk: 8
+			c2100scavtruck: 9
+			c2100icecream: 10
+			c2100chopper: 5
+			c2100polmav: 5
+			##################################################
+			cscscv: 30
+			cscmarine: 50
+			cscfirebat: 9
+			cscghost: 5
+			cscmedic: 1
+			cscvulture: 10
+			cscsiegetank: 40
+			cscgoliath: 50
+			cscwraith: 20
+			cscbattlecruiser: 20
+			##################################################
+			cscprobe: 30
+			csczealot: 30
+			cscdragoon: 20
+			cschightemplar: 1
+			cscdarktemplar: 5
+			cscreaver: 5
+			cscobserver: 1
+			cscarchon: 20
+			cscscout: 20
+			csccarrier: 20
+			##################################################
+			cscdrone: 30
+			csczergling: 50
+			#cscoverlord: 20
+			cschydralisk: 30
+			cscmutalisk: 20
+			cscultralisk: 20
+			cscguardian: 20
+			cscinfestedterran: 1
+			##################################################
+			ccityfirefighter: 40
+			ccitypoliceofficer: 60
+			#ccityelitearchitect: 35
+			#ccityeliteinstructor: 5
+			#ccityeliteexpert: 20
+			ccityswat: 10
+			ccityharvester: 20
+			#ccitytruck: 50
+			ccityambulance: 10
+			ccityfiretruck: 20
+			ccitypolicecar: 40
+			##################################################
+			c1e6: 1
+			c2e6: 1
+			c1rae6: 1
+			c2rae6: 1
+			c1ra2engineer: 1
+			c2ra2engineer: 1
+			c3ra2engineer: 1
+			c12100e6: 1
+			c22100e6: 1
+			c1sce6: 1
+			c2sce6: 1
+			c3sce6: 1
+			ccitye6: 1
+			##################################################
+			cra1pt: 1
+			ccncpt: 1
+			cradd: 1
+			ccncdd: 1
+			craca: 1
+			ccncca: 1
+			crass: 1
+			cramsub: 1
+			ccncss: 1
+			ccncmsub: 1
+			##################################################
+			building.gdi: 1
+			building.nod: 1
+			building.allies: 1
+			building.soviet: 1
+			building.alliesra2: 1
+			building.sovietra2: 1
+			building.yuri: 1
+			building.alpha: 1
+			building.scavenger: 1
+			building.terran: 1
+			building.protoss: 1
+			building.zerg: 1
+			building.simcity: 1
+			defence.gdi: 1
+			defence.nod: 1
+			defence.allies: 1
+			defence.soviet: 1
+			defence.alliesra2: 1
+			defence.sovietra2: 1
+			defence.yuri: 1
+			defence.alpha: 1
+			defence.scavenger: 1
+			defence.terran: 1
+			defence.protoss: 1
+			defence.zerg: 1
+			defence.simcity: 1
+			infantry.gdi: 1
+			infantry.nod: 1
+			infantry.allies: 1
+			infantry.soviet: 1
+			infantry.alliesra2: 1
+			infantry.sovietra2: 1
+			infantry.yuri: 1
+			infantry.alpha: 1
+			infantry.scavenger: 1
+			infantry.terran: 1
+			infantry.protoss: 1
+			infantry.zerg: 1
+			infantry.simcity: 1
+			vehicle.gdi: 1
+			vehicle.nod: 1
+			vehicle.allies: 1
+			vehicle.soviet: 1
+			vehicle.alliesra2: 1
+			vehicle.sovietra2: 1
+			vehicle.yuri: 1
+			vehicle.alpha: 1
+			vehicle.scavenger: 1
+			vehicle.terran: 1
+			vehicle.protoss: 1
+			vehicle.zerg: 1
+			vehicle.simcity: 1
+			aircraft.gdi: 1
+			aircraft.nod: 1
+			aircraft.allies: 1
+			aircraft.soviet: 1
+			aircraft.alliesra2: 1
+			aircraft.sovietra2: 1
+			aircraft.yuri: 1
+			aircraft.alpha: 1
+			aircraft.scavenger: 1
+			aircraft.terran: 1
+			aircraft.protoss: 1
+			aircraft.zerg: 1
+			naval.gdi: 1
+			naval.nod: 1
+			naval.allies: 1
+			naval.soviet: 1
+			naval.alliesra2: 1
+			naval.sovietra2: 1
+			naval.yuri: 1
+			naval.alpha: 1
+			naval.scavenger: 1
+			naval.terran: 1
+			naval.protoss: 1
+			naval.zerg: 1
+			naval.simcity: 1
+			##################################################
+			#	UnitsToBuild CUSTOM END
+			##################################################
+		UnitDelays:
+			sczmcv: 5000
+            d2k_mcv: 5000
+            satelliteprotection_mk1: 12000
+            satelliteprotection_mk2: 15000
+            stateofwar: 8000
+            advancedairstrikes: 10000
+            goldmineupgrade: 5000
+            goldmineupgrade2: 5000
+            sow_mcv: 10000
+            upgrade.conyard: 3750
+            upgrade.oconyard: 3750
+		UnitLimits:
+			#################### UnitLimits CNC
+			harv: 6
+			rmbo: 1
+			apc: 1
+            #################### UnitLimits IOK
+            iokworker: 30
+			#################### UnitLimits RA
+			raharv: 6
+			medi: 2
+			mech: 2
+			mrj: 1
+			#################### UnitLimits TS
+			tsharv: 16
+			tsghost: 1
+			tsghost.mutant: 1
+			tsapc.bot: 2
+			tssgen: 1
+            dtharv: 16 
+			#################### UnitLimits ALLIESRA2
+			ra2tany: 1
+			ra2seal: 2
+			ra2cmin: 6
+			ra2fvbotrep: 4
+			yrbfrt.bot: 5
+			#################### UnitLimits SOVIETRA2
+			ra2harv: 6
+			ra2dtruck: 1
+            ra2slav: 30
+			#################### UnitLimits YURI
+			yrslav: 30
+			yrsmin: 1
+			yryurix: 1
+			#################### UnitLimits GENERALS
+			glamob: 4
+			chhacker2: 2
+			choutpost: 2
+			choutpost2: 2
+			checm: 2
+			usamicro: 2
+			usaambulan: 4
+			#################### UnitLimits ALPHA
+			2100healtruck: 3
+   			2100healtruckc: 3
+			2100healtruckp: 3
+			2100healtruckn: 3                 
+			#################### UnitLimits TERRAN
+			scscv: 30
+			scmedic: 3
+			#################### UnitLimits PROTOSS
+			scprobe: 30
+			scobserver: 2
+			#################### UnitLimits ZERG
+			sczmcv: 1
+			scbotdrone: 30
+			scbotoverlord: 10
+			#################### UnitLimits SIMCITY
+			cityharvester: 12
+			cityambulance: 3
+			cityarchitect: 1
+			cityinstructor: 1
+			cityelitearchitect: 1
+			cityeliteinstructor: 1
+			citybotrtruck: 2
+			cityswat: 10
+			#################### UnitLimits ENGINEERS & TECH
+			e6: 1
+			rae6: 1
+			ra2engineer: 1
+			2100e6: 1
+			scte6: 1
+			citye6: 1
+			pvice: 1
+			zombie: 1
+			ant: 1
+            #################### UnitLimits FreedomGuard
+			drsabot: 5
+			drscout: 1
+			drjack: 2
+			drmech: 2
+			drmedi: 2
+			#################### UnitLimits Xenite
+			drtrainer: 5                                            
+            #################### UnitLimits WC1
+            wc_h_peasant: 20
+            wc_o_peon: 20
+            wc_h_mcv: 1
+            wc_o_mcv: 1
+            #################### UnitLimits ANTS
+			crab: 2
+			hant: 1
+            htant: 1
+            #################### UnitLimits Xmas
+            xmas_green_elf_worker: 20
+            #################### UnitLimits Dune Universe
+            d2k_mcv: 1
+            harvester: 10
+            facedancer_harv: 20
+            d2k_hijacker: 5
+            engineer: 2
+            d2k_drone_h: 5
+            d2k_drone: 5
+			carryall: 4
+            d2k_mechanic: 10
+            d2k_aa_mine: 5
+            upgrade.conyard: 1
+			upgrade.barracks: 1
+			upgrade.light: 1
+			upgrade.heavy: 1
+			upgrade.hightech: 1
+            #################### UnitLimits Dune 2000
+            omcv: 1
+            omcv.starport: 1
+            oharvester: 5
+            oharvester.starport: 5
+            oengineer: 2
+            ocarryall: 4
+            ocarryall.starport: 4
+            upgrade.oconyard: 1
+			upgrade.obarracks: 1
+			upgrade.olight: 1
+			upgrade.oheavy: 1
+			upgrade.ohightech: 1
+			##################################################
+			#	UnitLimits CUSTOM START
+			##################################################
+			c1harv: 6
+			c2harv: 6
+			crmbo: 1
+			cmlrs: 1
+			capc: 1
+			##################################################
+			c1raharv: 6
+			c2raharv: 6
+			cmrj: 1
+			##################################################
+			c2100healtruck2: 3
+			c2100healtruck: 3
+			##################################################
+			cscscv: 30
+			##################################################
+			cscprobe: 30
+			##################################################
+			cscdrone: 30
+			##################################################
+			ccityharvester: 10
+			##################################################
+			c1e6: 1
+			c2e6: 1
+			c1rae6: 1
+			c2rae6: 1
+			c1ra2engineer: 1
+			c2ra2engineer: 1
+			c3ra2engineer: 1
+			c12100e6: 1
+			c22100e6: 1
+			c1sce6: 1
+			c2sce6: 1
+			c3sce6: 1
+			ccitye6: 1
+			##################################################
+			#	UnitLimits CUSTOM END
+			##################################################
+
