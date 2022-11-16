@@ -537,7 +537,7 @@ wc2_human_peasant:
 		Facings: -8
 	idle: 
 		Start: 0
-        Facings: -8
+		Facings: -8
 	run: 
 		Start: 8
 		Length: 4
@@ -579,8 +579,11 @@ wc2_human_peasantgold:
 	
 wc2_human_footman:
 	Inherits: ^WCInfantry
-	stand: 
-		Start: 0	
+	stand:
+		Start: 0
+		Facings: -8
+	idle:
+		Start: 0
 		Facings: -8
 	run: 
 		Start: 8
@@ -606,8 +609,11 @@ wc2_human_footman:
 
 wc2_human_elven_archer:
 	Inherits: ^WCInfantry
-	stand: 
+	stand:
 		Start: 0	
+		Facings: -8
+	idle:
+		Start: 0
 		Facings: -8
 	run: 
 		Start: 8
@@ -633,8 +639,11 @@ wc2_human_elven_archer:
 
 wc2_human_knight:
 	Inherits: ^WCInfantry
-	stand: 
-		Start: 0	
+	stand:
+		Start: 0
+		Facings: -8
+	idle:
+		Start: 0
 		Facings: -8
 	run: 
 		Start: 8
@@ -663,6 +672,9 @@ wc2_human_paladin:
 	stand: 
 		Start: 0	
 		Facings: -8
+	idle:
+		Start: 0
+		Facings: -8
 	run: 
 		Start: 8
 		Length: 4
@@ -690,6 +702,9 @@ wc2_human_demolitionsquad:
 	stand: 
 		Start: 0	
 		Facings: -8
+	idle:
+		Start: 0
+		Facings: -8
 	run: 
 		Start: 8
 		Length: 4
@@ -716,6 +731,9 @@ wc2_human_mage:
 	Inherits: ^WCInfantry
 	stand: 
 		Start: 0	
+		Facings: -8
+	idle:
+		Start: 0
 		Facings: -8
 	run: 
 		Start: 8

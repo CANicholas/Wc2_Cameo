@@ -404,16 +404,16 @@ Player:
 		DeathSequence: die
 		CrushedSequence: die-crushed
 		UseDeathTypeSuffix: false
-	GrantConditionOnPrerequisite@upgrade:
+	GrantConditionOnPrerequisite@ShieldUpg:
 		Condition: shield_upg
 		Prerequisites: wc2_h_str_shield || wc2_o_str_shield
-	GrantConditionOnPrerequisite@upgrade2:
+	GrantConditionOnPrerequisite@ShieldUpg2:
 		Condition: shield_upg2
 		Prerequisites: wc2_h_str_shield2 || wc2_o_str_shield2
-	DamageMultiplier@upgrade:
+	DamageMultiplier@ShieldUpg:
 		Modifier: 75
 		RequiresCondition: shield_upg
-	DamageMultiplier@upgrade2:
+	DamageMultiplier@ShieldUpg2:
 		Modifier: 75        
 		RequiresCondition: shield_upg2
 
@@ -440,32 +440,21 @@ Player:
 	#	PauseOnCondition: lowpower
 
 ^wc2_h_str_sword:
-	GrantConditionOnPrerequisite@upgrade:
+	GrantConditionOnPrerequisite@SwordUpg:
 		Condition: sword_upg
 		Prerequisites: wc2_h_str_sword || wc2_o_str_axe
-	GrantConditionOnPrerequisite@upgrade2:
+	GrantConditionOnPrerequisite@SwordUpg2:
 		Condition: sword_upg2
 		Prerequisites: wc2_h_str_sword2 || wc2_o_str_axe2
-	FirepowerMultiplier@upgrade:
+	FirepowerMultiplier@SwordUpg:
 		Modifier: 130
 		RequiresCondition: sword_upg
-	FirepowerMultiplier@upgrade2:
+	FirepowerMultiplier@SwordUpg2:
 		Modifier: 130
-		RequiresCondition: sword_upg2             
-        
-^wc2_h_str_shield:
-	GrantConditionOnPrerequisite@upgrade:
-		Condition: shield_upg
-		Prerequisites: wc2_h_str_shield || wc2_o_str_shield
-	GrantConditionOnPrerequisite@upgrade2:
-		Condition: shield_upg2
-		Prerequisites: wc2_h_str_shield2 || wc2_o_str_shield2
-	DamageMultiplier@upgrade:
-		Modifier: 75
-		RequiresCondition: shield_upg
-	DamageMultiplier@upgrade2:
-		Modifier: 75        
-		RequiresCondition: shield_upg2
+		RequiresCondition: sword_upg2 
+	WithTextDecoration@SwordUpg:
+  	Text: Upgraded
+  	RequiresCondition: sword_upg        
 
 ^wc2_h_str_arrow:        
     GrantConditionOnPrerequisite@upgrade:
@@ -1697,15 +1686,12 @@ WC2_HUMAN_OIL_PLATFORM:
 ####################################################################################################
 
 WC2_HUMAN_PEASANT:
-	Inherits: ^Soldier
-	Inherits@WC1Infantry: ^WC1Infantry
-    Inherits@selection: ^SelectableEconomicUnit
+	Inherits: ^WC2Infantry
+	Inherits@selection: ^SelectableEconomicUnit
 	Inherits@harv: ^Harvester
 	Inherits@worker: ^WCWorker
 	Inherits@EXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
-	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
-    Inherits@upgrade_shields: ^wc2_h_str_shield
 	AutoTargetPriority@Repair:
 		ValidTargets: Repair, Repairing
 		ValidStances: Ally
@@ -1780,8 +1766,7 @@ WC2_HUMAN_PEASANT:
 		VoiceSet: wc2voicehumanpeasant  
 	WithInfantryBody:
 		DefaultAttackSequence: harvest
-		-IdleSequences: idle1,idle2,idle3,idle4        
-    -DamagedByTerrain:   
+		IdleSequences:
     Passenger:
         CargoType: Worker 
 		PipType: Blue
@@ -1791,8 +1776,7 @@ WC2_HUMAN_PEASANT:
 		Scale: 0.6
  
 wc_h2_mcv:
-	Inherits: ^Soldier
-	Inherits@WC1Infantry: ^WC2Infantry
+	Inherits: ^WC2Infantry
 	Inherits@EXT: ^ExternalConditions
 	Inherits@mcv: ^MCV
     Inherits@conyard: ^Conyard
@@ -1819,9 +1803,9 @@ wc_h2_mcv:
 	RevealsShroud:
 		Range: 7c0
     -Crushable:
-    WithInfantryBody:
+	WithInfantryBody:
 		-DefaultAttackSequence: shoot
-		-IdleSequences: idle1,idle2,idle3,idle4
+		IdleSequences:
 	Transforms:
 		IntoActor: wc2_human_townhall
 		Offset: -1,-1
@@ -1855,10 +1839,9 @@ wc_o2_mcv:
         
 WC2_HUMAN_FOOTMAN:
 	Inherits: ^WC2Infantry
-	Inherits@WC1Infantry: ^WC1Infantry
 	Inherits@EXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMoveMelee
-	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
+	Inherits@SwordUpg: ^wc2_h_str_sword
 	Valued:
 		Cost: 150
 	Tooltip:
@@ -1870,22 +1853,20 @@ WC2_HUMAN_FOOTMAN:
 		Prerequisites: wc2_human_barracks
 		Queue: Infantry.human2, RAInfantry.human2
 		Description: Basic melee infantry. Slow but can take some damage.
-        BuildDuration: 80
-        BuildDurationModifier: 100
+		BuildDuration: 80
+		BuildDurationModifier: 100
 	Mobile:
 		Speed: 56
 	Health:
 		HP: 14400
-    DamageMultiplier@armor:
-        Modifier: 60       
-   	Armor:
-		Type: None     
+	Armor:
+		Type: None
 	#Food
 	Power:
 		Amount: -5
 	AutoTarget:
 		ScanRadius: 6
-        InitialStance: AttackAnything
+		InitialStance: AttackAnything
 	Armament:
 		Weapon: wc2footmanslice
 		FireDelay: 7
@@ -1893,20 +1874,18 @@ WC2_HUMAN_FOOTMAN:
 		UseDeathTypeSuffix: false
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
-    Voiced:
-		VoiceSet: wc2voicehumanfootman           
-    -Crushable:  
+		IdleSequences:
+	Crushable:
+	Voiced:
+		VoiceSet: wc2voicehumanfootman
 	RenderSprites:
 		Scale: 0.6
 
 WC2_HUMAN_ELVEN_ARCHER:
-	Inherits: ^Soldier
-	Inherits@WC1Infantry: ^WC1Infantry
+	Inherits: ^WC2Infantry
 	Inherits@EXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
-	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
-    Inherits@upgrade_h_shields: ^wc2_h_str_shield  
-    Inherits@upgrade_arrows: ^wc2_h_str_arrow
+	Inherits@upgrade_arrows: ^wc2_h_str_arrow
 	Valued:
 		Cost: 200
 	Tooltip:
@@ -1918,18 +1897,15 @@ WC2_HUMAN_ELVEN_ARCHER:
 		Prerequisites: wc2_human_elven_lumber_mill
 		Queue: Infantry.human2, RAInfantry.human2
 		Description: Basic ranged infantry. Not as durable as Footman.\nCan attack air.
-        BuildDuration: 120
-        BuildDurationModifier: 100
-   	Armor:
-		Type: None   
-    DamageMultiplier@armor:
-        Modifier: 90     
+		BuildDuration: 120
+		BuildDurationModifier: 100
 	Mobile:
-		Speed: 56
+		Speed: 56	
 	Health:
 		HP: 10800
+	Armor:
+		Type: None
 	#Food
-    Crushable:
 	Power:
 		Amount: -5
 	AutoTarget:
@@ -1944,21 +1920,19 @@ WC2_HUMAN_ELVEN_ARCHER:
 		UseDeathTypeSuffix: false
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
-		-IdleSequences: idle1,idle2,idle3,idle4
-    Voiced:
-		VoiceSet: wc2voicehumanelvenarcher     
+		IdleSequences:
+	Crushable:
+	Voiced:
+		VoiceSet: wc2voicehumanelvenarcher
 	RenderSprites:
 		Scale: 0.6
-        
+
 WC2_HUMAN_KNIGHT:
-	Inherits: ^Soldier
-	Inherits@WC1Infantry: ^WC1Infantry
+	Inherits: ^WC2Infantry
 	Inherits@EXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
-	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
-    Inherits@upgrade_shields: ^wc2_h_str_shield  
-    Inherits@upgrade_swords: ^wc2_h_str_sword
-		Inherits@upgrade_paladin: ^wc2_h_paladinupg
+	Inherits@upgrade_swords: ^wc2_h_str_sword
+	Inherits@upgrade_paladin: ^wc2_h_paladinupg
 	Valued:
 		Cost: 200
 	Tooltip:
@@ -1970,18 +1944,15 @@ WC2_HUMAN_KNIGHT:
 		Prerequisites: wc2_human_stables
 		Queue: Infantry.human2, RAInfantry.human2
 		Description: Mounted infantry. Fast and durable.
-        BuildDuration: 300
-        BuildDurationModifier: 100
-   	Armor:
-		Type: None   
-    DamageMultiplier@armor:
-        Modifier: 90     
+		BuildDuration: 300
+		BuildDurationModifier: 100
 	Mobile:
 		Speed: 56
 	Health:
 		HP: 28800
+	Armor:
+		Type: None
 	#Food
-    Crushable:
 	Power:
 		Amount: -5
 	AutoTarget:
@@ -1989,14 +1960,14 @@ WC2_HUMAN_KNIGHT:
 	Armament:
 		Weapon: wc2knightslice
 		FireDelay: 7
-	RevealsShroud:
-		Range: 5c0
 	WithDeathAnimation:
 		UseDeathTypeSuffix: false
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
-  Voiced:
-  VoiceSet: wc2voicehumanknight      
+		IdleSequences:
+	Crushable:
+	Voiced:
+		VoiceSet: wc2voicehumanknight
 	RenderSprites:
 		Scale: 0.6
 
@@ -2007,7 +1978,6 @@ WC2_HUMAN_BALLISTA:
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Inherits@EXT: ^ExternalConditions
 	Inherits@upgrade_ballista: ^wc2_h_str_ballista
-	Inherits@upgrade_shields: ^wc2_h_str_shield
 	Valued:
 		Cost: 900
 	Tooltip:
@@ -2043,7 +2013,7 @@ WC2_HUMAN_BALLISTA:
 		Weapon: wc2ballistaFire
 	WithDeathAnimation:
 		UseDeathTypeSuffix: false
-    Voiced:
+	Voiced:
 		VoiceSet: wc2humancatapult
 	RenderSprites:
 		Scale: 0.6
@@ -2055,7 +2025,6 @@ WC2_HUMAN_DEMOLITIONSQUAD:
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMoveMelee
 	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
     Inherits@upgrade_swords: ^wc2_h_str_sword
-    Inherits@upgrade_shields: ^wc2_h_str_shield
 	Valued:
 		Cost: 1100
 	Tooltip:
@@ -2073,10 +2042,8 @@ WC2_HUMAN_DEMOLITIONSQUAD:
 		Speed: 56
 	Health:
 		HP: 14400
-    DamageMultiplier@armor:
-        Modifier: 60       
-   	Armor:
-		Type: None     
+	Armor:
+		Type: None
 	#Food
 	Power:
 		Amount: -5
@@ -2089,7 +2056,7 @@ WC2_HUMAN_DEMOLITIONSQUAD:
 		UseDeathTypeSuffix: false
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
-		-IdleSequences: idle1,idle2,idle3,idle4
+		IdleSequences:
     Voiced:
 		VoiceSet: wc2voicehumandemolitionsquad           
     -Crushable:  
@@ -2102,8 +2069,7 @@ WC2_HUMAN_MAGE:
 	Inherits@EXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
 	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
-    Inherits@upgrade_shields: ^wc2_h_str_shield
-    Inherits@MC: ^MCImmune 
+	Inherits@MC: ^MCImmune 
 	Valued:
 		Cost: 800
 	Tooltip:
@@ -2115,13 +2081,13 @@ WC2_HUMAN_MAGE:
 		Prerequisites: wc2_human_mage_tower
 		Queue: MInfantry.human2, RAMInfantry.human2
 		Description: Wise, old, grumpy spell caster.\nCan attack air.\nDetector.
-        BuildDuration: 340
-        BuildDurationModifier: 100
+		BuildDuration: 340
+		BuildDurationModifier: 100
 	Mobile:
 		Speed: 56
 	Health:
 		HP: 9000
-  	Armor:
+	Armor:
 		Type: None      
 	#Food
 	Power:
@@ -2138,7 +2104,7 @@ WC2_HUMAN_MAGE:
 		UseDeathTypeSuffix: false
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
-		-IdleSequences: idle1,idle2,idle3,idle4
+		IdleSequences:
     Voiced:
 		VoiceSet: wc2voicehumanmage  
     RevealsShroud:
@@ -2154,7 +2120,6 @@ wc_h2_cleric:
 	Inherits@EXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
-    Inherits@upgrade_shields: ^wc2_h_str_shield  
 	Valued:
 		Cost: 600
 	Tooltip:
@@ -2769,8 +2734,6 @@ WC2_ORC_WATCH_TOWER:
 		HP: 60000
 	Armor:
 		Type: Wood
-	DamageMultiplier:
-		Modifier: 80
 	DetectCloaked:
 		Range: 5c0
 	RevealsShroud:
@@ -3338,7 +3301,6 @@ WC2_ORC_SKELETON:
 
 WC2_ORC_TROLL_AXETHROWER:
 	Inherits@WC2_HUMAN_ELVEN_ARCHER: WC2_HUMAN_ELVEN_ARCHER
-	  Inherits@upgrade_shields: ^wc2_h_str_shield 
     Inherits@upgrade_arrows: ^wc2_h_str_arrow
     Tooltip:
 		Name: Troll Axethrower
@@ -3362,7 +3324,6 @@ WC2_ORC_OGRE:
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMoveMelee
 	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
     Inherits@upgrade_swords: ^wc2_h_str_sword
-    Inherits@upgrade_shields: ^wc2_h_str_shield
 		Cost: 150
 	Tooltip:
 		Name: Ogre
@@ -3378,10 +3339,8 @@ WC2_ORC_OGRE:
 	Mobile:
 		Speed: 56
 	Health:
-		HP: 14400
-    DamageMultiplier@armor:
-        Modifier: 60       
-   	Armor:
+		HP: 14400    
+	Armor:
 		Type: None     
 	#Food
 	Power:
