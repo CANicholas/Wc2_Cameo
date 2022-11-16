@@ -397,12 +397,25 @@ Player:
         Palette: player
 
 ^WC2Infantry:
+	Inherits: ^DefaultSoldier
 	RenderSprites:
-        PlayerPalette: player
+		PlayerPalette: player
 	WithDeathAnimation:
-        DeathSequence: die
-        CrushedSequence: die-crushed
-        UseDeathTypeSuffix: false
+		DeathSequence: die
+		CrushedSequence: die-crushed
+		UseDeathTypeSuffix: false
+	GrantConditionOnPrerequisite@upgrade:
+		Condition: shield_upg
+		Prerequisites: wc2_h_str_shield || wc2_o_str_shield
+	GrantConditionOnPrerequisite@upgrade2:
+		Condition: shield_upg2
+		Prerequisites: wc2_h_str_shield2 || wc2_o_str_shield2
+	DamageMultiplier@upgrade:
+		Modifier: 75
+		RequiresCondition: shield_upg
+	DamageMultiplier@upgrade2:
+		Modifier: 75        
+		RequiresCondition: shield_upg2
 
 ^WC2Worker:
 	Harvester:
@@ -427,32 +440,32 @@ Player:
 	#	PauseOnCondition: lowpower
 
 ^wc2_h_str_sword:
-    GrantConditionOnPrerequisite@upgrade:
-        Condition: sword_upg
-        Prerequisites: wc2_h_str_sword || wc2_o_str_axe
-    GrantConditionOnPrerequisite@upgrade2:
-        Condition: sword_upg2
-        Prerequisites: wc2_h_str_sword2 || wc2_o_str_axe2
-    FirepowerMultiplier@upgrade:
-        Modifier: 130
-        RequiresCondition: sword_upg
-    FirepowerMultiplier@upgrade2:
-        Modifier: 130
-        RequiresCondition: sword_upg2             
+	GrantConditionOnPrerequisite@upgrade:
+		Condition: sword_upg
+		Prerequisites: wc2_h_str_sword || wc2_o_str_axe
+	GrantConditionOnPrerequisite@upgrade2:
+		Condition: sword_upg2
+		Prerequisites: wc2_h_str_sword2 || wc2_o_str_axe2
+	FirepowerMultiplier@upgrade:
+		Modifier: 130
+		RequiresCondition: sword_upg
+	FirepowerMultiplier@upgrade2:
+		Modifier: 130
+		RequiresCondition: sword_upg2             
         
 ^wc2_h_str_shield:
-    GrantConditionOnPrerequisite@upgrade:
-        Condition: shield_upg
-        Prerequisites: wc2_h_str_shield || wc2_o_str_shield
-    GrantConditionOnPrerequisite@upgrade2:
-        Condition: shield_upg2
-        Prerequisites: wc2_h_str_shield2 || wc2_o_str_shield2
-    DamageMultiplier@upgrade:
-        Modifier: 75
-        RequiresCondition: shield_upg
-    DamageMultiplier@upgrade2:
-        Modifier: 75        
-        RequiresCondition: shield_upg2
+	GrantConditionOnPrerequisite@upgrade:
+		Condition: shield_upg
+		Prerequisites: wc2_h_str_shield || wc2_o_str_shield
+	GrantConditionOnPrerequisite@upgrade2:
+		Condition: shield_upg2
+		Prerequisites: wc2_h_str_shield2 || wc2_o_str_shield2
+	DamageMultiplier@upgrade:
+		Modifier: 75
+		RequiresCondition: shield_upg
+	DamageMultiplier@upgrade2:
+		Modifier: 75        
+		RequiresCondition: shield_upg2
 
 ^wc2_h_str_arrow:        
     GrantConditionOnPrerequisite@upgrade:
@@ -1779,7 +1792,7 @@ WC2_HUMAN_PEASANT:
  
 wc_h2_mcv:
 	Inherits: ^Soldier
-    Inherits@WC1Infantry: ^WC2Infantry
+	Inherits@WC1Infantry: ^WC2Infantry
 	Inherits@EXT: ^ExternalConditions
 	Inherits@mcv: ^MCV
     Inherits@conyard: ^Conyard
@@ -1841,13 +1854,11 @@ wc_o2_mcv:
         Image: wc2_orc_peon
         
 WC2_HUMAN_FOOTMAN:
-	Inherits: ^Soldier
+	Inherits: ^WC2Infantry
 	Inherits@WC1Infantry: ^WC1Infantry
 	Inherits@EXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMoveMelee
 	Inherits@DECORATIONS: ^InfantryExperienceHospitalHazmatOverrides
-    Inherits@upgrade_swords: ^wc2_h_str_sword
-    Inherits@upgrade_shields: ^wc2_h_str_shield
 	Valued:
 		Cost: 150
 	Tooltip:
@@ -1882,7 +1893,6 @@ WC2_HUMAN_FOOTMAN:
 		UseDeathTypeSuffix: false
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
-		-IdleSequences: idle1,idle2,idle3,idle4
     Voiced:
 		VoiceSet: wc2voicehumanfootman           
     -Crushable:  

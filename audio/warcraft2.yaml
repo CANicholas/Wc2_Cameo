@@ -55,12 +55,12 @@ wc2voicehumanfootman:
 		Poisoned: hdead
 
 wc2voicehumanelvenarcher:
-    DefaultVariant: .aud  
+    DefaultVariant: .wav  
 	Voices:
 		Select: ewhat1,ewhat2,ewhat3,ewhat4,epissed1,epissed2,epissed3
-		Attack: eyessir1,eyessir2,eyessir3
-		Action: eyessir1,eyessir2,eyessir3
-		Move: eyessir1,eyessir2,eyessir3
+		Attack: eyessir1,eyessir2,eyessir3,eyessir4
+		Action: eyessir1,eyessir2,eyessir3,eyessir4
+		Move: eyessir1,eyessir2,eyessir3,eyessir4
 		Die: hdead
 		Build: eready
 		Burned: hdead
